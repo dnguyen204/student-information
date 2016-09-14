@@ -1,0 +1,81 @@
+@CHARSET "ISO-8859-1";
+
+.top-menu h3 {
+	margin-top: 10px;
+}
+
+.header-section {
+	text-align: center;
+	color: white;
+	height: 30px;
+}
+
+#custom-search-input {
+	margin: 0;
+	margin-top: 10px;
+	padding: 0;
+}
+
+#custom-search-input .search-query {
+	padding-right: 3px;
+	padding-right: 4px \9;
+	padding-left: 3px;
+	padding-left: 4px \9;
+	/* IE7-8 doesn't have border-radius, so don't indent the padding */
+	margin-bottom: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+#custom-search-input button {
+	border: 0;
+	background: none;
+	/** belows styles are working good */
+	padding: 2px 5px;
+	margin-top: 2px;
+	position: relative;
+	left: -28px;
+	/* IE7-8 doesn't have border-radius, so don't indent the padding */
+	margin-bottom: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	color: #D9230F;
+}
+
+.search-query:focus+button {
+	z-index: 3;
+}
+
+div .btn-toolbar {
+	height: 40px;
+}
+
+.datepicker>span:hover {
+	cursor: pointer;
+}
+/** auto complete **/
+.ui-tooltip {
+	background: #107985;
+	color: #96f226;
+	border: 2px solid #454545;
+	border-radius: 5px;
+	box-shadow: 0 0
+}
+
+.ui-autocomplete {
+	background: #c0cae2;
+	border-radius: 10px;
+	width: 20%;
+}
+
+.ui-autocomplete.source:hover {
+	background: #454545;
+}
+
+.ui-menu .ui-menu-item{	
+	height: 20px;
+	font-size: 16px;
+	cursor: pointer;
+}
