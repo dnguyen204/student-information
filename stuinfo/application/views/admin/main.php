@@ -38,6 +38,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	src="<?php echo base_url();?>public/backend/template/admin/js/bootstrap-markdown.js"></script>
 </head>
 <body>
+	<a href="#" id="go_top"></a>
 	<div class="page-container sidebar-collapsed-back">
 		<!--/content-inner-->
 		<div class="left-content">
@@ -93,9 +94,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<li id="menu-academico"><a href="#"><i class="fa fa-desktop"></i> <span>Quản
 								lý</span> <span class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
-							<li id="menu-academico-boletim"><a href="newstudent">Thêm đoàn sinh mới</a></li>
+							<li id="menu-academico-boletim"><a href="newstudent">Thêm đoàn
+									sinh mới</a></li>
 							<li id="menu-academico-avaliacoes"><a href="typesroce">Nhập điểm</a></li>
-							<li id="menu-academico-boletim"><a href="#">Nhập cơ sở dữ liệu</a></li>
+							<li id="menu-academico-boletim"><a href="newdatabase">Nhập cơ sở
+									dữ liệu</a></li>
 						</ul></li>
 
 					<li id="menu-academico"><a href="#"><i class="fa fa-search"></i> <span>Tìm

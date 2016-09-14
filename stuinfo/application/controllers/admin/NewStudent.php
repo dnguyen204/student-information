@@ -25,4 +25,6 @@ class NewStudent extends CI_Controller
             $this->model->getList($q);
         }
     }
+    
+    
 }

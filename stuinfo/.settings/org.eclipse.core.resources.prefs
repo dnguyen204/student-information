@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//application/views/admin/main.php=UTF-8
+encoding//application/views/admin/newdatabase.php=UTF-8
 encoding//application/views/admin/newstudent.php=UTF-8
 encoding//application/views/admin/search.php=UTF-8
 encoding//application/views/admin/typesroce.php=UTF-8
+encoding//public/backend/template/admin/css/style-fix.css=UTF-8

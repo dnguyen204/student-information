@@ -11,7 +11,6 @@
 	});
 
 	var toggle = true;
-
 	$(".sidebar-icon").click(
 			function() {
 				if (toggle) {
@@ -32,4 +31,23 @@
 
 				toggle = !toggle;
 			});
+	// Cuộn trang lên với scrollTop
+	$(function() {
+		$('#go_top').click(function() {
+			$('body,html').animate({
+				scrollTop : 0
+			}, 400);
+			return false;
+		});
+	});
+
+	// Ẩn hiện icon go-top
+	$(window).scroll(function() {
+		if ($(window).scrollTop() == 0) {
+			$('#go_top').stop(false, true).fadeOut(600);
+		} else {
+			$('#go_top').stop(false, true).fadeIn(600);
+		}
+	});
+
 }(window.jQuery));
