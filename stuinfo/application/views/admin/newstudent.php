@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <!-- Thêm đoàn sinh mới -->
 <div class="outter-wp">
-	<form class="form-horizontal" role="form" action="" method="post">
+	<form class="form-horizontal" role="form" action="<?php echo base_url();?>index.php/admin/newstudent/addNewStudent" method="post">
 		<div class="top-menu">
 			<h1 class="text-center">Thêm đoàn sinh mới</h1>
 		</div>
@@ -107,7 +107,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<label class="control-label col-md-4 col-xs-4">Ngày rước lễ:</label>
 					<div class="col-md-8 col-xs-8">
 						<div class="input-group date datepicker"
-							data-date-format="dd-mm-yyyy">
+							data-date-format="yyyy-mm-dd">
 							<input class="form-control" type="text" readonly name="stuNgayRuocLe"> <span
 								class="input-group-addon"><i
 								class="glyphicon glyphicon-calendar"></i></span>
@@ -131,8 +131,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ngày thêm sức:</label>
 					<div class="col-md-8 col-xs-8">
-						<div class="input-group date datepicker"
-							data-date-format="dd-mm-yyyy">
+						<div class="input-group date datepicker">
 							<input class="form-control" type="text" readonly name="stuNgayThemSuc"> <span
 								class="input-group-addon"><i
 								class="glyphicon glyphicon-calendar"></i></span>

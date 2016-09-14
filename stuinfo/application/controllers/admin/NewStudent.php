@@ -26,5 +26,10 @@ class NewStudent extends CI_Controller
         }
     }
     
-    
+    function addNewStudent()
+    {
+        $this->load->model('admin/Student_model', 'model');
+        $this->model->addNew();
+    }
+       
 }

@@ -43,7 +43,7 @@
 
 	// Ẩn hiện icon go-top
 	$(window).scroll(function() {
-		if ($(window).scrollTop() == 0) {
+		if ($(window).scrollTop() <= 5) {
 			$('#go_top').stop(false, true).fadeOut(600);
 		} else {
 			$('#go_top').stop(false, true).fadeIn(600);
