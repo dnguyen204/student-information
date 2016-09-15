@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2016 at 12:09 PM
+-- Generation Time: Sep 15, 2016 at 10:18 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -29,6 +29,57 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbl_chidoan` (
   `MaChiDoan` int(11) NOT NULL,
   `TenChiDoan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_danhsachlopdoansinh`
+--
+
+CREATE TABLE `tbl_danhsachlopdoansinh` (
+  `ID` int(11) NOT NULL,
+  `MaDoanSinh` varchar(6) DEFAULT NULL,
+  `MaLop` varchar(6) DEFAULT NULL,
+  `MaNamHoc` int(11) DEFAULT NULL,
+  `MaLopCu` varchar(6) DEFAULT NULL,
+  `MaDoi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_diemhk1`
+--
+
+CREATE TABLE `tbl_diemhk1` (
+  `ID` int(11) NOT NULL,
+  `MaDoanSinh` varchar(6) DEFAULT NULL,
+  `MaLop` varchar(6) DEFAULT NULL,
+  `MaNamHoc` int(11) DEFAULT NULL,
+  `Mieng` float DEFAULT NULL,
+  `KT15Phut` float DEFAULT NULL,
+  `KT1Tiet` float DEFAULT NULL,
+  `KTHK1` float DEFAULT NULL,
+  `TBHK1` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_diemhk2`
+--
+
+CREATE TABLE `tbl_diemhk2` (
+  `ID` int(11) NOT NULL,
+  `MaDoanSinh` varchar(6) DEFAULT NULL,
+  `MaLop` varchar(6) DEFAULT NULL,
+  `MaNamHoc` int(11) DEFAULT NULL,
+  `Mieng` float DEFAULT NULL,
+  `KT15Phut` float DEFAULT NULL,
+  `KH1Tiet` float DEFAULT NULL,
+  `KTHK2` float DEFAULT NULL,
+  `TBHK2` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -62,6 +113,14 @@ CREATE TABLE `tbl_doansinh` (
   `TrangThai` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_doansinh`
+--
+
+INSERT INTO `tbl_doansinh` (`ID`, `MaDoanSinh`, `TenThanh`, `HovaDem`, `Ten`, `NgaySinh`, `GioiTinh`, `NgayRuaToi`, `GXRuaToi`, `NgayRuocLe`, `GXRuocLe`, `NgayThemSuc`, `GXThemSuc`, `TenThanhCha`, `HoTenCha`, `SDTCha`, `TenThanhMe`, `HoTenMe`, `SDTMe`, `DiaChi`, `GhiChu`, `TrangThai`) VALUES
+(1, '100000', 'Martino', 'arqwfa', 'sfasfasf', '2016-09-01', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, '100000', 'Martino', 'arqwfa', 'sfasfasf', '2016-09-01', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +151,22 @@ CREATE TABLE `tbl_huynhtruong` (
   `DiaChi` varchar(150) DEFAULT NULL,
   `GhiChu` varchar(150) DEFAULT NULL,
   `TrangThai` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_lop`
+--
+
+CREATE TABLE `tbl_lop` (
+  `ID` int(11) NOT NULL,
+  `MaLop` varchar(6) NOT NULL,
+  `MaNganh` int(11) NOT NULL,
+  `MaPhanDoan` int(11) NOT NULL,
+  `MaChiDoan` int(11) NOT NULL,
+  `MaNamHoc` int(11) NOT NULL,
+  `MaGLV` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -159,7 +234,44 @@ INSERT INTO `tbl_tenthanh` (`MaTenThanh`, `TenThanh`) VALUES
 (2, 'Maria'),
 (3, 'Anna'),
 (4, 'Gioan'),
-(5, 'Giacobe');
+(5, 'Giacobe'),
+(10, 'Martino');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_tongkethk1`
+--
+
+CREATE TABLE `tbl_tongkethk1` (
+  `ID` int(11) NOT NULL,
+  `MaDoanSinh` varchar(6) DEFAULT NULL,
+  `MaLop` varchar(6) DEFAULT NULL,
+  `MaNamHoc` int(11) DEFAULT NULL,
+  `TBHK1` float DEFAULT NULL,
+  `HLHK1` varchar(10) DEFAULT NULL,
+  `HKHK1` varchar(10) DEFAULT NULL,
+  `XepHang` int(11) DEFAULT NULL,
+  `XepHangHK1` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_tongkethk2`
+--
+
+CREATE TABLE `tbl_tongkethk2` (
+  `ID` int(11) NOT NULL,
+  `MaDoanSinh` varchar(6) DEFAULT NULL,
+  `MaLop` varchar(6) DEFAULT NULL,
+  `MaNamHoc` int(11) DEFAULT NULL,
+  `TBHK2` float DEFAULT NULL,
+  `HLHK2` varchar(10) DEFAULT NULL,
+  `HKHK2` varchar(10) DEFAULT NULL,
+  `XepHang` int(11) DEFAULT NULL,
+  `XepHangHK2` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -197,6 +309,24 @@ ALTER TABLE `tbl_chidoan`
   ADD PRIMARY KEY (`MaChiDoan`);
 
 --
+-- Indexes for table `tbl_danhsachlopdoansinh`
+--
+ALTER TABLE `tbl_danhsachlopdoansinh`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tbl_diemhk1`
+--
+ALTER TABLE `tbl_diemhk1`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tbl_diemhk2`
+--
+ALTER TABLE `tbl_diemhk2`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `tbl_doansinh`
 --
 ALTER TABLE `tbl_doansinh`
@@ -212,6 +342,12 @@ ALTER TABLE `tbl_doi`
 -- Indexes for table `tbl_huynhtruong`
 --
 ALTER TABLE `tbl_huynhtruong`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tbl_lop`
+--
+ALTER TABLE `tbl_lop`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -245,6 +381,18 @@ ALTER TABLE `tbl_tenthanh`
   ADD PRIMARY KEY (`MaTenThanh`);
 
 --
+-- Indexes for table `tbl_tongkethk1`
+--
+ALTER TABLE `tbl_tongkethk1`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tbl_tongkethk2`
+--
+ALTER TABLE `tbl_tongkethk2`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -260,10 +408,25 @@ ALTER TABLE `tbl_user`
 ALTER TABLE `tbl_chidoan`
   MODIFY `MaChiDoan` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `tbl_danhsachlopdoansinh`
+--
+ALTER TABLE `tbl_danhsachlopdoansinh`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_diemhk1`
+--
+ALTER TABLE `tbl_diemhk1`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_diemhk2`
+--
+ALTER TABLE `tbl_diemhk2`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `tbl_doansinh`
 --
 ALTER TABLE `tbl_doansinh`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_doi`
 --
@@ -273,6 +436,11 @@ ALTER TABLE `tbl_doi`
 -- AUTO_INCREMENT for table `tbl_huynhtruong`
 --
 ALTER TABLE `tbl_huynhtruong`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_lop`
+--
+ALTER TABLE `tbl_lop`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_namhoc`
@@ -298,7 +466,17 @@ ALTER TABLE `tbl_role`
 -- AUTO_INCREMENT for table `tbl_tenthanh`
 --
 ALTER TABLE `tbl_tenthanh`
-  MODIFY `MaTenThanh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `MaTenThanh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `tbl_tongkethk1`
+--
+ALTER TABLE `tbl_tongkethk1`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_tongkethk2`
+--
+ALTER TABLE `tbl_tongkethk2`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
