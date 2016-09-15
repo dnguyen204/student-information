@@ -50,8 +50,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<label class="control-label col-md-4 col-xs-4">Giới tính:</label>
 					<div class="col-md-8 col-xs-8">
 						<div class="radio">
-							<label><input type="radio" name="stuSex" value="male">Nam</label> <label><input
-								type="radio" name="stuSex" value="female">Nữ</label>
+							<label><input type="radio" name="stuSex" value="TRUE">Nam</label> <label><input
+								type="radio" name="stuSex" value="FALSE">Nữ</label>
 						</div>
 					</div>
 				</div>

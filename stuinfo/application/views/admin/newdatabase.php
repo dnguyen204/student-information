@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <div class="outter-wp">
-	<form class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>index.php/admin/newdatabase/addNewTenThanh">
+	<form class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>index.php/admin/newdatabase/">
 		<div class="top-menu">
 			<h1 class="text-center">Nhập dữ liệu database</h1>
 		</div>
