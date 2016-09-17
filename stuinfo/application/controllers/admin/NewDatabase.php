@@ -9,18 +9,22 @@ class NewDatabase extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->database();
-        $this->load->model('admin/TenThanh_model', 'model');
+        $this->load->model('admin/TenThanh_model', 'modelTenThanh');
     }
 
     public function index()
     {
-        $data['result'] = $this->model->getAll();
+        $data['result'] = $this->modelTenThanh->getAll();
         $data['subview'] = 'admin/newdatabase';
         $this->load->view('admin/main', $data);
     }
 
-    function addNewTenThanh()
-    {        
-        $this->model->addNew();
+    function addDatabase()
+    {
+        if (isset($_POST["newTenThanh"])) {
+            // do your newTenThanh code
+            $this->modelTenThanh->addNew();
+        }
+        
     }
 }

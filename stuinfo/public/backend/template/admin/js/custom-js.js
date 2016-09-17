@@ -49,5 +49,10 @@
 			$('#go_top').stop(false, true).fadeIn(600);
 		}
 	});
-
+	//Xóa field
+	$(function() {
+		$('#btn-reset').click(function(){
+			$("#form")[0].reset();
+		});
+	});
 }(window.jQuery));
