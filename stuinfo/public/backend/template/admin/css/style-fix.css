@@ -123,3 +123,7 @@ div .btn-toolbar {
     top:14px;
 }
 /** End Go Top **/
+
+td a {
+	cursor: pointer;
+}

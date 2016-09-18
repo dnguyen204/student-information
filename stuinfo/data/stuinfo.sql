@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2016 at 10:31 AM
+-- Generation Time: Sep 18, 2016 at 05:14 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -28,8 +28,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_chidoan` (
   `MaChiDoan` int(11) NOT NULL,
-  `TenChiDoan` int(11) NOT NULL
+  `TenChiDoan` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_chidoan`
+--
+
+INSERT INTO `tbl_chidoan` (`MaChiDoan`, `TenChiDoan`) VALUES
+(1, 'Chi đoàn 1'),
+(2, 'Chi đoàn 2'),
+(3, 'Chi đoàn 3'),
+(4, 'Chi đoàn 4'),
+(5, 'Chi đoàn 5');
 
 -- --------------------------------------------------------
 
@@ -122,8 +133,19 @@ CREATE TABLE `tbl_doansinh` (
 
 CREATE TABLE `tbl_doi` (
   `MaDoi` int(11) NOT NULL,
-  `TenDoi` int(11) NOT NULL
+  `TenDoi` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_doi`
+--
+
+INSERT INTO `tbl_doi` (`MaDoi`, `TenDoi`) VALUES
+(1, 'Đội 1'),
+(2, 'Đội 2'),
+(3, 'Đội 3'),
+(4, 'Đội 4'),
+(5, 'Đội 5');
 
 -- --------------------------------------------------------
 
@@ -141,9 +163,11 @@ CREATE TABLE `tbl_huynhtruong` (
   `NgayBonMang` date DEFAULT NULL,
   `GioiTinh` tinyint(1) DEFAULT NULL,
   `DienThoai` varchar(11) DEFAULT NULL,
+  `Email` varchar(50) DEFAULT NULL,
   `DiaChi` varchar(150) DEFAULT NULL,
   `GhiChu` varchar(150) DEFAULT NULL,
-  `TrangThai` int(11) DEFAULT NULL
+  `TrangThai` int(11) DEFAULT NULL,
+  `Username` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -174,6 +198,13 @@ CREATE TABLE `tbl_namhoc` (
   `NameKetThuc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_namhoc`
+--
+
+INSERT INTO `tbl_namhoc` (`ID`, `NamBatDau`, `NameKetThuc`) VALUES
+(1, 2016, 2017);
+
 -- --------------------------------------------------------
 
 --
@@ -184,6 +215,17 @@ CREATE TABLE `tbl_nganh` (
   `MaNganh` int(11) NOT NULL,
   `TenNganh` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_nganh`
+--
+
+INSERT INTO `tbl_nganh` (`MaNganh`, `TenNganh`) VALUES
+(1, 'Chiên Con'),
+(2, 'Ấu'),
+(3, 'Thiếu'),
+(4, 'Nghĩa'),
+(5, 'Hiệp Sĩ');
 
 -- --------------------------------------------------------
 
@@ -196,6 +238,25 @@ CREATE TABLE `tbl_phandoan` (
   `TenPhanDoan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_phandoan`
+--
+
+INSERT INTO `tbl_phandoan` (`MaPhanDoan`, `TenPhanDoan`) VALUES
+(1, 'Chiên Con'),
+(2, 'Khai Tâm'),
+(3, 'Rước lễ 1'),
+(4, 'Rước lễ 2'),
+(5, 'Thêm sức 1'),
+(6, 'Thêm sức 2'),
+(7, 'Thêm sức 3'),
+(8, 'Bao đồng 1'),
+(9, 'Bao đồng 2'),
+(10, 'Bao đồng 3'),
+(11, 'Bao đồng 4'),
+(12, 'Vào đời 1'),
+(13, 'Vào đời 2');
+
 -- --------------------------------------------------------
 
 --
@@ -204,7 +265,17 @@ CREATE TABLE `tbl_phandoan` (
 
 CREATE TABLE `tbl_role` (
   `ID` int(11) NOT NULL,
-  `RoleType` varchar(50) NOT NULL
+  `RoleType` varchar(50) NOT NULL,
+  `fnThemDoanSinh` tinyint(1) DEFAULT NULL,
+  `fnNhapDiem` tinyint(1) DEFAULT NULL,
+  `fnNhapCSDL` tinyint(1) DEFAULT NULL,
+  `fnTimKiemDS` tinyint(1) DEFAULT NULL,
+  `fnTimKiemGLV` tinyint(1) DEFAULT NULL,
+  `fnDSXuatSac` tinyint(1) DEFAULT NULL,
+  `fnDSGioi` tinyint(1) DEFAULT NULL,
+  `fnGiayKhen` tinyint(1) DEFAULT NULL,
+  `fnThuBao` tinyint(1) DEFAULT NULL,
+  `fnThuMoi` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -228,7 +299,9 @@ INSERT INTO `tbl_tenthanh` (`MaTenThanh`, `TenThanh`) VALUES
 (3, 'Anna'),
 (4, 'Gioan'),
 (5, 'Giacobe'),
-(10, 'Martino');
+(10, 'Martino'),
+(11, 'Gioan Baotixita'),
+(12, '');
 
 -- --------------------------------------------------------
 
@@ -324,7 +397,6 @@ CREATE TABLE `tbl_trangthai` (
 
 CREATE TABLE `tbl_user` (
   `ID` int(11) NOT NULL,
-  `MaHuynhTruong` varchar(6) NOT NULL,
   `Username` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
   `Role` int(11) NOT NULL
@@ -450,7 +522,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_chidoan`
 --
 ALTER TABLE `tbl_chidoan`
-  MODIFY `MaChiDoan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaChiDoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_danhsachlopdoansinh`
 --
@@ -475,7 +547,7 @@ ALTER TABLE `tbl_doansinh`
 -- AUTO_INCREMENT for table `tbl_doi`
 --
 ALTER TABLE `tbl_doi`
-  MODIFY `MaDoi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaDoi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_huynhtruong`
 --
@@ -490,17 +562,17 @@ ALTER TABLE `tbl_lop`
 -- AUTO_INCREMENT for table `tbl_namhoc`
 --
 ALTER TABLE `tbl_namhoc`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_nganh`
 --
 ALTER TABLE `tbl_nganh`
-  MODIFY `MaNganh` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaNganh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_phandoan`
 --
 ALTER TABLE `tbl_phandoan`
-  MODIFY `MaPhanDoan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaPhanDoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `tbl_role`
 --
@@ -510,7 +582,7 @@ ALTER TABLE `tbl_role`
 -- AUTO_INCREMENT for table `tbl_tenthanh`
 --
 ALTER TABLE `tbl_tenthanh`
-  MODIFY `MaTenThanh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `MaTenThanh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tbl_tonghopdiemtb`
 --

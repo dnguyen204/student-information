@@ -13,6 +13,8 @@ class NewStudent extends CI_Controller
 
     public function index()
     {        
+        $this->load->model('admin/Student_model', 'stumodel');
+        $data['newcode'] = $this->stumodel->createNewCode();        
         $data['subview'] = 'admin/newstudent';
         $this->load->view('admin/main', $data);
     }

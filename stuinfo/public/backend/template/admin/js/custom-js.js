@@ -36,22 +36,30 @@
 		$('#go_top').click(function() {
 			$('body,html').animate({
 				scrollTop : 0
-			}, 400);
+			}, 600);
 			return false;
 		});
 	});
 
 	// Ẩn hiện icon go-top
-	$(window).scroll(function() {
-		if ($(window).scrollTop() <= 5) {
-			$('#go_top').stop(false, true).fadeOut(600);
-		} else {
-			$('#go_top').stop(false, true).fadeIn(600);
-		}
-	});
-	//Xóa field
 	$(function() {
-		$('#btn-reset').click(function(){
+		if ($(window).scrollTop() <= 5) {
+			$('#go_top').stop(false, true).fadeOut(1);
+		} else {
+			$('#go_top').stop(false, true).fadeIn(1);
+		}
+		$(window).scroll(function() {
+			if ($(window).scrollTop() <= 5) {
+				$('#go_top').stop(false, true).fadeOut(600);
+			} else {
+				$('#go_top').stop(false, true).fadeIn(600);
+			}
+		});
+	});
+
+	// Xóa field
+	$(function() {
+		$('#btn-reset').click(function() {
 			$("#form")[0].reset();
 		});
 	});

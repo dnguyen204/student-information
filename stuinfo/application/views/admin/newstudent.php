@@ -18,7 +18,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<label class="control-label col-md-4 col-xs-4">Mã Đoàn Sinh:</label>
 
 					<div class="col-md-8 col-xs-8">
-						<input type="text" class="form-control" readonly name="stuMa" />
+						<input type="text" class="form-control" readonly name="stuMa"
+							value="<?php echo $newcode; ?>" />
 					</div>
 				</div>
 			</div>
@@ -44,7 +45,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Họ và tên đệm:</label>
 					<div class="col-md-8 col-xs-8">
-						<input type="text" class="form-control" required name="stuLastName" />
+						<input type="text" class="form-control" required
+							name="stuLastName" />
 					</div>
 				</div>
 			</div>
@@ -52,7 +54,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Tên:</label>
 					<div class="col-md-8 col-xs-8">
-						<input type="text" class="form-control" required name="stuFirstName" />
+						<input type="text" class="form-control" required
+							name="stuFirstName" />
 					</div>
 				</div>
 			</div>
@@ -65,8 +68,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<label class="control-label col-md-4 col-xs-4">Giới tính:</label>
 					<div class="col-md-8 col-xs-8">
 						<div class="radio">
-							<label><input type="radio" name="stuSex" value="TRUE">Nam</label>
-							<label><input type="radio" name="stuSex" value="FALSE">Nữ</label>
+							<label><input type="radio" name="stuSex" value="1">Nam</label> <label><input
+								type="radio" name="stuSex" value="0">Nữ</label>
 						</div>
 					</div>
 				</div>
@@ -122,7 +125,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<label class="control-label col-md-4 col-xs-4">Ngày rước lễ:</label>
 					<div class="col-md-8 col-xs-8">
 						<div class="input-group date datepicker"
-							data-date-format="yyyy-mm-dd">
+							data-date-format="dd-mm-yyyy">
 							<input class="form-control" type="text" readonly
 								name="stuNgayRuocLe"> <span class="input-group-addon"><i
 								class="glyphicon glyphicon-calendar"></i></span>
@@ -146,7 +149,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ngày thêm sức:</label>
 					<div class="col-md-8 col-xs-8">
-						<div class="input-group date datepicker">
+						<div class="input-group date datepicker"
+							data-date-format="dd-mm-yyyy">
 							<input class="form-control" type="text" readonly
 								name="stuNgayThemSuc"> <span class="input-group-addon"><i
 								class="glyphicon glyphicon-calendar"></i></span>
@@ -256,9 +260,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<div class="col-sm-6 col-xs-6">
 				<div class="form-group">
 					<div class="col-md-offset-2 col-xs-offset-2">
-						<input id="btn-back" type="button" class="btn btn-primary"
-							value="Quay lại" /> <input id="btn-reset" type="button"
-							class="btn btn-primary" value="Xóa" />
+						<input id="btn-reset" type="button" class="btn btn-primary"
+							value="Xóa" />
 						<button type="submit" class="btn btn-primary">Thêm mới</button>
 					</div>
 				</div>
