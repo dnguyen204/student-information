@@ -6,9 +6,9 @@ class Search_model extends CI_Model
 
     public function searchStudent()
     {
-        $searchType = $_POST['search-type'];
-        $searchKey = $_POST['search-key'];
-        
+        $searchType = isset($_GET['type']) ? $_GET['type'] : '';
+        $searchKey = isset($_GET['key']) ? $_GET['key'] : '';
+        $searchId = $_GET['id'];
         switch ($searchType) {
             case 2:
                 $this->db->where('MaDoanSinh', $searchKey);
@@ -19,7 +19,14 @@ class Search_model extends CI_Model
         }
         
         $this->db->select('*');
-        $this->db->from('tbl_doansinh');
+        if($searchId == 'GLV'){
+            $this->db->from('tbl_huynhtruong');
+        }
+        else{
+            $this->db->from('tbl_doansinh');
+        }
+        
+        $this->db->limit(20,0);
         $query = $this->db->get();
         
         return $result = $query->result_array();

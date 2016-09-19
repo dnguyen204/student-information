@@ -11,22 +11,12 @@ class Search extends CI_Controller
     }
 
     public function index()
-    {
-        $data['result'] = null;
+    {        
+        $this->load->model('admin/Search_model', 'searchmodel');
+        $result = $this->searchmodel->searchStudent();       
+        
+        $data['result'] = $result;        
         $data['subview'] = 'admin/search';
         $this->load->view('admin/main', isset($data) ? $data : NULL);
-    }
-
-    function search()
-    {
-        $this->load->model('admin/Search_model','searchmodel');
-        
-        $result = $this->searchmodel->searchStudent();  
-        
-        print_r($result);
-        
-        $data['result'] = $result;
-        $data['subview'] = 'admin/search';
-        $this->load->view('admin/main', isset($data) ? $data : NULL);
-    }
+    }    
 }
