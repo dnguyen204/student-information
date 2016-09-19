@@ -31,6 +31,7 @@
 
 				toggle = !toggle;
 			});
+	
 	// Cuộn trang lên với scrollTop
 	$(function() {
 		$('#go_top').click(function() {
@@ -63,4 +64,5 @@
 			$("#form")[0].reset();
 		});
 	});
+	
 }(window.jQuery));
