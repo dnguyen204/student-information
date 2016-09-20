@@ -3,13 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Student_model extends CI_Model
 {
-    
+
     public function searchStudent()
     {
         $searchType = isset($_GET['type']) ? $_GET['type'] : '';
         $searchKey = isset($_GET['key']) ? $_GET['key'] : '';
         $searchId = $_GET['id'];
-    
+        
         switch ($searchType) {
             case 2:
                 $this->db->where('MaDoanSinh', $searchKey);
@@ -21,14 +21,14 @@ class Student_model extends CI_Model
                 $this->db->where('tbl_doansinh.TrangThai', 1);
                 break;
         }
-    
-        $this->db->select('*');    
+        
+        $this->db->select('*');
         $this->db->from('tbl_doansinh');
         $this->db->join('tbl_trangthai', 'tbl_doansinh.TrangThai = tbl_trangthai.ID', 'left');
-    
+        
         $this->db->limit(20, 0);
         $query = $this->db->get();
-    
+        
         return $result = $query->result_array();
     }
 
@@ -84,7 +84,15 @@ class Student_model extends CI_Model
             '$sturuatoi','$stugxruatoi','$sturuocle','$stugxruocle','$stuthemsuc','$stugxthemsuc','$tenthanhcha','$hotencha',
             '$sdtcha','$tenthanhme','$hotenme','$sdtme','$studiachi','$stughichu','$stutrangthai')") or die(mysqli_error());
     }
-    
-    
-    
+
+    public function getStudentDetail($code)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_doansinh ds');
+        $this->db->where('ds.MaDoanSinh', $code);
+        $this->db->join('tbl_trangthai tt', 'tt.ID = ds.TrangThai');
+        
+        $query = $this->db->get();
+        return $result = $query->result_array();        
+    }
 }

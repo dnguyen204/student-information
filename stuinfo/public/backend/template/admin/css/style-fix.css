@@ -89,41 +89,79 @@ div .btn-toolbar {
 }
 
 /** Go Top button **/
-#go_top{
-    display:block;
-    width:31px;
-    height:31px;
-    position:fixed;
-    background-color:#2ccaae;
-    bottom: 50px;
-    right:15px;
+#go_top {
+	display: block;
+	width: 31px;
+	height: 31px;
+	position: fixed;
+	background-color: #2ccaae;
+	bottom: 50px;
+	right: 15px;
 	z-index: 100;
 }
- 
+
 /*-- tạo mũi tên --*/
-#go_top:before{
-    content:"";
-    position:Absolute;
-    width:0;
-    height:0;
-    border:11px solid transparent;
-    border-bottom:11px solid white;
-    left:5px;
-    top:-8px;
+#go_top:before {
+	content: "";
+	position: Absolute;
+	width: 0;
+	height: 0;
+	border: 11px solid transparent;
+	border-bottom: 11px solid white;
+	left: 5px;
+	top: -8px;
 }
- 
- 
-#go_top:after{
-    content:"";
-    position:Absolute;
-    width:10px;
-    height:17px;
-    background-color:white;
-    left:11px;
-    top:14px;
+
+#go_top:after {
+	content: "";
+	position: Absolute;
+	width: 10px;
+	height: 17px;
+	background-color: white;
+	left: 11px;
+	top: 14px;
 }
 /** End Go Top **/
-
 td a {
 	cursor: pointer;
 }
+
+/** Student detail **/
+.user-row {
+	margin-bottom: 14px;
+}
+
+.user-row:last-child {
+	margin-bottom: 0;
+}
+
+.dropdown-user {
+	margin: 13px 0;
+	padding: 5px;
+	height: 100%;
+}
+
+.dropdown-user:hover {
+	cursor: pointer;
+}
+
+.table-user-information>tbody>tr {
+	border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information>tbody>tr:first-child {
+	border-top: 0;
+}
+
+.table-user-information>tbody>tr>td {
+	border-top: 0;
+}
+
+.toppad {
+	margin-top: 20px;
+}
+
+.outter-wp .panel{
+	margin-bottom: 50px;
+}
+
