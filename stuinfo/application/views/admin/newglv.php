@@ -10,6 +10,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<div class="top-menu">
 			<h1 class="text-center">Thêm Giáo Lý Viên mới</h1>
 		</div>
+		<!-- Row 0 -->
+		<div class="row">
+			<div class="col-sm-6 col-xs-6">
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4">Mã GLV:</label>
+
+					<div class="col-md-8 col-xs-8">
+						<input type="text" class="form-control" readonly name="maglv"
+							value="<?php echo $newcode; ?>" />
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- Row 1 -->
 		<div class="row">
@@ -52,8 +65,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<label class="control-label col-md-4 col-xs-4">Giới tính:</label>
 					<div class="col-md-8 col-xs-8">
 						<div class="radio">
-							<label><input type="radio" name="glvSex" value="TRUE">Nam</label>
-							<label><input type="radio" name="glvSex" value="FALSE">Nữ</label>
+							<label><input type="radio" name="glvSex" value="1">Nam</label> <label><input
+								type="radio" name="glvSex" value="0">Nữ</label>
 						</div>
 					</div>
 				</div>
@@ -70,6 +83,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							data-date-format="dd-mm-yyyy">
 							<input class="form-control" type="text" readonly name="glvDOB"> <span
 								class="input-group-addon"><i
+								class="glyphicon glyphicon-calendar"></i></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-xs-6">
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4">Ngày bổn mạng:</label>
+					<div class="col-md-8 col-xs-8">
+						<div class="input-group date datepicker" data-date-format="dd-mm">
+							<input class="form-control" type="text" readonly
+								name="glvBonMang"> <span class="input-group-addon"><i
 								class="glyphicon glyphicon-calendar"></i></span>
 						</div>
 					</div>
@@ -103,7 +128,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Địa chỉ:</label>
 					<div class="col-md-8 col-xs-8">
-						<textarea class="form-control" name="stuAddress"></textarea>
+						<textarea class="form-control" name="glvAddress"></textarea>
 					</div>
 				</div>
 			</div>
@@ -111,7 +136,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ghi chú:</label>
 					<div class="col-md-8 col-xs-8">
-						<textarea class="form-control" name="stuNote"></textarea>
+						<textarea class="form-control" name="glvNote"></textarea>
 					</div>
 				</div>
 			</div>
@@ -122,8 +147,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<div class="col-sm-6 col-xs-6"></div>
 			<div class="col-sm-6 col-xs-6">
 				<div class="form-group">
-					<input id="btn-back" type="button" class="btn btn-primary"
-						value="Quay lại" />
 					<input id="btn-reset" type="button" class="btn btn-primary"
 						value="Xóa" />
 					<button type="submit" class="btn btn-primary">Thêm mới</button>

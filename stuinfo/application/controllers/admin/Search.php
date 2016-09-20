@@ -11,12 +11,14 @@ class Search extends CI_Controller
     }
 
     public function index()
-    {        
-        $this->load->model('admin/Search_model', 'searchmodel');
-        $result = $this->searchmodel->searchStudent();       
+    {
+        if(htmlspecialchars($_GET["id"]) != 'GLV'){
+            $this->load->model('admin/Student_model', 'stumodel');
+            $result = $this->stumodel->searchStudent();
+        }        
         
-        $data['result'] = $result;        
+        $data['result'] = $result;
         $data['subview'] = 'admin/search';
         $this->load->view('admin/main', isset($data) ? $data : NULL);
-    }    
+    }
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2016 at 05:14 PM
+-- Generation Time: Sep 20, 2016 at 09:38 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -124,6 +124,13 @@ CREATE TABLE `tbl_doansinh` (
   `GhiChu` int(150) DEFAULT NULL,
   `TrangThai` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_doansinh`
+--
+
+INSERT INTO `tbl_doansinh` (`ID`, `HinhDoanSinh`, `MaDoanSinh`, `TenThanh`, `HovaDem`, `Ten`, `NgaySinh`, `GioiTinh`, `NgayRuaToi`, `GXRuaToi`, `NgayRuocLe`, `GXRuocLe`, `NgayThemSuc`, `GXThemSuc`, `TenThanhCha`, `HoTenCha`, `SDTCha`, `TenThanhMe`, `HoTenMe`, `SDTMe`, `DiaChi`, `GhiChu`, `TrangThai`) VALUES
+(1, NULL, '160001', 'Giuse', 'Nguyễn Hùng', 'Dũng', '2016-09-01', 1, '2016-09-02', '', '2016-09-03', '', '2016-09-20', '', '', '', '', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -265,7 +272,8 @@ INSERT INTO `tbl_phandoan` (`MaPhanDoan`, `TenPhanDoan`) VALUES
 
 CREATE TABLE `tbl_role` (
   `ID` int(11) NOT NULL,
-  `RoleType` varchar(50) NOT NULL,
+  `RoleID` int(50) DEFAULT NULL,
+  `Permision` varchar(255) DEFAULT NULL,
   `fnThemDoanSinh` tinyint(1) DEFAULT NULL,
   `fnNhapDiem` tinyint(1) DEFAULT NULL,
   `fnNhapCSDL` tinyint(1) DEFAULT NULL,
@@ -386,8 +394,18 @@ CREATE TABLE `tbl_tongkethk2` (
 
 CREATE TABLE `tbl_trangthai` (
   `ID` int(11) NOT NULL,
-  `TrangThai` varchar(50) DEFAULT NULL
+  `TrangThai` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_trangthai`
+--
+
+INSERT INTO `tbl_trangthai` (`ID`, `TrangThai`) VALUES
+(1, 'Đoàn sinh mới'),
+(2, 'Đang học'),
+(3, 'Nghỉ học'),
+(4, 'Chuyễn xứ');
 
 -- --------------------------------------------------------
 
@@ -509,6 +527,12 @@ ALTER TABLE `tbl_tongkethk2`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `tbl_trangthai`
+--
+ALTER TABLE `tbl_trangthai`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -542,7 +566,7 @@ ALTER TABLE `tbl_diemhk2`
 -- AUTO_INCREMENT for table `tbl_doansinh`
 --
 ALTER TABLE `tbl_doansinh`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_doi`
 --
@@ -603,6 +627,11 @@ ALTER TABLE `tbl_tongkethk1`
 --
 ALTER TABLE `tbl_tongkethk2`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_trangthai`
+--
+ALTER TABLE `tbl_trangthai`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
