@@ -15,7 +15,11 @@ class Search extends CI_Controller
         if(htmlspecialchars($_GET["id"]) != 'GLV'){
             $this->load->model('admin/Student_model', 'stumodel');
             $result = $this->stumodel->searchStudent();
-        }        
+        }
+        else{
+            $this->load->model('admin/GLV_model', 'glvmodel');
+            $result = $this->glvmodel->searchGLV();
+        }
         
         $data['result'] = $result;
         $data['subview'] = 'admin/search';

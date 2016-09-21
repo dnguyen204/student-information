@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2016 at 09:38 AM
+-- Generation Time: Sep 21, 2016 at 05:48 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -51,11 +51,19 @@ INSERT INTO `tbl_chidoan` (`MaChiDoan`, `TenChiDoan`) VALUES
 CREATE TABLE `tbl_danhsachlopdoansinh` (
   `ID` int(11) NOT NULL,
   `MaDoanSinh` varchar(6) DEFAULT NULL,
-  `MaLop` varchar(6) DEFAULT NULL,
+  `MaLop` varchar(20) DEFAULT NULL,
   `MaNamHoc` int(11) DEFAULT NULL,
   `MaLopCu` varchar(6) DEFAULT NULL,
   `MaDoi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_danhsachlopdoansinh`
+--
+
+INSERT INTO `tbl_danhsachlopdoansinh` (`ID`, `MaDoanSinh`, `MaLop`, `MaNamHoc`, `MaLopCu`, `MaDoi`) VALUES
+(1, '160001', 'Chien161', 1, NULL, 1),
+(2, '160002', 'Chien161', 1, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -130,7 +138,8 @@ CREATE TABLE `tbl_doansinh` (
 --
 
 INSERT INTO `tbl_doansinh` (`ID`, `HinhDoanSinh`, `MaDoanSinh`, `TenThanh`, `HovaDem`, `Ten`, `NgaySinh`, `GioiTinh`, `NgayRuaToi`, `GXRuaToi`, `NgayRuocLe`, `GXRuocLe`, `NgayThemSuc`, `GXThemSuc`, `TenThanhCha`, `HoTenCha`, `SDTCha`, `TenThanhMe`, `HoTenMe`, `SDTMe`, `DiaChi`, `GhiChu`, `TrangThai`) VALUES
-(1, NULL, '160001', 'Giuse', 'Nguyễn Hùng', 'Dũng', '2016-09-01', 1, '2016-09-02', '', '2016-09-03', '', '2016-09-20', '', '', '', '', '', '', '', '', 0, 1);
+(1, NULL, '160001', 'Giuse', 'Nguyễn Hùng', 'Dũng', '2016-09-01', 1, '2016-09-02', 'Thạch Đà', '2016-09-02', '', '2016-09-20', '', 'Giuse', 'Nguyễn Hùng Bắc', '01229004101', '', '', '', '', 0, 1),
+(2, NULL, '160002', 'Maria', 'Nguyễn Thị Hồng', 'Thảo', '2016-09-21', 0, '2016-09-16', 'TD', '2016-09-16', 'TD', '2016-10-01', 'TD', 'Maria', 't', '1111', 'Gioan', 'sdfsdfsdf', 'sdfdsfds', 'sdfsdf', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -185,13 +194,20 @@ CREATE TABLE `tbl_huynhtruong` (
 
 CREATE TABLE `tbl_lop` (
   `ID` int(11) NOT NULL,
-  `MaLop` varchar(6) NOT NULL,
+  `MaLop` varchar(20) NOT NULL,
   `MaNganh` int(11) NOT NULL,
   `MaPhanDoan` int(11) NOT NULL,
   `MaChiDoan` int(11) NOT NULL,
   `MaNamHoc` int(11) NOT NULL,
   `MaGLV` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_lop`
+--
+
+INSERT INTO `tbl_lop` (`ID`, `MaLop`, `MaNganh`, `MaPhanDoan`, `MaChiDoan`, `MaNamHoc`, `MaGLV`) VALUES
+(1, 'Chien161', 1, 1, 1, 1, 160001);
 
 -- --------------------------------------------------------
 
@@ -202,15 +218,17 @@ CREATE TABLE `tbl_lop` (
 CREATE TABLE `tbl_namhoc` (
   `ID` int(11) NOT NULL,
   `NamBatDau` int(11) NOT NULL,
-  `NameKetThuc` int(11) NOT NULL
+  `NamKetThuc` int(11) NOT NULL,
+  `GhiChu` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_namhoc`
 --
 
-INSERT INTO `tbl_namhoc` (`ID`, `NamBatDau`, `NameKetThuc`) VALUES
-(1, 2016, 2017);
+INSERT INTO `tbl_namhoc` (`ID`, `NamBatDau`, `NamKetThuc`, `GhiChu`) VALUES
+(1, 2015, 2016, 'Năm học 2015 - 2016'),
+(2, 2016, 2017, 'Năm học 2016 - 2017');
 
 -- --------------------------------------------------------
 
@@ -551,7 +569,7 @@ ALTER TABLE `tbl_chidoan`
 -- AUTO_INCREMENT for table `tbl_danhsachlopdoansinh`
 --
 ALTER TABLE `tbl_danhsachlopdoansinh`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_diemhk1`
 --
@@ -566,7 +584,7 @@ ALTER TABLE `tbl_diemhk2`
 -- AUTO_INCREMENT for table `tbl_doansinh`
 --
 ALTER TABLE `tbl_doansinh`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_doi`
 --
@@ -581,12 +599,12 @@ ALTER TABLE `tbl_huynhtruong`
 -- AUTO_INCREMENT for table `tbl_lop`
 --
 ALTER TABLE `tbl_lop`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_namhoc`
 --
 ALTER TABLE `tbl_namhoc`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_nganh`
 --

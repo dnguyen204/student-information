@@ -94,6 +94,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							class="glyphicon glyphicon-list-alt"></i> <span>Danh mục</span> <span
 							class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
+							<li id="menu-academico-boletim"><a href="newstudent">Thêm đoàn
+									sinh mới</a></li>
 							<li id="menu-academico-avaliacoes"><a href="typesroce">Nhập điểm</a></li>
 							<li id="menu-academico-avaliacoes"><a href="">Xếp lớp</a></li>
 							<li id="menu-academico-boletim"><a href="">Xét lên lớp</a></li>
@@ -101,8 +103,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<li id="menu-academico"><a href="#"><i class="fa fa-desktop"></i> <span>Quản
 								lý</span> <span class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
-							<li id="menu-academico-boletim"><a href="newstudent">Thêm đoàn
-									sinh mới</a></li>
+							<li id="menu-academico-boletim"><a href="division">Phân công</a></li>
 							<li id="menu-academico-avaliacoes"><a href="newglv">Thêm GLV mới</a></li>
 							<li id="menu-academico-boletim"><a href="newdatabase">Nhập cơ sở
 									dữ liệu</a></li>

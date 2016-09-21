@@ -15,7 +15,8 @@ class DetailStudent extends CI_Controller
         $this->load->model('admin/Student_model', 'stumodel');
         $result = $this->stumodel->getStudentDetail(htmlspecialchars($_GET["code"]));
         
-        $data['result'] = $result;
+        
+        $data['result_stuinfo'] = $result;
         $data['subview'] = 'admin/detailstudent';
         $this->load->view('admin/main', $data);
     }

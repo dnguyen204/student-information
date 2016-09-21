@@ -30,21 +30,45 @@ class GLV_model extends CI_Model
         $glvhovadem = $_POST['glvLastName'];
         $glvten = $_POST['glvFirstName'];
         $glvgioitinh = $_POST['glvSex'];
-        $glvngaysinh = date('Y-m-d', strtotime($_POST['glvDOB']));      
-        $glvbonmang = date('Y-m-d', strtotime($_POST['glvBonMang'])); 
+        $glvngaysinh = date('Y-m-d', strtotime($_POST['glvDOB']));
+        $glvbonmang = date('Y-m-d', strtotime($_POST['glvBonMang']));
         
-        $glvsdt = $_POST['SDT'];       
+        $glvsdt = $_POST['SDT'];
         $glvemail = $_POST['Email'];
         
         $glvdiachi = $_POST['glvAddress'];
         $glvghichu = $_POST['glvNote'];
         
         $stutrangthai = 1;
-              
-                
+        
         $this->db->query("INSERT INTO tbl_huynhtruong (MaHuynhTruong,TenThanh,HovaDem,Ten,NgaySinh,
             NgayBonMang,GioiTinh,DienThoai,Email,DiaChi,GhiChu,TrangThai) 
             VALUES('$maglv','$glvtenthanh','$glvhovadem','$glvten','$glvngaysinh',
             '$glvbonmang','$glvgioitinh','$glvsdt','$glvemail','$glvdiachi','$glvghichu','$stutrangthai')") or die(mysqli_error());
+    }
+
+    public function searchGLV()
+    {
+        $searchType = isset($_GET['type']) ? $_GET['type'] : '';
+        $searchKey = isset($_GET['key']) ? $_GET['key'] : '';
+        $searchId = $_GET['id'];
+        
+        switch ($searchType) {
+            case 2:
+                $this->db->where('MaHuynhTruong', $searchKey);
+                break;
+            case 3:
+                $this->db->where('Ten', $searchKey);
+                break;            
+        }
+        
+        $this->db->select('*');
+        $this->db->from('tbl_huynhtruong');
+        $this->db->join('tbl_trangthai', 'tbl_huynhtruong.TrangThai = tbl_trangthai.ID', 'left');
+        
+        $this->db->limit(20, 0);
+        $query = $this->db->get();
+        
+        return $result = $query->result_array();
     }
 }

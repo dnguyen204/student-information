@@ -9,7 +9,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	</div>
 	<form role="form">
 		<div class="row">
-	<?php foreach ($result as $row){?>
+	<?php foreach ($result_stuinfo as $row){?>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 toppad">
 				<div class="panel panel-info">
 					<div class="panel-heading">
