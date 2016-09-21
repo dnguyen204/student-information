@@ -38,7 +38,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	src="<?php echo base_url();?>public/backend/template/admin/js/bootstrap-markdown.js"></script>
 </head>
 <body>
-	<a href="#" id="go_top"></a>
+	<a id="go_top" title="Go Top"></a>
 	<div class="page-container sidebar-collapsed-back">
 		<!--/content-inner-->
 		<div class="left-content">
