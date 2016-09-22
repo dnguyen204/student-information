@@ -7,12 +7,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <!-- CSS -->
-<link rel="stylesheet"
-	href="<?php echo base_url();?>public/backend/template/admin/css/bootstrap.min.css"
-	type='text/css' />
-<link rel="stylesheet"
-	href="<?php echo base_url();?>public/backend/template/admin/css/bootstrap-theme.min.css"
-	type='text/css' />
 <link rel="stylesheet" type="text/css"
 	href="<?php echo base_url(); ?>public/backend/template/admin/css/style.css" />
 <link
@@ -26,9 +20,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <link rel="stylesheet"
 	href="<?php echo base_url();?>public/backend/template/admin/css/bootstrap-markdown.min.css" />
 <link rel="stylesheet"
-	href="<?php echo base_url();?>public/backend/template/admin/css/style-fix.css" />
-<link rel="stylesheet"
 	href="<?php echo base_url();?>public/backend/template/admin/css/datepicker.css" />
+<link rel="stylesheet"
+	href="<?php echo base_url();?>public/backend/template/admin/css/bootstrap-theme.min.css"
+	type='text/css' />
+<link rel="stylesheet"
+	href="<?php echo base_url();?>public/backend/template/admin/css/bootstrap.min.css"
+	type='text/css' />
+<link rel="stylesheet"
+	href="<?php echo base_url();?>public/backend/template/admin/css/style-fix.css" />
 <!-- Bootstrap Core JavaScript -->
 <script type='text/javascript'
 	src="<?php echo base_url();?>public/backend/template/admin/js/jquery-1.11.1.min.js"></script>
@@ -64,9 +64,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<!--//content-inner-->
 		<!--/sidebar-menu-->
 		<div class="sidebar-menu">
-			<header class="logo"> <a href="#" class="sidebar-icon"> <span
-				class="fa fa-bars"></span>
-			</a> <a href="index.html"> <span id="logo">
+			<header class="logo"> <a class="sidebar-icon"> <span
+				class="fa fa-bars"></span></a> <a href="../admin/"> <span id="logo">
 					<h1>ADMIN</h1>
 			</span> <!--<img id="logo" src="" alt="Logo"/>-->
 			</a> </header>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2016 at 05:48 PM
+-- Generation Time: Sep 22, 2016 at 01:27 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -63,7 +63,8 @@ CREATE TABLE `tbl_danhsachlopdoansinh` (
 
 INSERT INTO `tbl_danhsachlopdoansinh` (`ID`, `MaDoanSinh`, `MaLop`, `MaNamHoc`, `MaLopCu`, `MaDoi`) VALUES
 (1, '160001', 'Chien161', 1, NULL, 1),
-(2, '160002', 'Chien161', 1, NULL, 1);
+(2, '160002', 'Chien161', 1, NULL, 1),
+(3, '160001', 'KT171', 2, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -74,14 +75,21 @@ INSERT INTO `tbl_danhsachlopdoansinh` (`ID`, `MaDoanSinh`, `MaLop`, `MaNamHoc`, 
 CREATE TABLE `tbl_diemhk1` (
   `ID` int(11) NOT NULL,
   `MaDoanSinh` varchar(6) DEFAULT NULL,
-  `MaLop` varchar(6) DEFAULT NULL,
+  `MaLop` varchar(20) DEFAULT NULL,
   `MaNamHoc` int(11) DEFAULT NULL,
-  `Mieng` float DEFAULT NULL,
-  `KT15Phut` float DEFAULT NULL,
-  `KT1Tiet` float DEFAULT NULL,
+  `MiengHKI` float DEFAULT NULL,
+  `KT15PhutHKI` float DEFAULT NULL,
+  `KT1TietHKI` float DEFAULT NULL,
   `KTHK1` float DEFAULT NULL,
   `TBHK1` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_diemhk1`
+--
+
+INSERT INTO `tbl_diemhk1` (`ID`, `MaDoanSinh`, `MaLop`, `MaNamHoc`, `MiengHKI`, `KT15PhutHKI`, `KT1TietHKI`, `KTHK1`, `TBHK1`) VALUES
+(1, '160001', 'Chien161', 1, 8, 8.5, 9, 9, 9.5);
 
 -- --------------------------------------------------------
 
@@ -92,14 +100,21 @@ CREATE TABLE `tbl_diemhk1` (
 CREATE TABLE `tbl_diemhk2` (
   `ID` int(11) NOT NULL,
   `MaDoanSinh` varchar(6) DEFAULT NULL,
-  `MaLop` varchar(6) DEFAULT NULL,
+  `MaLop` varchar(20) DEFAULT NULL,
   `MaNamHoc` int(11) DEFAULT NULL,
-  `Mieng` float DEFAULT NULL,
-  `KT15Phut` float DEFAULT NULL,
-  `KH1Tiet` float DEFAULT NULL,
+  `MiengHKII` float DEFAULT NULL,
+  `KT15PhutHKII` float DEFAULT NULL,
+  `KT1TietHKII` float DEFAULT NULL,
   `KTHK2` float DEFAULT NULL,
   `TBHK2` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_diemhk2`
+--
+
+INSERT INTO `tbl_diemhk2` (`ID`, `MaDoanSinh`, `MaLop`, `MaNamHoc`, `MiengHKII`, `KT15PhutHKII`, `KT1TietHKII`, `KTHK2`, `TBHK2`) VALUES
+(1, '160001', 'Chien161', 1, 8, 8, 8, 8, 8);
 
 -- --------------------------------------------------------
 
@@ -207,7 +222,8 @@ CREATE TABLE `tbl_lop` (
 --
 
 INSERT INTO `tbl_lop` (`ID`, `MaLop`, `MaNganh`, `MaPhanDoan`, `MaChiDoan`, `MaNamHoc`, `MaGLV`) VALUES
-(1, 'Chien161', 1, 1, 1, 1, 160001);
+(1, 'Chien161', 1, 1, 1, 1, 160001),
+(2, 'KT171', 2, 2, 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -216,7 +232,7 @@ INSERT INTO `tbl_lop` (`ID`, `MaLop`, `MaNganh`, `MaPhanDoan`, `MaChiDoan`, `MaN
 --
 
 CREATE TABLE `tbl_namhoc` (
-  `ID` int(11) NOT NULL,
+  `MaNamHoc` int(11) NOT NULL,
   `NamBatDau` int(11) NOT NULL,
   `NamKetThuc` int(11) NOT NULL,
   `GhiChu` varchar(200) DEFAULT NULL
@@ -226,7 +242,7 @@ CREATE TABLE `tbl_namhoc` (
 -- Dumping data for table `tbl_namhoc`
 --
 
-INSERT INTO `tbl_namhoc` (`ID`, `NamBatDau`, `NamKetThuc`, `GhiChu`) VALUES
+INSERT INTO `tbl_namhoc` (`MaNamHoc`, `NamBatDau`, `NamKetThuc`, `GhiChu`) VALUES
 (1, 2015, 2016, 'Năm học 2015 - 2016'),
 (2, 2016, 2017, 'Năm học 2016 - 2017');
 
@@ -327,7 +343,7 @@ INSERT INTO `tbl_tenthanh` (`MaTenThanh`, `TenThanh`) VALUES
 (5, 'Giacobe'),
 (10, 'Martino'),
 (11, 'Gioan Baotixita'),
-(12, '');
+(13, 'Phêrô');
 
 -- --------------------------------------------------------
 
@@ -355,7 +371,7 @@ CREATE TABLE `tbl_tonghopdiemtb` (
 CREATE TABLE `tbl_tongketcanam` (
   `ID` int(11) NOT NULL,
   `MaDoanSinh` varchar(6) DEFAULT NULL,
-  `MaLop` varchar(6) DEFAULT NULL,
+  `MaLop` varchar(20) DEFAULT NULL,
   `MaNamHoc` int(11) DEFAULT NULL,
   `TBCN` float DEFAULT NULL,
   `TruocTBCN` float DEFAULT NULL,
@@ -367,6 +383,13 @@ CREATE TABLE `tbl_tongketcanam` (
   `CotPhu` int(11) DEFAULT NULL,
   `XetLop` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_tongketcanam`
+--
+
+INSERT INTO `tbl_tongketcanam` (`ID`, `MaDoanSinh`, `MaLop`, `MaNamHoc`, `TBCN`, `TruocTBCN`, `HLCN`, `TruocHLCN`, `HKCN`, `XepHang`, `XepHangCN`, `CotPhu`, `XetLop`) VALUES
+(1, '160001', 'Chien161', 1, 8.5, NULL, 'Giỏi', NULL, 'Tốt', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -494,7 +517,7 @@ ALTER TABLE `tbl_lop`
 -- Indexes for table `tbl_namhoc`
 --
 ALTER TABLE `tbl_namhoc`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`MaNamHoc`);
 
 --
 -- Indexes for table `tbl_nganh`
@@ -569,17 +592,17 @@ ALTER TABLE `tbl_chidoan`
 -- AUTO_INCREMENT for table `tbl_danhsachlopdoansinh`
 --
 ALTER TABLE `tbl_danhsachlopdoansinh`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_diemhk1`
 --
 ALTER TABLE `tbl_diemhk1`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_diemhk2`
 --
 ALTER TABLE `tbl_diemhk2`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_doansinh`
 --
@@ -599,12 +622,12 @@ ALTER TABLE `tbl_huynhtruong`
 -- AUTO_INCREMENT for table `tbl_lop`
 --
 ALTER TABLE `tbl_lop`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_namhoc`
 --
 ALTER TABLE `tbl_namhoc`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `MaNamHoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_nganh`
 --
@@ -624,7 +647,7 @@ ALTER TABLE `tbl_role`
 -- AUTO_INCREMENT for table `tbl_tenthanh`
 --
 ALTER TABLE `tbl_tenthanh`
-  MODIFY `MaTenThanh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `MaTenThanh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `tbl_tonghopdiemtb`
 --
@@ -634,7 +657,7 @@ ALTER TABLE `tbl_tonghopdiemtb`
 -- AUTO_INCREMENT for table `tbl_tongketcanam`
 --
 ALTER TABLE `tbl_tongketcanam`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_tongkethk1`
 --

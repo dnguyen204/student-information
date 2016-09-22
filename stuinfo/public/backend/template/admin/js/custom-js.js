@@ -31,7 +31,7 @@
 
 				toggle = !toggle;
 			});
-	
+
 	// Cuộn trang lên với scrollTop
 	$(function() {
 		$('#go_top').click(function() {
@@ -64,5 +64,21 @@
 			$("#form")[0].reset();
 		});
 	});
-	
+	$('#detail-process').click(
+			function() {
+				var currentNode = $('#detail-process >i');
+				var currentClass = currentNode.attr('class');
+				if (currentClass == 'glyphicon glyphicon-chevron-right') {
+					currentNode.removeClass().addClass(
+							'glyphicon glyphicon-chevron-down')
+					var scrolled = scrolled + 200;
+					$(".accordian-body").animate({
+						scrollBottom : scrolled
+					});
+				} else {
+					currentNode.removeClass().addClass(
+							'glyphicon glyphicon-chevron-right')
+				}
+			});
+
 }(window.jQuery));

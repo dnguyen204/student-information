@@ -100,7 +100,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 						</div>
 					</div>
-					<div class="panel-footer">
+					<div class="panel-footer footer-student-detail">
 						<a data-original-title="Broadcast Message" data-toggle="tooltip"
 							type="button" class="btn btn-sm btn-primary"><i
 							class="glyphicon glyphicon-envelope"></i></a> <span
@@ -123,7 +123,84 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="panel-heading">
 						<h3 class="panel-title">Quá trình học tập</h3>
 					</div>
-					<div class="panel-body"></div>
+					<div class="panel-body">
+						<table class="table table-user-information"
+							style="border-collapse: collapse;">
+							<thead>
+								<tr>
+									<th>&nbsp;</th>
+									<th>Năm học</th>
+									<th>Ngành</th>
+									<th>Phân đoàn</th>
+									<th>Chi đoàn</th>
+									<th>Đội</th>
+									<th>HT phụ trách</th>
+								</tr>
+							</thead>
+							<tbody>
+							<?php if(count($result_process) > 0){ ?>
+								<?php foreach ($result_process as $pro){?>
+								<tr>
+									<td><a class="btn btn-md" data-toggle="collapse"
+										data-target="#<?php echo $pro['MaDoanSinh']?>"
+										class="accordion-toggle" id="detail-process"> <i
+											class="glyphicon glyphicon-chevron-right"></i></a></td>
+									<td><?php echo $pro['NamBatDau'].' - '.$pro['NamKetThuc']?></td>
+									<td><?php echo $pro['TenNganh']?></td>
+									<td><?php echo $pro['TenPhanDoan']?></td>
+									<td><?php echo $pro['TenChiDoan']?></td>
+									<td><?php echo $pro['TenDoi']?></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td colspan="12" class="hiddenRow"><div
+											class="accordian-body collapse"
+											id="<?php echo $pro['MaDoanSinh']?>">
+											<table class="table table-user-information">
+												<tbody>
+													<tr>
+														<td></td>
+														<td>Miệng</td>
+														<td>15 phút</td>
+														<td>1 tiết</td>
+														<td>Học kì</td>
+														<td>Trung bình</td>
+													</tr>
+													<tr>
+														<td>Điểm HKI</td>
+														<td><?php echo $pro['MiengHKI']?></td>
+														<td><?php echo $pro['KT15PhutHKI']?></td>
+														<td><?php echo $pro['KT1TietHKI']?></td>
+														<td><?php echo $pro['KTHK1']?></td>
+														<td><?php echo $pro['TBHK1']?></td>
+													</tr>
+													<tr>
+														<td>Điểm HKII</td>
+														<td><?php echo $pro['MiengHKII']?></td>
+														<td><?php echo $pro['KT15PhutHKII']?></td>
+														<td><?php echo $pro['KT1TietHKII']?></td>
+														<td><?php echo $pro['KTHK2']?></td>
+														<td><?php echo $pro['TBHK2']?></td>
+													</tr>
+													<tr>
+														<td>Cả năm</td>
+														<td>Trung bình: <?php echo $pro['TBCN']?></td>
+														<td>Học lực: <?php echo $pro['HLCN']?></td>
+														<td>Hạnh kiểm: <?php echo $pro['HKCN']?></td>
+														<td></td>
+														<td><a href="#" title="In bảng điểm" data-toggle="tooltip"
+															type="button" class="btn btn-sm btn-primary"><i
+																class="glyphicon glyphicon-print"></i></a></td>
+													</tr>
+												</tbody>
+											</table>
+										</div></td>
+								</tr>
+								<?php }?>							
+							<?php }?>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 

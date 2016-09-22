@@ -162,10 +162,27 @@ td a {
 	margin-top: 20px;
 }
 
-.outter-wp .panel{
+.outter-wp .panel {
 	margin-bottom: 50px;
 }
-.table>tbody>tr>td{
+
+.table>tbody>tr>td {
 	color: black;
 }
 
+.sidebar-icon {
+	cursor: pointer;
+}
+
+.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td,
+	.table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+	font-size: 1.00em !important;
+}
+
+.footer-student-detail {
+	background: #ddd;
+}
+
+.table>tbody>tr>td a, .footer-student-detail a {
+	margin-top: -2px;
+}
