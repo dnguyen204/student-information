@@ -105,10 +105,7 @@ class Student_model extends CI_Model
         $this->db->join('tbl_lop l', 'dsl.MaLop = l.MaLop')
             ->join('tbl_phandoan pd', 'l.MaPhanDoan = pd.MaPhanDoan')
             ->join('tbl_nganh n', 'l.MaNganh = n.MaNganh')
-            ->join('tbl_chidoan cd', 'l.MaChiDoan = cd.MaChiDoan')
-            ->join('tbl_diemhk1 hk1', 'dsl.MaDoanSinh = hk1.MaDoanSinh AND dsl.MaNamHoc = hk1.MaNamHoc AND dsl.MaLop = hk1.MaLop')
-            ->join('tbl_diemhk2 hk2', 'dsl.MaDoanSinh = hk2.MaDoanSinh AND dsl.MaNamHoc = hk2.MaNamHoc AND dsl.MaLop = hk2.MaLop')
-            ->join('tbl_tongketcanam tk', 'dsl.MaDoanSinh = tk.MaDoanSinh AND dsl.MaNamHoc = tk.MaNamHoc AND dsl.MaLop = tk.MaLop');
+            ->join('tbl_chidoan cd', 'l.MaChiDoan = cd.MaChiDoan');
         $this->db->join('tbl_namhoc nh', 'dsl.MaNamHoc = nh.MaNamHoc');
         $this->db->join('tbl_doi d', 'dsl.MaDoi = d.MaDoi');
         

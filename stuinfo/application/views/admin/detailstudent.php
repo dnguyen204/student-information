@@ -142,7 +142,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								<?php foreach ($result_process as $pro){?>
 								<tr>
 									<td><a class="btn btn-md" data-toggle="collapse"
-										data-target="#<?php echo $pro['MaDoanSinh']?>"
+										data-target="#<?php echo $pro['MaLop']?>"
 										class="accordion-toggle" id="detail-process"> <i
 											class="glyphicon glyphicon-chevron-right"></i></a></td>
 									<td><?php echo $pro['NamBatDau'].' - '.$pro['NamKetThuc']?></td>
@@ -153,9 +153,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									<td></td>
 								</tr>
 								<tr>
-									<td colspan="12" class="hiddenRow"><div
+									<td colspan="12" class="hiddenRow" style="padding: 0px !important;"><div
 											class="accordian-body collapse"
-											id="<?php echo $pro['MaDoanSinh']?>">
+											id="<?php echo $pro['MaLop']?>">
 											<table class="table table-user-information">
 												<tbody>
 													<tr>
@@ -166,32 +166,44 @@ defined('BASEPATH') or exit('No direct script access allowed');
 														<td>Học kì</td>
 														<td>Trung bình</td>
 													</tr>
+													<?php if(count($hk1 > 0)){?>
+													<?php foreach ($hk1 as $s){	?>
+													<?php if($pro['MaLop'] == $s['MaLop']){?>
 													<tr>
 														<td>Điểm HKI</td>
-														<td><?php echo $pro['MiengHKI']?></td>
-														<td><?php echo $pro['KT15PhutHKI']?></td>
-														<td><?php echo $pro['KT1TietHKI']?></td>
-														<td><?php echo $pro['KTHK1']?></td>
-														<td><?php echo $pro['TBHK1']?></td>
+														<td><?php echo $s['MiengHKI']?></td>
+														<td><?php echo $s['KT15PhutHKI']?></td>
+														<td><?php echo $s['KT1TietHKI']?></td>
+														<td><?php echo $s['KTHK1']?></td>
+														<td><?php echo $s['TBHK1']?></td>
 													</tr>
+													<?php } } }?>
+													<?php if(count($hk2 > 0)){?>
+													<?php foreach ($hk2 as $s){	?>
+													<?php if($pro['MaLop'] == $s['MaLop']){?>
 													<tr>
 														<td>Điểm HKII</td>
-														<td><?php echo $pro['MiengHKII']?></td>
-														<td><?php echo $pro['KT15PhutHKII']?></td>
-														<td><?php echo $pro['KT1TietHKII']?></td>
-														<td><?php echo $pro['KTHK2']?></td>
-														<td><?php echo $pro['TBHK2']?></td>
+														<td><?php echo $s['MiengHKII']?></td>
+														<td><?php echo $s['KT15PhutHKII']?></td>
+														<td><?php echo $s['KT1TietHKII']?></td>
+														<td><?php echo $s['KTHK2']?></td>
+														<td><?php echo $s['TBHK2']?></td>
 													</tr>
+													<?php } } }?>
+													<?php if(count($canam > 0)){?>
+													<?php foreach ($canam as $s){	?>
+													<?php if($pro['MaLop'] == $s['MaLop']){?>
 													<tr>
 														<td>Cả năm</td>
-														<td>Trung bình: <?php echo $pro['TBCN']?></td>
-														<td>Học lực: <?php echo $pro['HLCN']?></td>
-														<td>Hạnh kiểm: <?php echo $pro['HKCN']?></td>
+														<td>Trung bình: <?php echo $s['TBCN']?></td>
+														<td>Học lực: <?php echo $s['HLCN']?></td>
+														<td>Hạnh kiểm: <?php echo $s['HKCN']?></td>
 														<td></td>
 														<td><a href="#" title="In bảng điểm" data-toggle="tooltip"
 															type="button" class="btn btn-sm btn-primary"><i
 																class="glyphicon glyphicon-print"></i></a></td>
 													</tr>
+													<?php } } }?>
 												</tbody>
 											</table>
 										</div></td>
