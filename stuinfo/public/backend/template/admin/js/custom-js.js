@@ -64,21 +64,26 @@
 			$("#form")[0].reset();
 		});
 	});
-	$('#detail-process').click(
-			function() {
-				var currentNode = $('#detail-process >i');
-				var currentClass = currentNode.attr('class');
-				if (currentClass == 'glyphicon glyphicon-chevron-right') {
-					currentNode.removeClass().addClass(
-							'glyphicon glyphicon-chevron-down')
-					var scrolled = scrolled + 200;
-					$(".accordian-body").animate({
-						scrollBottom : scrolled
+	$('tbody tr td')
+			.click(
+					function() {
+						var that = $(this);
+						if (that.children().attr("data-target") != undefined) {
+							var currentNode = that.children().children();
+							var currentClass = that.children().children().attr(
+									"Class");
+							if (currentClass == 'glyphicon glyphicon-chevron-right') {
+								currentNode.removeClass().addClass(
+										'glyphicon glyphicon-chevron-down')
+
+								$('html, body').animate({
+									scrollTop : $(document).height()
+								}, 'slow');
+							} else {
+								currentNode.removeClass().addClass(
+										'glyphicon glyphicon-chevron-right')
+							}
+						}
 					});
-				} else {
-					currentNode.removeClass().addClass(
-							'glyphicon glyphicon-chevron-right')
-				}
-			});
 
 }(window.jQuery));

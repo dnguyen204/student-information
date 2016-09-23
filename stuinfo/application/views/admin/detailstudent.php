@@ -141,19 +141,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<?php if(count($result_process) > 0){ ?>
 								<?php foreach ($result_process as $pro){?>
 								<tr>
-									<td><a class="btn btn-md" data-toggle="collapse"
-										data-target="#<?php echo $pro['MaLop']?>"
-										class="accordion-toggle" id="detail-process"> <i
+									<td class="btn btn-md" data-toggle="collapse"
+										data-target="#<?php echo $pro['MaLop']?>"><a
+										class="btn btn-md" data-toggle="collapse"
+										data-target="#<?php echo $pro['MaLop']?>"><i
 											class="glyphicon glyphicon-chevron-right"></i></a></td>
+
 									<td><?php echo $pro['NamBatDau'].' - '.$pro['NamKetThuc']?></td>
 									<td><?php echo $pro['TenNganh']?></td>
 									<td><?php echo $pro['TenPhanDoan']?></td>
 									<td><?php echo $pro['TenChiDoan']?></td>
-									<td><?php echo $pro['TenDoi']?></td>
-									<td></td>
+									<td><?php echo $pro['TenDoi']?></td>									
+									<td>
+									<?php foreach ($glv as $g){	?>
+										<?php if($pro['MaLop'] == $g['MaLop']){?>
+											<?php echo $g['TenThanh'].' '.$g['HovaDem'].' '.$g['Ten'].'<br />'?>
+									<?php }}?>
+									</td>
 								</tr>
 								<tr>
-									<td colspan="12" class="hiddenRow" style="padding: 0px !important;"><div
+									<td colspan="12" class="hiddenRow"
+										style="padding: 0px !important;"><div
 											class="accordian-body collapse"
 											id="<?php echo $pro['MaLop']?>">
 											<table class="table table-user-information">

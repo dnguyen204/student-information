@@ -33,6 +33,7 @@ class NewStudent extends CI_Controller
         $this->load->model('admin/Student_model', 'model');
         $this->model->addNew();
         
+        $this->load->view('resultpage/new_stu_success');
     }
        
 }

@@ -59,7 +59,7 @@ class GLV_model extends CI_Model
                 break;
             case 3:
                 $this->db->where('Ten', $searchKey);
-                break;            
+                break;
         }
         
         $this->db->select('*');
@@ -69,6 +69,18 @@ class GLV_model extends CI_Model
         $this->db->limit(20, 0);
         $query = $this->db->get();
         
+        return $result = $query->result_array();
+    }
+
+    public function getGLVFromClass($code)
+    {
+        $this->db->select('dsl.MaLop, ht.TenThanh, ht.HovaDem, ht.Ten');
+        
+        $this->db->from('tbl_danhsachlopdoansinh dsl');
+        $this->db->where('dsl.MaDoanSinh', $code);
+        $this->db->join('tbl_phancong pc', 'dsl.MaLop = pc.MaLop')->join('tbl_huynhtruong ht', 'ht.MaHuynhTruong = pc.MaHuynhTruong');
+        
+        $query = $this->db->get();
         return $result = $query->result_array();
     }
 }
