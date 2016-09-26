@@ -2,8 +2,8 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <script type="text/javascript">
-	var time = 3; // Thời gian đếm ngược
-	var page = "<?php echo base_url()?>index.php/admin/newstudent"; // Trang bạn muốn chuyển đến
+	var time = 2; // Thời gian đếm ngược
+	var page = "<?php echo base_url()?>index.php/admin/search?id=đoàn sinh";
 	function countDown(){
 		time--;
 		if(time == -1){
@@ -46,10 +46,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<div class="container">
 		<form class="form-horizontal" style="border: 1px">
 			<div class="top-menu">
-				<h1 style="text-align: center;">Thêm đoàn sinh thành công</h1>
+				<h1 style="text-align: center;">Cập nhật thông tin đoàn sinh thành
+					công</h1>
 				<h3 style="text-align: center;">
 					Trang sẽ tự chuyển sau <span id="timecount"></span> giây!
-				</h3>				
+				</h3>
 			</div>
 		</form>
 	</div>

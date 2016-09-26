@@ -85,6 +85,55 @@ class Student_model extends CI_Model
             '$sdtcha','$tenthanhme','$hotenme','$sdtme','$studiachi','$stughichu','$stutrangthai')") or die(mysqli_error());
     }
 
+    public function updateStudent()
+    {
+        $stumadoansinh = $_POST['stuMa'];
+        $stutenthanh = $_POST['stuTenThanh'];
+        $stuhovadem = $_POST['stuLastName'];
+        $stuten = $_POST['stuFirstName'];
+        $stugioitinh = $_POST['stuSex'];
+        $stungaysinh = date('Y-m-d', strtotime($_POST['stuDOB']));
+        $sturuatoi = date('Y-m-d', strtotime($_POST['stuNgayRuaToi']));
+        $stugxruatoi = $_POST['stuGXRuaToi'];
+        $sturuocle = date('Y-m-d', strtotime($_POST['stuNgayRuocLe']));
+        $stugxruocle = $_POST['stuGXRuocLe'];
+        $stuthemsuc = date('Y-m-d', strtotime($_POST['stuNgayThemSuc']));
+        $stugxthemsuc = $_POST['stuGXThemSuc'];
+        
+        $tenthanhcha = $_POST['TenThanhCha'];
+        $hotencha = $_POST['HoTenCha'];
+        $sdtcha = $_POST['SDTCha'];
+        $tenthanhme = $_POST['TenThanhMe'];
+        $hotenme = $_POST['HoTenMe'];
+        $sdtme = $_POST['SDTMe'];
+        
+        $studiachi = $_POST['stuAddress'];
+        $stughichu = $_POST['stuNote'];
+        
+        $this->db->query("UPDATE tbl_doansinh
+            SET MaDoanSinh = '$stumadoansinh',
+                TenThanh = '$stutenthanh',
+                HovaDem = '$stuhovadem',
+                Ten = '$stuten',
+                NgaySinh = '$stungaysinh',
+                GioiTinh = '$stugioitinh',
+                NgayRuaToi = '$sturuatoi',
+                GXRuaToi = '$stugxruatoi',
+                NgayRuocLe = '$sturuocle',
+                GXRuocLe = '$stugxruocle',
+                NgayThemSuc = '$stuthemsuc',
+                GXThemSuc = '$stugxthemsuc',
+                TenThanhCha = '$tenthanhcha',
+                HoTenCha = '$hotencha',
+                SDTCha = '$sdtcha',
+                TenThanhMe = '$tenthanhme',
+                HoTenMe = '$hotenme',
+                SDTMe = '$sdtme',
+                DiaChi = '$studiachi',
+                GhiChu = '$stughichu'
+            WHERE MaDoanSinh = '$stumadoansinh'") or die(mysqli_error());
+    }
+
     public function getStudentDetail($code)
     {
         $this->db->select('*');

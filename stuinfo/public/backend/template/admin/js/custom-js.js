@@ -64,6 +64,15 @@
 			$("#form")[0].reset();
 		});
 	});
+	// Close tab
+	$(function() {
+		$('#btn-close').click(function() {
+
+			window.close();
+		});
+	});
+
+	// xem diem chi tiet
 	$('tbody tr td')
 			.click(
 					function() {

@@ -42,7 +42,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<?php if(count($result) > 0 ){?>
 	<section class="search-result">
 		<div class="row">
-			<div class="col-xs-10 col-sm-9 col-md-10">
+			<div class="col-xs-11 col-sm-11 col-md-11">
 				<table class=" table table-responsive table-striped table-bordered">
 					<thead>
 						<tr>
@@ -68,7 +68,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<td><a
 								href="detailstudent?id=đoàn sinh&code=<?php echo $r['MaDoanSinh'];?>"
 								title="Quá trình học"><i class="glyphicon glyphicon-education"></i></a></td>
-							<td><a title="Chỉnh sửa"><i class="glyphicon glyphicon-edit"></i></a></td>
+							<td><a href="editstudent?code=<?php echo $r['MaDoanSinh'];?>" title="Chỉnh sửa"><i class="glyphicon glyphicon-edit"></i></a></td>
 						</tr>						
 					<?php }?>
 					</tbody>

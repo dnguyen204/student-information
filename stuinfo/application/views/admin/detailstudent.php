@@ -104,7 +104,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<a data-original-title="Broadcast Message" data-toggle="tooltip"
 							type="button" class="btn btn-sm btn-primary"><i
 							class="glyphicon glyphicon-envelope"></i></a> <span
-							class="pull-right"> <a href="#"
+							class="pull-right"> <a href="editstudent?code=<?php echo $row['MaDoanSinh']?>"
 							title="Chỉnh sửa thông tin đoàn sinh" data-toggle="tooltip"
 							type="button" class="btn btn-sm btn-warning"><i
 								class="glyphicon glyphicon-edit"></i></a> <a
