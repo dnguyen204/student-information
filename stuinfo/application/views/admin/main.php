@@ -102,6 +102,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<li id="menu-academico"><a href="#"><i class="fa fa-desktop"></i> <span>Quản
 								lý</span> <span class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
+							<li id="menu-academico-boletim"><a href="newclass">Tạo lớp học</a></li>
 							<li id="menu-academico-boletim"><a href="division">Phân công</a></li>
 							<li id="menu-academico-avaliacoes"><a href="newglv">Thêm GLV mới</a></li>
 							<li id="menu-academico-boletim"><a href="newdatabase">Nhập cơ sở
