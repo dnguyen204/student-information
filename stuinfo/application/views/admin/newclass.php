@@ -1,8 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 ?>
+
 <div class="outter-wp">
-	<form class="form-horizontal" role="form">
+	<form class="form-horizontal" role="form" id="classform" method="post">
 		<div class="top-menu">
 			<h1 class="text-center">Quản lý lớp</h1>
 		</div>
@@ -28,10 +29,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<div class="form-group">
 								<label class="control-label col-md-4 col-xs-4">Ngành:</label>
 								<div class="col-md-8 col-xs-8">
-									<select class="selectpicker form-control">
+									<select class="selectpicker form-control" name="manganh">
 									<?php foreach ($nganh as $pd){?>
-										<option name="maphandoan"
-											value="<?php echo $pd['MaNganh']?>"><?php echo $pd['TenNganh']?></option>
+										<option value="<?php echo $pd['MaNganh']?>"><?php echo $pd['TenNganh']?></option>
 									<?php }?>										
 									</select>
 								</div>
@@ -44,32 +44,34 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<div class="form-group">
 								<label class="control-label col-md-4 col-xs-4">Phân đoàn:</label>
 								<div class="col-md-8 col-xs-8">
-									<select class="selectpicker form-control">
+									<select class="selectpicker form-control" name="maphandoan">
 									<?php foreach ($phandoan as $pd){?>
-										<option name="maphandoan"
-											value="<?php echo $pd['MaPhanDoan']?>"><?php echo $pd['TenPhanDoan']?></option>
+										<option value="<?php echo $pd['MaPhanDoan']?>"><?php echo $pd['TenPhanDoan']?></option>
 									<?php }?>
 									</select>
 								</div>
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="col-sm-6 col-xs-6">
 							<div class="form-group">
 								<label class="control-label col-md-4 col-xs-4">Chi đoàn:</label>
 								<div class="col-md-8 col-xs-8">
-									<select class="selectpicker form-control">
+									<select class="selectpicker form-control" name="machidoan">
 									<?php foreach ($chidoan as $pd){?>
-										<option name="maphandoan"
-											value="<?php echo $pd['MaChiDoan']?>"><?php echo $pd['TenChiDoan']?></option>
+										<option value="<?php echo $pd['MaChiDoan']?>"><?php echo $pd['TenChiDoan']?></option>
 									<?php }?>
 									</select>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="panel-footer footer-student-detail">
+					<input type="button" id="addclass" class="btn btn-info"
+						value="Thêm mới" title="Thêm mới lớp học" />
 				</div>
 				<div class="panel-heading">
 					<h3 class="panel-title">Danh sách lớp</h3>
@@ -78,3 +80,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		</div>
 	</form>
 </div>
+
+<script type='text/javascript'
+	src="<?php echo base_url();?>public/backend/template/admin/js/adddatabase.js"></script>
+<script type="text/javascript">var site = "<?php echo site_url(); ?>";</script>
