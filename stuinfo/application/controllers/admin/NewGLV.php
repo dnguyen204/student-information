@@ -32,5 +32,6 @@ class NewGLV extends CI_Controller
     function addNewGLV()
     {
         $this->glvmodel->addNewGLV();
+        $this->load->view('resultpage/new_glv_success');
     }
 }

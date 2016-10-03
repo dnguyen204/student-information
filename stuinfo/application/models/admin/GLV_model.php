@@ -105,6 +105,9 @@ class GLV_model extends CI_Model
             case 3:
                 $this->db->where('Ten', $searchKey);
                 break;
+            default:
+                $this->db->where('tbl_huynhtruong.TrangThai', 5);
+                break;
         }
         
         $this->db->select('*');

@@ -3,10 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <div class="outter-wp">
 	<!-- Search Form -->
-	<form role="form" action="" method="get">
+	<form role="form" method="get">
 		<!-- Search Field -->
+		<?php $id = htmlspecialchars($_GET["id"]);?>
 		<div class="top-menu">
-			<h1 class="text-center">Tìm kiếm thông tin <?php echo htmlspecialchars($_GET["id"]); ?></h1>
+			<h1 class="text-center">Tìm kiếm thông tin <?php echo $id;?></h1>
 		</div>
 		<div class="row">
 			<div class="form-group">
@@ -15,9 +16,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<label><input type="radio" id="search-all" class="btn btn-default"
 							name="type" checked value="1" />Tất cả</label> <label><input
 							type="radio" id="search-id" class="btn btn-default" name="type"
-							value="2" />Mã <?php echo htmlspecialchars($_GET["id"]); ?></label>
-						<label><input type="radio" id="search-name"
-							class="btn btn-default" name="type" value="3" />Họ và Tên</label>
+							value="2" />Mã <?php echo $id; ?></label> <label><input
+							type="radio" id="search-name" class="btn btn-default" name="type"
+							value="3" />Họ và Tên</label>
 					</div>
 				</div>
 			</div>
@@ -46,7 +47,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<table class=" table table-responsive table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>Mã <?php echo htmlspecialchars($_GET["id"]); ?></th>
+							<th>Mã <?php echo $id; ?></th>
 							<th>Họ và tên đệm</th>
 							<th>Tên</th>
 							<th>Ngày sinh</th>
@@ -59,16 +60,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<tbody>
 					<?php foreach ($result as $r){?>
 						<tr>
-							<td><?php echo $r['MaDoanSinh'];?></td>
-							<td><?php echo $r['HovaDem'];?></td>
-							<td><?php echo $r['Ten'];?></td>
-							<td><?php echo date('d-m-Y', strtotime($r['NgaySinh']));?></td>
-							<td><?php echo $r['DiaChi'];?></td>
-							<td><?php echo $r['TrangThai'];?></td>
-							<td><a
-								href="detailstudent?id=đoàn sinh&code=<?php echo $r['MaDoanSinh'];?>"
-								title="Quá trình học"><i class="glyphicon glyphicon-education"></i></a></td>
-							<td><a href="editstudent?code=<?php echo $r['MaDoanSinh'];?>" title="Chỉnh sửa"><i class="glyphicon glyphicon-edit"></i></a></td>
+							<?php if($id == 'GLV'){?>
+    							<td><?php echo $r['MaHuynhTruong'];?></td>
+    							<td><?php echo $r['HovaDem'];?></td>
+    							<td><?php echo $r['Ten'];?></td>
+    							<td><?php echo date('d-m-Y', strtotime($r['NgaySinh']));?></td>
+    							<td><?php echo $r['DiaChi'];?></td>
+    							<td><?php echo $r['TrangThai'];?></td>
+    							<td><a
+    								href="detailstudent?id=GLV&code=<?php echo $r['MaHuynhTruong'];?>"
+    								title="Quá trình học"><i class="glyphicon glyphicon-education"></i></a></td>
+    							<td><a href="editstudent?code=<?php echo $r['MaHuynhTruong'];?>"
+    								title="Chỉnh sửa"><i class="glyphicon glyphicon-edit"></i></a></td>
+							<?php }else{?>
+    							<td><?php echo $r['MaDoanSinh'];?></td>							
+    							<td><?php echo $r['HovaDem'];?></td>
+    							<td><?php echo $r['Ten'];?></td>
+    							<td><?php echo date('d-m-Y', strtotime($r['NgaySinh']));?></td>
+    							<td><?php echo $r['DiaChi'];?></td>
+    							<td><?php echo $r['TrangThai'];?></td>
+    							<td><a
+    								href="detailstudent?id=đoàn sinh&code=<?php echo $r['MaDoanSinh'];?>"
+    								title="Quá trình học"><i class="glyphicon glyphicon-education"></i></a></td>
+    							<td><a href="editstudent?code=<?php echo $r['MaDoanSinh'];?>"
+    								title="Chỉnh sửa"><i class="glyphicon glyphicon-edit"></i></a></td>
+							<?php }?>
 						</tr>						
 					<?php }?>
 					</tbody>
