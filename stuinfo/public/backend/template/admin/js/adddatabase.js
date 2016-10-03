@@ -26,7 +26,7 @@
 	// add new class
 	$('#addclass').click(function(event) {
 		event.preventDefault();
-		
+
 		var data = $("#classform").serialize();
 		$.ajax({
 			type : 'POST',
@@ -34,6 +34,7 @@
 			data : data,
 			success : function() {
 				alert("Thêm lớp thành công");
+				location.reload();
 			},
 			error : function(e) {
 				alert(e.message);
@@ -42,4 +43,30 @@
 
 		return false;
 	});
+
+	// remove class
+	$('.glyphicon-remove').click(function() {
+		var $item = $(this).closest("tr") // Finds the closest row <tr>
+		.find(".classcode") // Gets a descendent with class="nr"
+		.text();
+
+		if (confirm("Bạn có chắc chắn muốn xóa lớp " + $item + "!!!")) {
+			$.ajax({
+				type : 'POST',
+				url : site + '/admin/newclass/remove',
+				data : {
+					'malop' : $item
+				},
+				success : function() {
+					alert("Xóa lớp thành công");
+					location.reload();
+				},
+				error : function(e) {
+					alert(e.message);
+				}
+			});
+			return false;
+		}
+	});
+
 }(window.jQuery));

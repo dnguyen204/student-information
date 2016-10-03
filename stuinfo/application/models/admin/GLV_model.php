@@ -3,6 +3,45 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class GLV_model extends CI_Model
 {
+    // xóa dấu tiếng việt
+    function vn_str_filter($str)
+    {
+        $unicode = array(
+            'a' => 'á|à|ả|ã|ạ|ă|ắ|ặ|ằ|ẳ|ẵ|â|ấ|ầ|ẩ|ẫ|ậ',
+            'd' => 'đ',
+            'e' => 'é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ',
+            'i' => 'í|ì|ỉ|ĩ|ị',
+            'o' => 'ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ',
+            'u' => 'ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự',
+            'y' => 'ý|ỳ|ỷ|ỹ|ỵ',
+            'A' => 'Á|À|Ả|Ã|Ạ|Ă|Ắ|Ặ|Ằ|Ẳ|Ẵ|Â|Ấ|Ầ|Ẩ|Ẫ|Ậ',
+            'D' => 'Đ',
+            'E' => 'É|È|Ẻ|Ẽ|Ẹ|Ê|Ế|Ề|Ể|Ễ|Ệ',
+            'I' => 'Í|Ì|Ỉ|Ĩ|Ị',
+            'O' => 'Ó|Ò|Ỏ|Õ|Ọ|Ô|Ố|Ồ|Ổ|Ỗ|Ộ|Ơ|Ớ|Ờ|Ở|Ỡ|Ợ',
+            'U' => 'Ú|Ù|Ủ|Ũ|Ụ|Ư|Ứ|Ừ|Ử|Ữ|Ự',
+            'Y' => 'Ý|Ỳ|Ỷ|Ỹ|Ỵ'
+        );
+        
+        foreach ($unicode as $nonUnicode => $uni) {
+            
+            $str = preg_replace("/($uni)/i", $nonUnicode, $str);
+        }
+        
+        return $str;
+    }
+    
+    // lấy kí tự đầu tiên
+    function getFirstChar($input)
+    {
+        $result = '';
+        $input = strtolower($input);
+        $str_tmp = explode(' ', $input);
+        foreach ($str_tmp as $tmp) {
+            $result = $result . substr($tmp, 0, 1);
+        }
+        return $result;
+    }
 
     public function createNewCode()
     {
@@ -31,7 +70,7 @@ class GLV_model extends CI_Model
         $glvten = $_POST['glvFirstName'];
         $glvgioitinh = $_POST['glvSex'];
         $glvngaysinh = date('Y-m-d', strtotime($_POST['glvDOB']));
-        $glvbonmang = date('Y-m-d', strtotime($_POST['glvBonMang']));
+        $glvbonmang = date('m-d', strtotime($_POST['glvBonMang']));
         
         $glvsdt = $_POST['SDT'];
         $glvemail = $_POST['Email'];
@@ -39,12 +78,18 @@ class GLV_model extends CI_Model
         $glvdiachi = $_POST['glvAddress'];
         $glvghichu = $_POST['glvNote'];
         
-        $stutrangthai = 1;
+        $stutrangthai = 5; // trạng thái mới tạo
+        
+        $username = strtolower($this->vn_str_filter($glvten)) . '.' . $this->getFirstChar($glvhovadem) . date('dm', strtotime($_POST['glvDOB']));
+        $password = md5(date('dm', strtotime($_POST['glvDOB'])) . substr(date('Y', strtotime($_POST['glvDOB'])), 2, 2));
+        $maquyen = $_POST['maquyen'];
         
         $this->db->query("INSERT INTO tbl_huynhtruong (MaHuynhTruong,TenThanh,HovaDem,Ten,NgaySinh,
-            NgayBonMang,GioiTinh,DienThoai,Email,DiaChi,GhiChu,TrangThai) 
+            NgayBonMang,GioiTinh,DienThoai,Email,DiaChi,GhiChu,TrangThai,Username) 
             VALUES('$maglv','$glvtenthanh','$glvhovadem','$glvten','$glvngaysinh',
-            '$glvbonmang','$glvgioitinh','$glvsdt','$glvemail','$glvdiachi','$glvghichu','$stutrangthai')") or die(mysqli_error());
+            '$glvbonmang','$glvgioitinh','$glvsdt','$glvemail','$glvdiachi','$glvghichu','$stutrangthai','$username')") or die(mysqli_error());
+        
+        $this->db->query("INSERT INTO tbl_user (Username,Password,MaQuyen) VALUES('$username','$password','$maquyen')") or die(mysqli_error());
     }
 
     public function searchGLV()
@@ -79,6 +124,16 @@ class GLV_model extends CI_Model
         $this->db->from('tbl_danhsachlopdoansinh dsl');
         $this->db->where('dsl.MaDoanSinh', $code);
         $this->db->join('tbl_phancong pc', 'dsl.MaLop = pc.MaLop')->join('tbl_huynhtruong ht', 'ht.MaHuynhTruong = pc.MaHuynhTruong');
+        
+        $query = $this->db->get();
+        return $result = $query->result_array();
+    }
+
+    public function getRole()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_role');
+        $this->db->where('MaQuyen != 1');
         
         $query = $this->db->get();
         return $result = $query->result_array();

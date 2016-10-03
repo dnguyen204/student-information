@@ -76,6 +76,33 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="panel-heading">
 					<h3 class="panel-title">Danh sách lớp</h3>
 				</div>
+				<table class="table table-user-information"
+					style="border-collapse: collapse;">
+					<thead>
+						<tr>
+							<th>Mã lớp</th>
+							<th>Ngành</th>
+							<th>Phân đoàn</th>
+							<th>Chi đoàn</th>
+							<th>Năm học</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php foreach($class as $c){?>
+						<tr>
+							<td class="classcode"><?= $c['MaLop']?></td>
+							<td><?= $c['TenNganh']?></td>
+							<td><?= $c['TenPhanDoan']?></td>
+							<td><?= $c['TenChiDoan']?></td>
+							<td><?= $c['NamBatDau'].' - '.$c['NamKetThuc']?></td>
+							<td><a><i class="glyphicon glyphicon-pencil" title="Chỉnh sửa lớp"></i></a></td>
+							<td><a><i class="glyphicon glyphicon-remove" title="Xóa lớp"></i></a></td>
+						</tr>
+					<?php }?>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</form>

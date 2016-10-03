@@ -31,9 +31,29 @@ class Class_model extends CI_Model
         return $result = $query->result_array();
     }
 
+    public function getClassInYear($manamhoc)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_lop l')
+            ->join('tbl_nganh n', 'l.MaNganh = n.MaNganh')
+            ->join('tbl_phandoan pd', 'l.MaPhanDoan = pd.MaPhanDoan')
+            ->join('tbl_chidoan cd', 'l.MaChiDoan = cd.MaChiDoan')
+            ->join('tbl_namhoc nh', 'l.MaNamHoc = nh.MaNamHoc');
+        $this->db->where('l.MaNamHoc', $manamhoc);
+        
+        $query = $this->db->get();
+        return $result = $query->result_array();
+    }
+
+    public function deleteClass($malop)
+    {
+        $this->db->where('MaLop', $malop);
+        $this->db->delete('tbl_lop');
+    }
+
     public function addClass($data)
     {
-        $this->db->insert('tbl_lop', $data);        
+        $this->db->insert('tbl_lop', $data);
         // $this->db->query("INSERT INTO tbl_lop (MaLop,MaNganh,MaPhanDoan,MaChiDoan,MaNamHoc) VALUES('$maLop','$maNganh','$maPhanDoan','$maChiDoan','1')");
     }
 }

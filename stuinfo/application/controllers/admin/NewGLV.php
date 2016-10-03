@@ -9,12 +9,13 @@ class NewGLV extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->database();
+        $this->load->model('admin/GLV_model', 'glvmodel');
     }
 
     public function index()
-    {
-        $this->load->model('admin/GLV_model', 'glvmodel');
+    {        
         $data['newcode'] = $this->glvmodel->createNewCode();
+        $data['role'] = $this->glvmodel->getRole();
         $data['subview'] = 'admin/newglv';
         $this->load->view('admin/main', $data);
     }
@@ -30,7 +31,6 @@ class NewGLV extends CI_Controller
 
     function addNewGLV()
     {
-        $this->load->model('admin/GLV_model', 'model');
-        $this->model->addNew();
+        $this->glvmodel->addNewGLV();
     }
 }

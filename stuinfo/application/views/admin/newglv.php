@@ -65,8 +65,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<label class="control-label col-md-4 col-xs-4">Giới tính:</label>
 					<div class="col-md-8 col-xs-8">
 						<div class="radio">
-							<label><input type="radio" name="glvSex" value="1">Nam</label> <label><input
-								type="radio" name="glvSex" value="0">Nữ</label>
+							<label><input type="radio" name="glvSex" value="1"
+								required="required">Nam</label> <label><input type="radio"
+								name="glvSex" value="0" required="required">Nữ</label>
 						</div>
 					</div>
 				</div>
@@ -137,6 +138,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<label class="control-label col-md-4 col-xs-4">Ghi chú:</label>
 					<div class="col-md-8 col-xs-8">
 						<textarea class="form-control" name="glvNote"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Row 13 -->
+		<div class="row">
+			<div class="col-sm-6 col-xs-6">
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4">Địa chỉ:</label>
+					<div class="col-md-8 col-xs-8">
+						<select class="selectpicker form-control" name="maquyen">
+						<?php foreach ($role as $r){?>
+							<option value="<?php echo $r['MaQuyen']?>"><?php echo $r['TenQuyen']?></option>
+						<?php }?>										
+						</select>
 					</div>
 				</div>
 			</div>

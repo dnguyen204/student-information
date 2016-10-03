@@ -16,6 +16,7 @@ class NewClass extends CI_Controller
         $data['nganh'] = $this->cmodel->getNganh();
         $data['phandoan'] = $this->cmodel->getPhanDoan();
         $data['chidoan'] = $this->cmodel->getChiDoan();
+        $data['class'] = $this->cmodel->getClassInYear(1);
         
         $data['subview'] = 'admin/newclass';
         $this->load->view('admin/main', $data);
@@ -33,9 +34,12 @@ class NewClass extends CI_Controller
             );
             
             $this->cmodel->addClass($add_class);
-        }
-        else{
-            $this->load->view('resultpage/new_stu_success');
-        }
+        }       
     }
+    
+    function remove(){
+        $classcode = $_POST['malop'];
+        $this->cmodel->deleteClass($classcode);
+    }
+    
 }

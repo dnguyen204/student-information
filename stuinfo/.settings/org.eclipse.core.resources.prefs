@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//application/models/admin/GLV_model.php=UTF-8
 encoding//application/models/admin/TenThanh_model.php=UTF-8
 encoding//application/views/admin/detailstudent.php=UTF-8
 encoding//application/views/admin/editstudent.php=UTF-8
