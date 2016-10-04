@@ -70,7 +70,7 @@ class GLV_model extends CI_Model
         $glvten = $_POST['glvFirstName'];
         $glvgioitinh = $_POST['glvSex'];
         $glvngaysinh = date('Y-m-d', strtotime($_POST['glvDOB']));
-        $glvbonmang = date('m-d', strtotime($_POST['glvBonMang']));
+        $glvbonmang = $_POST['glvBonMang'];
         
         $glvsdt = $_POST['SDT'];
         $glvemail = $_POST['Email'];
@@ -79,7 +79,8 @@ class GLV_model extends CI_Model
         $glvghichu = $_POST['glvNote'];
         
         $stutrangthai = 5; // trạng thái mới tạo
-        
+                           
+        // khởi tạo đăng nhập
         $username = strtolower($this->vn_str_filter($glvten)) . '.' . $this->getFirstChar($glvhovadem) . date('dm', strtotime($_POST['glvDOB']));
         $password = md5(date('dm', strtotime($_POST['glvDOB'])) . substr(date('Y', strtotime($_POST['glvDOB'])), 2, 2));
         $maquyen = $_POST['maquyen'];
@@ -89,7 +90,8 @@ class GLV_model extends CI_Model
             VALUES('$maglv','$glvtenthanh','$glvhovadem','$glvten','$glvngaysinh',
             '$glvbonmang','$glvgioitinh','$glvsdt','$glvemail','$glvdiachi','$glvghichu','$stutrangthai','$username')") or die(mysqli_error());
         
-        $this->db->query("INSERT INTO tbl_user (Username,Password,MaQuyen) VALUES('$username','$password','$maquyen')") or die(mysqli_error());
+        $this->db->query("INSERT INTO tbl_user (Username,Password,MaQuyen) 
+            VALUES('$username','$password','$maquyen')") or die(mysqli_error());
     }
 
     public function searchGLV()

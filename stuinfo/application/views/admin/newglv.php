@@ -32,7 +32,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 					<div class="col-md-8 col-xs-8">
 						<input type="text" class="form-control auto-TenThanh"
-							autocomplete="on" name="glvTenThanh" />
+							autocomplete="on" name="glvTenThanh" required="required" />
 					</div>
 				</div>
 			</div>
@@ -44,7 +44,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Họ và tên đệm:</label>
 					<div class="col-md-8 col-xs-8">
-						<input type="text" class="form-control" name="glvLastName" />
+						<input type="text" class="form-control" name="glvLastName"
+							required="required" />
 					</div>
 				</div>
 			</div>
@@ -52,7 +53,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Tên:</label>
 					<div class="col-md-8 col-xs-8">
-						<input type="text" class="form-control" name="glvFirstName" />
+						<input type="text" class="form-control" name="glvFirstName"
+							required="required" />
 					</div>
 				</div>
 			</div>
@@ -82,8 +84,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="col-md-8 col-xs-8">
 						<div class="input-group date datepicker"
 							data-date-format="dd-mm-yyyy">
-							<input class="form-control" type="text" readonly name="glvDOB"> <span
-								class="input-group-addon"><i
+							<input class="form-control" type="text" readonly name="glvDOB"
+								required="required"> <span class="input-group-addon"><i
 								class="glyphicon glyphicon-calendar"></i></span>
 						</div>
 					</div>
@@ -93,11 +95,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ngày bổn mạng:</label>
 					<div class="col-md-8 col-xs-8">
-						<div class="input-group date datepicker" data-date-format="dd-mm">
-							<input class="form-control" type="text" readonly
-								name="glvBonMang"> <span class="input-group-addon"><i
-								class="glyphicon glyphicon-calendar"></i></span>
-						</div>
+						<input class="form-control" type="text" name="glvBonMang">
 					</div>
 				</div>
 			</div>
@@ -109,7 +107,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Số điện thoại:</label>
 					<div class="col-md-8 col-xs-8">
-						<input type="number" class="form-control" name="SDT" />
+						<input type="number" class="form-control" name="SDT"
+							required="required" />
 					</div>
 				</div>
 			</div>

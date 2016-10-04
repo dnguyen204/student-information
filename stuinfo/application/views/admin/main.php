@@ -5,7 +5,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html" />
 <!-- CSS -->
 <link rel="stylesheet" type="text/css"
 	href="<?php echo base_url(); ?>public/backend/template/admin/css/style.css" />
@@ -45,7 +45,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<div class="inner-content">
 				<div class="header-section">
 					<div class="top-menu">
-						<h3>TRANG QUẢN LÝ THÔNG TIN ĐOÀN SINH</h3>
+						<h3>TRANG QUẢN LÝ THÔNG TIN ĐOÀN SINH VÀ HUYNH TRƯỞNG</h3>
 					</div>
 					<div class="clear-fix"></div>
 				</div>
