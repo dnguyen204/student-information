@@ -8,12 +8,18 @@ class Login extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->model('user/user_model', 'umodel');
     }
 
     public function index()
     {
-        $this->load->view('user/login');
+        if ($this->umodel->login()) {
+            $user = $_POST['user'];
+            $this->umodel->get_user_infor($user);
+            
+            
+        } else {
+            $this->load->view('resultpage/login_fail');
+        }
     }
-    
-    
 }

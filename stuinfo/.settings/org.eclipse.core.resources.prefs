@@ -11,6 +11,7 @@ encoding//application/views/admin/newstudent.php=UTF-8
 encoding//application/views/admin/search.php=UTF-8
 encoding//application/views/admin/typesroce.php=UTF-8
 encoding//application/views/index.php=UTF-8
+encoding//application/views/resultpage/login_fail.php=UTF-8
 encoding//application/views/resultpage/new_glv_success.php=UTF-8
 encoding//application/views/resultpage/new_stu_success.php=UTF-8
 encoding//application/views/resultpage/update_stu_success.php=UTF-8
