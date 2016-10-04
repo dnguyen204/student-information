@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2016 at 12:33 PM
+-- Generation Time: Oct 04, 2016 at 12:22 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -191,7 +191,7 @@ CREATE TABLE `tbl_huynhtruong` (
   `HovaDem` varchar(150) DEFAULT NULL,
   `Ten` varchar(50) DEFAULT NULL,
   `NgaySinh` date DEFAULT NULL,
-  `NgayBonMang` date DEFAULT NULL,
+  `NgayBonMang` varchar(10) DEFAULT NULL,
   `GioiTinh` tinyint(1) DEFAULT NULL,
   `DienThoai` varchar(11) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
@@ -200,15 +200,6 @@ CREATE TABLE `tbl_huynhtruong` (
   `TrangThai` int(11) DEFAULT NULL,
   `Username` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_huynhtruong`
---
-
-INSERT INTO `tbl_huynhtruong` (`ID`, `TenThanh`, `MaHuynhTruong`, `HovaDem`, `Ten`, `NgaySinh`, `NgayBonMang`, `GioiTinh`, `DienThoai`, `Email`, `DiaChi`, `GhiChu`, `TrangThai`, `Username`) VALUES
-(1, 'Giuse', '160001', 'Nguyễn Hùng', 'Dũng', '2016-09-01', '2016-09-15', 1, '01229004101', NULL, NULL, NULL, NULL, NULL),
-(2, 'Maria', '160002', 'Nguyễn Thị Hồng', 'Thảo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'Giuse', '160005', 'Nguyễn Hùng', 'Dũng', '1992-05-17', '0000-00-00', 1, '01229004101', 'dung.nh1705@gmail.com', '310/60', '', 5, 'dung.nh1705');
 
 -- --------------------------------------------------------
 
@@ -520,7 +511,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`ID`, `Username`, `Password`, `MaQuyen`) VALUES
-(1, 'dung.nh1705', '8475c27a5e949b2551d46c80d15b6ed5', 2);
+(6, 'admin', '94b669fad0be68cdcab9e62628a68e58', 1);
 
 --
 -- Indexes for dumped tables
@@ -690,7 +681,7 @@ ALTER TABLE `tbl_doi`
 -- AUTO_INCREMENT for table `tbl_huynhtruong`
 --
 ALTER TABLE `tbl_huynhtruong`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_lop`
 --
@@ -760,7 +751,7 @@ ALTER TABLE `tbl_trangthai`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
