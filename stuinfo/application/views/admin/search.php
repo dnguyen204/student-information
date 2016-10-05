@@ -5,10 +5,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<!-- Search Form -->
 	<form role="form" method="get">
 		<!-- Search Field -->
-		<?php $id = htmlspecialchars($_GET["id"]);?>
+		<?php $id = htmlspecialchars($_GET["id"]);?>		
 		<div class="top-menu">
 			<h1 class="text-center">Tìm kiếm thông tin <?php echo $id;?></h1>
 		</div>
+		<input type="hidden" name="id" value="<?=$id?>">
 		<div class="row">
 			<div class="form-group">
 				<div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
@@ -37,7 +38,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>		
 	</form>
 	<!-- End of Search Form -->
 	<?php if(count($result) > 0 ){?>

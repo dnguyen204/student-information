@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2016 at 12:22 PM
+-- Generation Time: Oct 05, 2016 at 12:49 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -201,6 +201,14 @@ CREATE TABLE `tbl_huynhtruong` (
   `Username` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_huynhtruong`
+--
+
+INSERT INTO `tbl_huynhtruong` (`ID`, `TenThanh`, `MaHuynhTruong`, `HovaDem`, `Ten`, `NgaySinh`, `NgayBonMang`, `GioiTinh`, `DienThoai`, `Email`, `DiaChi`, `GhiChu`, `TrangThai`, `Username`) VALUES
+(1, NULL, NULL, NULL, 'Administrator', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'admin'),
+(12, 'Giuse', '160002', 'Nguyễn Hùng', 'Dũng', '1992-05-17', '01-05', 1, '01229004101', 'dung.nh1705@gmail.com', '310/60 Phạm Văn Chiêu, phường 9, Gò Vấp', '', 5, 'dung.nh1705');
+
 -- --------------------------------------------------------
 
 --
@@ -276,7 +284,7 @@ INSERT INTO `tbl_nganh` (`MaNganh`, `TenNganh`) VALUES
 
 CREATE TABLE `tbl_permision` (
   `ID` int(11) NOT NULL,
-  `RoleID` int(50) DEFAULT NULL,
+  `MaQuyen` int(50) DEFAULT NULL,
   `Permision` varchar(255) DEFAULT NULL,
   `fnThemDoanSinh` tinyint(1) DEFAULT NULL,
   `fnNhapDiem` tinyint(1) DEFAULT NULL,
@@ -289,6 +297,14 @@ CREATE TABLE `tbl_permision` (
   `fnThuBao` tinyint(1) DEFAULT NULL,
   `fnThuMoi` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_permision`
+--
+
+INSERT INTO `tbl_permision` (`ID`, `MaQuyen`, `Permision`, `fnThemDoanSinh`, `fnNhapDiem`, `fnNhapCSDL`, `fnTimKiemDS`, `fnTimKiemGLV`, `fnDSXuatSac`, `fnDSGioi`, `fnGiayKhen`, `fnThuBao`, `fnThuMoi`) VALUES
+(1, 1, 'index.php/admin/newstudent', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 1, 'index.php/admin/typesroce', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -511,7 +527,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`ID`, `Username`, `Password`, `MaQuyen`) VALUES
-(6, 'admin', '94b669fad0be68cdcab9e62628a68e58', 1);
+(1, 'admin', '94b669fad0be68cdcab9e62628a68e58', 1),
+(8, 'dung.nh1705', '8475c27a5e949b2551d46c80d15b6ed5', 4);
 
 --
 -- Indexes for dumped tables
@@ -681,7 +698,7 @@ ALTER TABLE `tbl_doi`
 -- AUTO_INCREMENT for table `tbl_huynhtruong`
 --
 ALTER TABLE `tbl_huynhtruong`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tbl_lop`
 --
@@ -701,7 +718,7 @@ ALTER TABLE `tbl_nganh`
 -- AUTO_INCREMENT for table `tbl_permision`
 --
 ALTER TABLE `tbl_permision`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_phancong`
 --
@@ -751,7 +768,7 @@ ALTER TABLE `tbl_trangthai`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

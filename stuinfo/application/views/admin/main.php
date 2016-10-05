@@ -3,6 +3,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<?php
+if (isset($this->session->userdata['logged_in'])) {
+    $username = ($this->session->userdata['logged_in']['username']);
+    $tenthanh = ($this->session->userdata['logged_in']['tenthanh']);
+    $hovadem = ($this->session->userdata['logged_in']['hovadem']);
+    $ten = ($this->session->userdata['logged_in']['ten']);
+    $chucvu = ($this->session->userdata['logged_in']['chucvu']);
+    $manamhoc = ($this->session->userdata['logged_in']['manamhoc']);
+} else {
+    header("location: ../..");
+}
+?>
+
 <head>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <meta http-equiv="Content-Type" content="text/html" />
@@ -65,30 +78,29 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<!--/sidebar-menu-->
 		<div class="sidebar-menu">
 			<header class="logo"> <a class="sidebar-icon"> <span
-				class="fa fa-bars"></span></a> <a href="../admin/"> <span id="logo">
-					<h1>ADMIN</h1>
-			</span> <!--<img id="logo" src="" alt="Logo"/>-->
-			</a> </header>
+				class="fa fa-bars"></span></a> <span id="logo"><h1>QUẢN LÝ</h1></span>
+			</header>
 			<div style="border-top: 1px solid rgba(69, 74, 84, 0.7)"></div>
 			<!--/down-->
 			<div class="down">
-				<a href="index.html"><img
+				<a href=""><img
 					src="<?php echo base_url(); ?>public/backend/template/admin/images/admin.jpg" /></a>
-				<a href="index.html"><span class=" name-caret">Jasmin Leo</span></a>
-				<p>System Administrator in Company</p>
+				<span class="name-caret"><?=$tenthanh.'<br/>'.$hovadem.' '.$ten?></span>
+				<p><?=$chucvu?></p>
 				<ul>
-					<li><a class="tooltips" href="index.html"><span>Profile</span><i
+					<li><a class="tooltips" href=""><span>Cá nhân</span><i
 							class="glyphicon glyphicon-user"></i></a></li>
-					<li><a class="tooltips" href="index.html"><span>Settings</span><i
+					<li><a class="tooltips" href=""><span>Đổi mật khẩu</span><i
 							class="glyphicon glyphicon-cog"></i></a></li>
-					<li><a class="tooltips" href="index.html"><span>Log out</span><i
+					<li><a class="tooltips" href="admin/logout"><span>Đăng xuất</span><i
 							class="glyphicon glyphicon-off"></i></a></li>
 				</ul>
 			</div>
 			<!--//down-->
 			<div class="menu">
 				<ul id="menu">
-					<li><a href="../admin/"><i class="fa fa-home"></i> <span>Trang chủ</span></a></li>
+					<li><a href="../admin/admin"><i class="fa fa-home"></i> <span>Trang
+								chủ</span></a></li>
 					<li id="menu-academico"><a href="#"><i
 							class="glyphicon glyphicon-list-alt"></i> <span>Danh mục</span> <span
 							class="fa fa-angle-right" style="float: right"></span></a>
