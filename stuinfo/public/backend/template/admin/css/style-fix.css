@@ -1,7 +1,8 @@
 @CHARSET "ISO-8859-1";
 
-.top-menu h3 {
-	margin-top: 10px;
+.top-menu p {
+	font-weight: 900;
+	font-size: x-large;
 }
 
 .header-section {

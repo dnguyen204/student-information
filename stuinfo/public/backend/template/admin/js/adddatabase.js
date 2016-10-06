@@ -4,12 +4,12 @@
 			.click(
 					function(event) {
 						var div = document.createElement('div');
-						div.innerHTML = '<div class="row">'
+						div.innerHTML = '<div class="row" style="margin-top: 30px">'
 								+ '<div class="col-sm-6 col-xs-6">'
 								+ '<div class="form-group">'
 								+ '<label class="control-label col-md-4 col-xs-4">Tên Thánh mới:</label>'
 								+ '<div class="col-md-8 col-xs-8">'
-								+ '<input type="text" class="form-control" required name="TenThanhMoi" />'
+								+ '<input type="text" class="form-control" required name="TenThanhMoi" required />'
 								+ '</div>'
 								+ '</div>'
 								+ '</div>'

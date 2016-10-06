@@ -256,6 +256,58 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 13 -->
 		<div class="row">
+			<div class="col-sm-12 col-xs-12">
+				<div class="form-group">
+					<label class="control-label col-md-6 col-xs-6">Thêm đoàn sinh vào
+						lớp <input type="checkbox" id="chkaddClass"><input type="hidden"
+						id="valueHidden" name="isClass">
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div id="addClass" style="display: none">
+			<div class="row">
+				<div class="col-sm-4 col-xs-4">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Lớp:</label>
+						<div class="col-md-8 col-xs-8">
+							<select class="selectpicker form-control" name="malop">
+							<?php foreach ($lop as $pd){?>
+								<option value="<?php echo $pd['MaLop']?>"><?php echo $pd['MaLop']?></option>
+							<?php }?>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-4">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Chi đoàn:</label>
+						<div class="col-md-8 col-xs-8">
+							<select class="selectpicker form-control" name="machidoan">
+							<?php foreach ($chidoan as $pd){?>
+								<option value="<?php echo $pd['MaChiDoan']?>"><?php echo $pd['TenChiDoan']?></option>
+							<?php }?>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-4">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Đội:</label>
+						<div class="col-md-8 col-xs-8">
+							<select class="selectpicker form-control" name="madoi">
+							<?php foreach ($doi as $pd){?>
+								<option value="<?php echo $pd['MaDoi']?>"><?php echo $pd['TenDoi']?></option>
+							<?php }?>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
 			<div class="col-sm-6 col-xs-6"></div>
 			<div class="col-sm-6 col-xs-6">
 				<div class="form-group">
@@ -269,3 +321,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		</div>
 	</form>
 </div>
+
+<script type='text/javascript'
+	src="<?php echo base_url();?>public/backend/template/admin/js/custom-js.js"></script>

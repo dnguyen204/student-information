@@ -19,23 +19,25 @@ class Login extends CI_Controller
             $manamhoc = $_POST['manamhoc'];
             
             $result = $this->umodel->get_user_infor($user);
+            $permision = $this->umodel->get_role($result[0]->MaQuyen);            
             if ($result != false) {
                 $session_data = array(
                     'username' => $result[0]->Username,
                     'tenthanh' => $result[0]->TenThanh,
-                    'hovadem' =>  $result[0]->HovaDem,
+                    'hovadem' => $result[0]->HovaDem,
                     'ten' => $result[0]->Ten,
                     'chucvu' => $result[0]->TenQuyen,
+                    'quyen' => $permision,
                     'manamhoc' => $manamhoc
                 );
                 // Add user data in session
-                $this->session->set_userdata('logged_in', $session_data);    
+                $this->session->set_userdata('logged_in', $session_data);
                 $this->load->view('resultpage/login_success');
-            }else{
+            } else {
                 $this->load->view('resultpage/login_fail');
-            }                        
+            }
         } else {
             $this->load->view('resultpage/login_fail');
         }
-    }    
+    }
 }

@@ -14,9 +14,14 @@ class NewDatabase extends CI_Controller
 
     public function index()
     {
-        $data['result'] = $this->modelTenThanh->getAll();
-        $data['subview'] = 'admin/newdatabase';
-        $this->load->view('admin/main', $data);
+        if (in_array($this->uri->segments[1] . '/' . $this->uri->segments[2], $this->session->userdata['logged_in']['quyen']) == FALSE) {
+            $data['subview'] = 'resultpage/no_permision';
+            $this->load->view('admin/main', $data);
+        } else {
+            $data['result'] = $this->modelTenThanh->getAll();
+            $data['subview'] = 'admin/newdatabase';
+            $this->load->view('admin/main', $data);
+        }
     }
 
     function addDatabase()
@@ -25,6 +30,5 @@ class NewDatabase extends CI_Controller
             // do your newTenThanh code
             $this->modelTenThanh->addNew();
         }
-        
     }
 }

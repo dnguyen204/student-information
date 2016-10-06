@@ -9,7 +9,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<div class="btn-group">
 		<button type="button" class="btn btn-info" id="add_tenthanh">Thêm Tên
 			Thánh</button>
-		<button type="button" class="btn btn-info" id="xetquyen">Xét quyền</button>		
+		<button type="button" class="btn btn-info" id="xetquyen">Thêm quyền</button>		
 	</div>
 
 	<div id="add_data"></div>

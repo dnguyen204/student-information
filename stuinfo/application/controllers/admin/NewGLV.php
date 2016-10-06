@@ -13,11 +13,16 @@ class NewGLV extends CI_Controller
     }
 
     public function index()
-    {        
-        $data['newcode'] = $this->glvmodel->createNewCode();
-        $data['role'] = $this->glvmodel->getRole();
-        $data['subview'] = 'admin/newglv';
-        $this->load->view('admin/main', $data);
+    {
+        if (in_array($this->uri->segments[1] . '/' . $this->uri->segments[2], $this->session->userdata['logged_in']['quyen']) == FALSE) {
+            $data['subview'] = 'resultpage/no_permision';
+            $this->load->view('admin/main', $data);
+        } else {
+            $data['newcode'] = $this->glvmodel->createNewCode();
+            $data['role'] = $this->glvmodel->getRole();
+            $data['subview'] = 'admin/newglv';
+            $this->load->view('admin/main', $data);
+        }
     }
 
     function get_List()

@@ -5,14 +5,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php
 if (isset($this->session->userdata['logged_in'])) {
-    $username = ($this->session->userdata['logged_in']['username']);
     $tenthanh = ($this->session->userdata['logged_in']['tenthanh']);
     $hovadem = ($this->session->userdata['logged_in']['hovadem']);
     $ten = ($this->session->userdata['logged_in']['ten']);
     $chucvu = ($this->session->userdata['logged_in']['chucvu']);
-    $manamhoc = ($this->session->userdata['logged_in']['manamhoc']);
 } else {
-    header("location: ../..");
+    $url = base_url();
+    redirect($url);
 }
 ?>
 
@@ -58,10 +57,11 @@ if (isset($this->session->userdata['logged_in'])) {
 			<div class="inner-content">
 				<div class="header-section">
 					<div class="top-menu">
-						<h3>TRANG QUẢN LÝ THÔNG TIN ĐOÀN SINH VÀ HUYNH TRƯỞNG</h3>
+						<p>TRANG QUẢN LÝ THÔNG TIN ĐOÀN SINH VÀ HUYNH TRƯỞNG</p>
 					</div>
 					<div class="clear-fix"></div>
 				</div>
+				<!-- Gắn Subview -->
 				<div class="container">
 					<?php $this->load->view($subview); ?>
 				</div>
@@ -83,14 +83,14 @@ if (isset($this->session->userdata['logged_in'])) {
 			<div style="border-top: 1px solid rgba(69, 74, 84, 0.7)"></div>
 			<!--/down-->
 			<div class="down">
-				<a href=""><img
+				<a><img
 					src="<?php echo base_url(); ?>public/backend/template/admin/images/admin.jpg" /></a>
 				<span class="name-caret"><?=$tenthanh.'<br/>'.$hovadem.' '.$ten?></span>
 				<p><?=$chucvu?></p>
 				<ul>
-					<li><a class="tooltips" href=""><span>Cá nhân</span><i
+					<li><a class="tooltips" href="viewprofile"><span>Cá nhân</span><i
 							class="glyphicon glyphicon-user"></i></a></li>
-					<li><a class="tooltips" href=""><span>Đổi mật khẩu</span><i
+					<li><a class="tooltips" href="changepass"><span>Đổi mật khẩu</span><i
 							class="glyphicon glyphicon-cog"></i></a></li>
 					<li><a class="tooltips" href="admin/logout"><span>Đăng xuất</span><i
 							class="glyphicon glyphicon-off"></i></a></li>
@@ -101,7 +101,7 @@ if (isset($this->session->userdata['logged_in'])) {
 				<ul id="menu">
 					<li><a href="../admin/admin"><i class="fa fa-home"></i> <span>Trang
 								chủ</span></a></li>
-					<li id="menu-academico"><a href="#"><i
+					<li id="menu-academico"><a href=""><i
 							class="glyphicon glyphicon-list-alt"></i> <span>Danh mục</span> <span
 							class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
@@ -111,7 +111,7 @@ if (isset($this->session->userdata['logged_in'])) {
 							<li id="menu-academico-avaliacoes"><a href="">Xếp lớp</a></li>
 							<li id="menu-academico-boletim"><a href="">Xét lên lớp</a></li>
 						</ul></li>
-					<li id="menu-academico"><a href="#"><i class="fa fa-desktop"></i> <span>Quản
+					<li id="menu-academico"><a href=""><i class="fa fa-desktop"></i> <span>Quản
 								lý</span> <span class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
 							<li id="menu-academico-boletim"><a href="newclass">Tạo lớp học</a></li>
@@ -121,7 +121,7 @@ if (isset($this->session->userdata['logged_in'])) {
 									dữ liệu</a></li>
 						</ul></li>
 
-					<li id="menu-academico"><a href="#"><i class="fa fa-search"></i> <span>Tìm
+					<li id="menu-academico"><a href=""><i class="fa fa-search"></i> <span>Tìm
 								kiếm</span> <span class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
 							<li id="menu-academico-avaliacoes"><a href="search?id=đoàn sinh">Đoàn
@@ -129,7 +129,7 @@ if (isset($this->session->userdata['logged_in'])) {
 							<li id="menu-academico-avaliacoes"><a href="search?id=GLV">GLV/HT</a></li>
 						</ul></li>
 
-					<li id="menu-academico"><a href="#"><i
+					<li id="menu-academico"><a href=""><i
 							class="glyphicon glyphicon-book"></i> <span>Báo cáo</span> <span
 							class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
@@ -137,7 +137,7 @@ if (isset($this->session->userdata['logged_in'])) {
 							<li id="menu-academico-boletim"><a href="">Đoàn sinh giỏi</a></li>
 						</ul></li>
 
-					<li id="menu-academico"><a href="#"><i
+					<li id="menu-academico"><a href=""><i
 							class="glyphicon glyphicon-file"></i> <span>Biểu mẫu</span> <span
 							class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">

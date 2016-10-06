@@ -58,7 +58,7 @@
 		});
 	});
 
-	// Xóa field
+	// Xóa các field điền vào
 	$(function() {
 		$('#btn-reset').click(function() {
 			$("#form")[0].reset();
@@ -67,12 +67,10 @@
 	// Close tab
 	$(function() {
 		$('#btn-close').click(function() {
-
 			window.close();
 		});
 	});
-
-	// xem diem chi tiet
+	// xem điểm chi tiết
 	$('tbody tr td')
 			.click(
 					function() {
@@ -94,4 +92,24 @@
 							}
 						}
 					});
+	
+	// Thêm session add lớp cho đoàn sinh
+	$(function() {
+		$("#chkaddClass").click(function() {
+			if ($(this).is(":checked")) {
+				$("#addClass").show();
+				$('#valueHidden').attr('value', 'checked');
+				$('html, body').animate({
+					scrollTop : $(document).height()
+				}, 'slow');
+			} else {
+				$("#addClass").hide();
+				$('#valueHidden').attr('value', 'unchecked');
+			}
+		});
+	});
+	// Thêm session chỉnh sửa trong view_profile
+	$(function() {
+	});	
+	
 }(window.jQuery));

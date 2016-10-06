@@ -30,14 +30,22 @@ class Class_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result_array();
     }
+    
+    public function getDoi()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_doi');
+    
+        $query = $this->db->get();
+        return $result = $query->result_array();
+    }
 
     public function getClassInYear($manamhoc)
     {
         $this->db->select('*');
         $this->db->from('tbl_lop l')
             ->join('tbl_nganh n', 'l.MaNganh = n.MaNganh')
-            ->join('tbl_phandoan pd', 'l.MaPhanDoan = pd.MaPhanDoan')
-            ->join('tbl_chidoan cd', 'l.MaChiDoan = cd.MaChiDoan')
+            ->join('tbl_phandoan pd', 'l.MaPhanDoan = pd.MaPhanDoan')           
             ->join('tbl_namhoc nh', 'l.MaNamHoc = nh.MaNamHoc');
         $this->db->where('l.MaNamHoc', $manamhoc);
         
@@ -53,7 +61,7 @@ class Class_model extends CI_Model
 
     public function addClass($data)
     {
-        $this->db->insert('tbl_lop', $data);
-        // $this->db->query("INSERT INTO tbl_lop (MaLop,MaNganh,MaPhanDoan,MaChiDoan,MaNamHoc) VALUES('$maLop','$maNganh','$maPhanDoan','$maChiDoan','1')");
-    }
+        $this->db->insert('tbl_lop', $data);        
+    }   
+    
 }

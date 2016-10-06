@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2016 at 12:49 PM
+-- Generation Time: Oct 06, 2016 at 12:33 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -50,21 +50,20 @@ INSERT INTO `tbl_chidoan` (`MaChiDoan`, `TenChiDoan`) VALUES
 
 CREATE TABLE `tbl_danhsachlopdoansinh` (
   `ID` int(11) NOT NULL,
-  `MaDoanSinh` varchar(6) DEFAULT NULL,
   `MaLop` varchar(20) DEFAULT NULL,
+  `MaChiDoan` int(11) NOT NULL,
+  `MaDoi` int(11) NOT NULL,
+  `MaDoanSinh` varchar(6) DEFAULT NULL,
   `MaNamHoc` int(11) DEFAULT NULL,
-  `MaLopCu` varchar(6) DEFAULT NULL,
-  `MaDoi` int(11) NOT NULL
+  `MaLopCu` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_danhsachlopdoansinh`
 --
 
-INSERT INTO `tbl_danhsachlopdoansinh` (`ID`, `MaDoanSinh`, `MaLop`, `MaNamHoc`, `MaLopCu`, `MaDoi`) VALUES
-(1, '160001', 'Chien161', 1, NULL, 1),
-(2, '160002', 'Chien161', 1, NULL, 1),
-(3, '160001', 'KT171', 2, NULL, 2);
+INSERT INTO `tbl_danhsachlopdoansinh` (`ID`, `MaLop`, `MaChiDoan`, `MaDoi`, `MaDoanSinh`, `MaNamHoc`, `MaLopCu`) VALUES
+(4, 'ChienCon2016', 1, 1, '160003', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -154,7 +153,9 @@ CREATE TABLE `tbl_doansinh` (
 
 INSERT INTO `tbl_doansinh` (`ID`, `HinhDoanSinh`, `MaDoanSinh`, `TenThanh`, `HovaDem`, `Ten`, `NgaySinh`, `GioiTinh`, `NgayRuaToi`, `GXRuaToi`, `NgayRuocLe`, `GXRuocLe`, `NgayThemSuc`, `GXThemSuc`, `TenThanhCha`, `HoTenCha`, `SDTCha`, `TenThanhMe`, `HoTenMe`, `SDTMe`, `DiaChi`, `GhiChu`, `TrangThai`) VALUES
 (1, NULL, '160001', 'Giuse', 'Nguyễn Hùng', 'Dũng', '2016-09-01', 1, '2016-09-02', 'Thạch Đà', '2016-09-02', '', '2016-09-20', '', 'Giuse', 'Nguyễn Hùng Bắc', '01229004101', 'Maria', '', '', 'update 6', 123444555, 1),
-(2, NULL, '160002', 'Maria', 'Nguyễn Thị Hồng', 'Thảo', '2016-09-21', 1, '2016-09-16', 'TD', '2016-09-16', 'TD', '2016-10-01', 'TD', 'Maria', 't', '1111', 'Gioan', 'sdfsdfsdf', 'sdfdsfds', 'Update', 0, 1);
+(2, NULL, '160002', 'Maria', 'Nguyễn Thị Hồng', 'Thảo', '2016-09-21', 1, '2016-09-16', 'TD', '2016-09-16', 'TD', '2016-10-01', 'TD', 'Maria', 't', '1111', 'Gioan', 'sdfsdfsdf', 'sdfdsfds', 'Update', 0, 1),
+(3, NULL, '160003', 'Giuse', 'Trần Thiện', 'Nhân', '2016-10-01', 1, '1970-01-01', '', '1970-01-01', '', '1970-01-01', '', '', '', '', '', '', '', '', 0, 2),
+(4, NULL, '160004', 'Gioan Baotixita', 'Lê Trần Thiên', 'Lộc', '2016-10-02', 1, '1970-01-01', '', '1970-01-01', '', '1970-01-01', '', '', '', '', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -220,7 +221,6 @@ CREATE TABLE `tbl_lop` (
   `MaLop` varchar(20) NOT NULL,
   `MaNganh` int(11) NOT NULL,
   `MaPhanDoan` int(11) NOT NULL,
-  `MaChiDoan` int(11) NOT NULL,
   `MaNamHoc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -228,10 +228,10 @@ CREATE TABLE `tbl_lop` (
 -- Dumping data for table `tbl_lop`
 --
 
-INSERT INTO `tbl_lop` (`ID`, `MaLop`, `MaNganh`, `MaPhanDoan`, `MaChiDoan`, `MaNamHoc`) VALUES
-(2, 'KT171', 2, 2, 1, 2),
-(5, 'Chien161', 1, 1, 1, 1),
-(6, 'KT161', 2, 2, 1, 1);
+INSERT INTO `tbl_lop` (`ID`, `MaLop`, `MaNganh`, `MaPhanDoan`, `MaNamHoc`) VALUES
+(9, 'ChienCon2016', 1, 1, 2),
+(10, 'KT2016', 2, 2, 2),
+(11, 'RL12016', 2, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -286,6 +286,7 @@ CREATE TABLE `tbl_permision` (
   `ID` int(11) NOT NULL,
   `MaQuyen` int(50) DEFAULT NULL,
   `Permision` varchar(255) DEFAULT NULL,
+  `Message` varchar(255) NOT NULL,
   `fnThemDoanSinh` tinyint(1) DEFAULT NULL,
   `fnNhapDiem` tinyint(1) DEFAULT NULL,
   `fnNhapCSDL` tinyint(1) DEFAULT NULL,
@@ -302,9 +303,15 @@ CREATE TABLE `tbl_permision` (
 -- Dumping data for table `tbl_permision`
 --
 
-INSERT INTO `tbl_permision` (`ID`, `MaQuyen`, `Permision`, `fnThemDoanSinh`, `fnNhapDiem`, `fnNhapCSDL`, `fnTimKiemDS`, `fnTimKiemGLV`, `fnDSXuatSac`, `fnDSGioi`, `fnGiayKhen`, `fnThuBao`, `fnThuMoi`) VALUES
-(1, 1, 'index.php/admin/newstudent', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 1, 'index.php/admin/typesroce', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `tbl_permision` (`ID`, `MaQuyen`, `Permision`, `Message`, `fnThemDoanSinh`, `fnNhapDiem`, `fnNhapCSDL`, `fnTimKiemDS`, `fnTimKiemGLV`, `fnDSXuatSac`, `fnDSGioi`, `fnGiayKhen`, `fnThuBao`, `fnThuMoi`) VALUES
+(1, 1, 'admin/newstudent', '', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 1, 'admin/typesroce', '', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, 1, 'admin/newdatabase', '', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
+(4, 1, 'admin/newclass', '', 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 4, 'admin/search?id=đoàn%20sinh', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 5, 'admin/search?id=đoàn%20sinh', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 1, 'admin/search?id=đoàn%20sinh', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 1, 'admin/search?id=GLV', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -315,16 +322,9 @@ INSERT INTO `tbl_permision` (`ID`, `MaQuyen`, `Permision`, `fnThemDoanSinh`, `fn
 CREATE TABLE `tbl_phancong` (
   `ID` int(11) NOT NULL,
   `MaLop` varchar(20) NOT NULL,
+  `MaChiDoan` int(11) NOT NULL,
   `MaHuynhTruong` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_phancong`
---
-
-INSERT INTO `tbl_phancong` (`ID`, `MaLop`, `MaHuynhTruong`) VALUES
-(1, 'Chien161', '160001'),
-(2, 'Chien161', '160002');
 
 -- --------------------------------------------------------
 
@@ -503,7 +503,7 @@ CREATE TABLE `tbl_trangthai` (
 INSERT INTO `tbl_trangthai` (`ID`, `TrangThai`) VALUES
 (1, 'Đoàn sinh mới'),
 (2, 'Đang học'),
-(3, 'Nghỉ học'),
+(3, 'Nghỉ học luôn'),
 (4, 'Chuyển xứ'),
 (5, 'Huynh trưởng mới'),
 (6, 'Đang dạy'),
@@ -519,16 +519,18 @@ CREATE TABLE `tbl_user` (
   `ID` int(11) NOT NULL,
   `Username` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
-  `MaQuyen` int(11) NOT NULL
+  `MaQuyen` int(11) NOT NULL,
+  `Created` date NOT NULL,
+  `LastModified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`ID`, `Username`, `Password`, `MaQuyen`) VALUES
-(1, 'admin', '94b669fad0be68cdcab9e62628a68e58', 1),
-(8, 'dung.nh1705', '8475c27a5e949b2551d46c80d15b6ed5', 4);
+INSERT INTO `tbl_user` (`ID`, `Username`, `Password`, `MaQuyen`, `Created`, `LastModified`) VALUES
+(1, 'admin', '94b669fad0be68cdcab9e62628a68e58', 1, '0000-00-00', '0000-00-00'),
+(8, 'dung.nh1705', '8475c27a5e949b2551d46c80d15b6ed5', 4, '0000-00-00', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -673,7 +675,7 @@ ALTER TABLE `tbl_chidoan`
 -- AUTO_INCREMENT for table `tbl_danhsachlopdoansinh`
 --
 ALTER TABLE `tbl_danhsachlopdoansinh`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_diemhk1`
 --
@@ -688,7 +690,7 @@ ALTER TABLE `tbl_diemhk2`
 -- AUTO_INCREMENT for table `tbl_doansinh`
 --
 ALTER TABLE `tbl_doansinh`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_doi`
 --
@@ -703,7 +705,7 @@ ALTER TABLE `tbl_huynhtruong`
 -- AUTO_INCREMENT for table `tbl_lop`
 --
 ALTER TABLE `tbl_lop`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tbl_namhoc`
 --
@@ -718,7 +720,7 @@ ALTER TABLE `tbl_nganh`
 -- AUTO_INCREMENT for table `tbl_permision`
 --
 ALTER TABLE `tbl_permision`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `tbl_phancong`
 --

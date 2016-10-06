@@ -12,7 +12,7 @@ class Admin extends CI_Controller
     }
 
     public function index()
-    {
+    {        
         $data['subview'] = 'admin/index_view';
         $this->load->view('admin/main', $data);
     }
@@ -26,5 +26,6 @@ class Admin extends CI_Controller
         $this->session->unset_userdata('logged_in', $sess_array);
         
         redirect('../', 'refresh');
-    }
+    }   
+    
 }

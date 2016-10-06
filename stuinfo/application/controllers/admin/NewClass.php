@@ -13,13 +13,17 @@ class NewClass extends CI_Controller
 
     public function index()
     {
-        $data['nganh'] = $this->cmodel->getNganh();
-        $data['phandoan'] = $this->cmodel->getPhanDoan();
-        $data['chidoan'] = $this->cmodel->getChiDoan();
-        $data['class'] = $this->cmodel->getClassInYear(1);
-        
-        $data['subview'] = 'admin/newclass';
-        $this->load->view('admin/main', $data);
+        if (in_array($this->uri->segments[1] . '/' . $this->uri->segments[2], $this->session->userdata['logged_in']['quyen']) == FALSE) {
+            $data['subview'] = 'resultpage/no_permision';
+            $this->load->view('admin/main', $data);
+        } else {
+            $data['nganh'] = $this->cmodel->getNganh();
+            $data['phandoan'] = $this->cmodel->getPhanDoan();            
+            $data['class'] = $this->cmodel->getClassInYear($this->session->userdata['logged_in']['manamhoc']);
+            
+            $data['subview'] = 'admin/newclass';
+            $this->load->view('admin/main', $data);
+        }
     }
 
     function addNew()
@@ -28,18 +32,17 @@ class NewClass extends CI_Controller
             $add_class = array(
                 'MaLop' => $_POST['malop'],
                 'MaNganh' => $_POST['manganh'],
-                'MaPhanDoan' => $_POST['maphandoan'],
-                'MaChiDoan' => $_POST['machidoan'],
-                'MaNamHoc' => 1
+                'MaPhanDoan' => $_POST['maphandoan'],                
+                'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
             );
             
             $this->cmodel->addClass($add_class);
-        }       
+        }
     }
-    
-    function remove(){
+
+    function remove()
+    {
         $classcode = $_POST['malop'];
         $this->cmodel->deleteClass($classcode);
     }
-    
 }

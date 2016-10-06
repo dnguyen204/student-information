@@ -25,10 +25,10 @@ class Student_model extends CI_Model
         $this->db->select('*');
         $this->db->from('tbl_doansinh');
         $this->db->join('tbl_trangthai', 'tbl_doansinh.TrangThai = tbl_trangthai.ID', 'left');
-        
-        $this->db->limit(20, 0);
+        $this->db->limit(50, 0);
+        $this->db->order_by('tbl_doansinh.ID', 'DESC');
+      
         $query = $this->db->get();
-        
         return $result = $query->result_array();
     }
 
@@ -53,36 +53,49 @@ class Student_model extends CI_Model
 
     public function addNew()
     {
-        $stumadoansinh = $_POST['stuMa'];
-        $stutenthanh = $_POST['stuTenThanh'];
-        $stuhovadem = $_POST['stuLastName'];
-        $stuten = $_POST['stuFirstName'];
-        $stugioitinh = $_POST['stuSex'];
-        $stungaysinh = date('Y-m-d', strtotime($_POST['stuDOB']));
-        $sturuatoi = date('Y-m-d', strtotime($_POST['stuNgayRuaToi']));
-        $stugxruatoi = $_POST['stuGXRuaToi'];
-        $sturuocle = date('Y-m-d', strtotime($_POST['stuNgayRuocLe']));
-        $stugxruocle = $_POST['stuGXRuocLe'];
-        $stuthemsuc = date('Y-m-d', strtotime($_POST['stuNgayThemSuc']));
-        $stugxthemsuc = $_POST['stuGXThemSuc'];
+        $isAddClass = $_POST['isClass'];
+        if ($isAddClass === 'checked') {
+            $stutrangthai = 2;
+            $addStuToClass = array(
+                'MaLop' => $_POST['malop'],
+                'MaChiDoan' => $_POST['machidoan'],
+                'MaDoi' => $_POST['madoi'],
+                'MaDoanSinh' => $_POST['stuMa'],
+                'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
+            );
+            
+            $this->db->insert('tbl_danhsachlopdoansinh', $addStuToClass);
+        } else {
+            $stutrangthai = 1;
+        }
         
-        $tenthanhcha = $_POST['TenThanhCha'];
-        $hotencha = $_POST['HoTenCha'];
-        $sdtcha = $_POST['SDTCha'];
-        $tenthanhme = $_POST['TenThanhMe'];
-        $hotenme = $_POST['HoTenMe'];
-        $sdtme = $_POST['SDTMe'];
+        $newStudent = array(
+            'MaDoanSinh' => $_POST['stuMa'],
+            'TenThanh' => $_POST['stuTenThanh'],
+            'HovaDem' => $_POST['stuLastName'],
+            'Ten' => $_POST['stuFirstName'],
+            'GioiTinh' => $_POST['stuSex'],
+            'NgaySinh' => date('Y-m-d', strtotime($_POST['stuDOB'])),
+            'NgayRuaToi' => date('Y-m-d', strtotime($_POST['stuNgayRuaToi'])),
+            'GXRuaToi' => $_POST['stuGXRuaToi'],
+            'NgayRuocLe' => date('Y-m-d', strtotime($_POST['stuNgayRuocLe'])),
+            'GXRuocLe' => $_POST['stuGXRuocLe'],
+            'NgayThemSuc' => date('Y-m-d', strtotime($_POST['stuNgayThemSuc'])),
+            'GXThemSuc' => $_POST['stuGXThemSuc'],
+            
+            'TenThanhCha' => $_POST['TenThanhCha'],
+            'HoTenCha' => $_POST['HoTenCha'],
+            'SDTCha' => $_POST['SDTCha'],
+            'TenThanhMe' => $_POST['TenThanhMe'],
+            'HoTenMe' => $_POST['HoTenMe'],
+            'SDTMe' => $_POST['SDTMe'],
+            
+            'DiaChi' => $_POST['stuAddress'],
+            'GhiChu' => $_POST['stuNote'],
+            'TrangThai' => $stutrangthai
+        );
         
-        $studiachi = $_POST['stuAddress'];
-        $stughichu = $_POST['stuNote'];
-        
-        $stutrangthai = 1;
-        
-        $this->db->query("INSERT INTO tbl_doansinh (MaDoanSinh,TenThanh,HovaDem,Ten,NgaySinh,GioiTinh,
-            NgayRuaToi,GXRuaToi,NgayRuocLe,GXRuocLe,NgayThemSuc,GXThemSuc,TenThanhCha,HoTenCha,SDTCha,TenThanhMe,HoTenMe,SDTMe,DiaChi,GhiChu,TrangThai) 
-            VALUES('$stumadoansinh','$stutenthanh','$stuhovadem','$stuten','$stungaysinh','$stugioitinh',
-            '$sturuatoi','$stugxruatoi','$sturuocle','$stugxruocle','$stuthemsuc','$stugxthemsuc','$tenthanhcha','$hotencha',
-            '$sdtcha','$tenthanhme','$hotenme','$sdtme','$studiachi','$stughichu','$stutrangthai')") or die(mysqli_error());
+        $this->db->insert('tbl_doansinh', $newStudent);
     }
 
     public function updateStudent()
@@ -154,7 +167,7 @@ class Student_model extends CI_Model
         $this->db->join('tbl_lop l', 'dsl.MaLop = l.MaLop')
             ->join('tbl_phandoan pd', 'l.MaPhanDoan = pd.MaPhanDoan')
             ->join('tbl_nganh n', 'l.MaNganh = n.MaNganh')
-            ->join('tbl_chidoan cd', 'l.MaChiDoan = cd.MaChiDoan');
+            ->join('tbl_chidoan cd', 'dsl.MaChiDoan = cd.MaChiDoan');
         $this->db->join('tbl_namhoc nh', 'dsl.MaNamHoc = nh.MaNamHoc');
         $this->db->join('tbl_doi d', 'dsl.MaDoi = d.MaDoi');
         
