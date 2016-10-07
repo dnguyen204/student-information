@@ -146,7 +146,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<div class="row">
 			<div class="col-sm-6 col-xs-6">
 				<div class="form-group">
-					<label class="control-label col-md-4 col-xs-4">Địa chỉ:</label>
+					<label class="control-label col-md-4 col-xs-4">Cấp bậc:</label>
 					<div class="col-md-8 col-xs-8">
 						<select class="selectpicker form-control" name="maquyen">
 						<?php foreach ($role as $r){?>

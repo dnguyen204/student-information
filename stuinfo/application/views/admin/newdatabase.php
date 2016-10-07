@@ -18,4 +18,4 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </div>
 
 <script type='text/javascript'
-	src="<?php echo base_url();?>public/backend/template/admin/js/adddatabase.js"></script>
+	src="<?php echo base_url();?>public/backend/template/admin/custom_js/adddatabase.js"></script>

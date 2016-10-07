@@ -24,10 +24,8 @@ class GLV_model extends CI_Model
         );
         
         foreach ($unicode as $nonUnicode => $uni) {
-            
             $str = preg_replace("/($uni)/i", $nonUnicode, $str);
         }
-        
         return $str;
     }
     
@@ -42,7 +40,7 @@ class GLV_model extends CI_Model
         }
         return $result;
     }
-
+    // mã GLV tự động
     public function createNewCode()
     {
         $currentYear = date('y');
@@ -61,7 +59,7 @@ class GLV_model extends CI_Model
             return $result = $currentYear . '0001';
         }
     }
-
+    // thêm mới 1 GLV
     public function addNewGLV()
     {
         $maglv = $_POST['maglv'];
@@ -78,15 +76,16 @@ class GLV_model extends CI_Model
         $glvdiachi = $_POST['glvAddress'];
         $glvghichu = $_POST['glvNote'];
         
-        $stutrangthai = 5; // trạng thái mới tạo
+        $stutrangthai = ($_POST['maquyen'] === 4) ? 5 : 4; // trạng thái mới tạo
+        
         $username = strtolower($this->vn_str_filter($glvten)) . '.' . $this->getFirstChar($glvhovadem) . date('dm', strtotime($_POST['glvDOB']));
         
         $user = array(
             'Username' => $username,
             'Password' => md5(date('dm', strtotime($_POST['glvDOB'])) . substr(date('Y', strtotime($_POST['glvDOB'])), 2, 2)),
             'MaQuyen' => $_POST['maquyen'],
-            'Created' => new DateTime(),
-            'LastModified' => new DateTime()
+            'Created' => date("Y-m-d"),
+            'LastModified' => date("Y-m-d")
         );
         
         $this->db->insert('tbl_user', $user);
@@ -96,7 +95,7 @@ class GLV_model extends CI_Model
             VALUES('$maglv','$glvtenthanh','$glvhovadem','$glvten','$glvngaysinh',
             '$glvbonmang','$glvgioitinh','$glvsdt','$glvemail','$glvdiachi','$glvghichu','$stutrangthai','$username')") or die(mysqli_error());
     }
-
+    // Tìm kiếm GLV tron trang search
     public function searchGLV()
     {
         $searchType = isset($_GET['type']) ? $_GET['type'] : '';
@@ -124,7 +123,7 @@ class GLV_model extends CI_Model
         
         return $result = $query->result_array();
     }
-
+    // Lấy danh sách GLV dạy của Đoàn sinh
     public function getGLVFromClass($code)
     {
         $this->db->select('dsl.MaLop, ht.TenThanh, ht.HovaDem, ht.Ten');
@@ -136,12 +135,22 @@ class GLV_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result_array();
     }
-
+    // Lấy danh sách chức vụ khi tạo mới GLV
     public function getRole()
     {
         $this->db->select('*');
         $this->db->from('tbl_role');
-        $this->db->where('MaQuyen != 1');
+        $this->db->where('MaQuyen != 1 AND MaQuyen !=3');
+        
+        $query = $this->db->get();
+        return $result = $query->result_array();
+    }
+    // Lấy Danh sách GLV Được phân công dạy trong lớp
+    public function getGLVInClass($malop, $manamhoc)
+    {
+        $this->db->select('ht.TenThanh, ht.HovaDem, ht.Ten');
+        $this->db->from('tbl_phancong pc')->join('tbl_huynhtruong ht', 'ht.MaHuynhTruong = pc.MaHuynhTruong');
+        $this->db->where('pc.MaLop = $malop AND pc.MaNamHoc = $manamhoc');
         
         $query = $this->db->get();
         return $result = $query->result_array();

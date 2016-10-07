@@ -92,7 +92,8 @@ if (isset($this->session->userdata['logged_in'])) {
 							class="glyphicon glyphicon-user"></i></a></li>
 					<li><a class="tooltips" href="changepass"><span>Đổi mật khẩu</span><i
 							class="glyphicon glyphicon-cog"></i></a></li>
-					<li><a class="tooltips" href="admin/logout"><span>Đăng xuất</span><i
+					<li><a class="tooltips" data-target="#logoutModal"
+						data-toggle="modal" href=""><span>Đăng xuất</span><i
 							class="glyphicon glyphicon-off"></i></a></li>
 				</ul>
 			</div>
@@ -101,6 +102,14 @@ if (isset($this->session->userdata['logged_in'])) {
 				<ul id="menu">
 					<li><a href="../admin/admin"><i class="fa fa-home"></i> <span>Trang
 								chủ</span></a></li>
+					<li id="menu-academico"><a href=""><i class="glyphicon glyphicon-cog"></i> <span>Hệ
+								thống</span> <span class="fa fa-angle-right"
+							style="float: right"></span></a>
+						<ul id="menu-academico-sub">
+							<li id="menu-academico-boletim"><a href="newdatabase">Chỉnh sửa
+									DB</a></li>
+						</ul></li>
+
 					<li id="menu-academico"><a href=""><i
 							class="glyphicon glyphicon-list-alt"></i> <span>Danh mục</span> <span
 							class="fa fa-angle-right" style="float: right"></span></a>
@@ -111,14 +120,14 @@ if (isset($this->session->userdata['logged_in'])) {
 							<li id="menu-academico-avaliacoes"><a href="">Xếp lớp</a></li>
 							<li id="menu-academico-boletim"><a href="">Xét lên lớp</a></li>
 						</ul></li>
+
 					<li id="menu-academico"><a href=""><i class="fa fa-desktop"></i> <span>Quản
 								lý</span> <span class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
-							<li id="menu-academico-boletim"><a href="newclass">Tạo lớp học</a></li>
-							<li id="menu-academico-boletim"><a href="division">Phân công</a></li>
 							<li id="menu-academico-avaliacoes"><a href="newglv">Thêm GLV mới</a></li>
-							<li id="menu-academico-boletim"><a href="newdatabase">Nhập cơ sở
-									dữ liệu</a></li>
+							<li id="menu-academico-boletim"><a href="newclass">Tạo lớp học</a></li>
+							<li id="menu-academico-boletim"><a href="division">Phân công
+									giảng dạy</a></li>
 						</ul></li>
 
 					<li id="menu-academico"><a href=""><i class="fa fa-search"></i> <span>Tìm
@@ -151,8 +160,38 @@ if (isset($this->session->userdata['logged_in'])) {
 		<div class="clearfix"></div>
 	</div>
 
+	<!-- Logout form -->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="width: 35%;">
+			<div class="modal-content">
+				<form id="form" role="form" method="post"
+					action="<?php echo base_url();?>index.php/admin/admin/logout/">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" title="Đóng cửa sổ">x</button>
+						<h4 class="modal-title" id="myModalLabel">ĐĂNG XUẤT HỆ THỐNG</h4>
+					</div>
+					<div class="modal-body">
+						<div>
+							<h4>Bạn có chắc chắn muốn thoát không?</h4>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="row">
+							<div class="col-md-12 col-xs-12">
+								<input type="submit" class="btn btn-danger"
+									title="Đăng nhập hệ thống" value="Đồng ý" />
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
 	<script
-		src="<?php echo base_url();?>public/backend/template/admin/js/custom-js.js"></script>
+		src="<?php echo base_url();?>public/backend/template/admin/custom_js/custom-js.js"></script>
 	<script
 		src="<?php echo base_url();?>public/backend/template/admin/js/TweenLite.min.js"></script>
 	<script
