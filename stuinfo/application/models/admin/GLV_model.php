@@ -148,11 +148,40 @@ class GLV_model extends CI_Model
     // Lấy Danh sách GLV Được phân công dạy trong lớp
     public function getGLVInClass($malop, $manamhoc)
     {
-        $this->db->select('ht.TenThanh, ht.HovaDem, ht.Ten');
+        $this->db->select('ht.MaHuynhTruong, ht.TenThanh, ht.HovaDem, ht.Ten');
         $this->db->from('tbl_phancong pc')->join('tbl_huynhtruong ht', 'ht.MaHuynhTruong = pc.MaHuynhTruong');
-        $this->db->where('pc.MaLop = $malop AND pc.MaNamHoc = $manamhoc');
+        $this->db->where('pc.MaLop', $malop);
+        $this->db->where('pc.MaNamHoc', $manamhoc);
         
         $query = $this->db->get();
-        return $result = $query->result_array();
+        
+        if ($query->num_rows() > 0) {
+            $output_string = '';
+            $output_string .= '<table class="table table-user-information">';
+            $output_string .= '<tbody>';
+            $output_string .= '<tr>';
+            $output_string .= '<th>STT</th>';
+            $output_string .= '<th>Tên Thánh</th>';
+            $output_string .= '<th>Họ Tên</th>';
+            $output_string .= '<th></th>';
+            $output_string .= '</tr>';
+            
+            foreach ($query->result_array() as $key => $row) {
+                $index = $key + 1;
+                $name = $row['HovaDem'] . ' ' . $row['Ten'];
+                $output_string .= '<tr class="row_glv" id="' . "{$row['MaHuynhTruong']}" . '">';
+                $output_string .= "<td>{$index}</td>";
+                $output_string .= "<td>{$row['TenThanh']}</td>";
+                $output_string .= "<td>{$name}</td>";
+                $output_string .= '<td><a title="Xóa"><i class="glyphicon glyphicon-remove" onClick="deleteGLV();"></i></a></td>';
+                $output_string .= '</tr>';
+            }
+            $output_string .= '</tbody>';
+            $output_string .= '</table>';
+        } else {
+            return 'Chưa có phân công cho phân đoàn này';
+        }
+        // echo json_encode($output_string);
+        return $output_string;
     }
 }

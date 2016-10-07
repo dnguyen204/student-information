@@ -14,6 +14,7 @@ class Division extends CI_Controller
     public function index()
     {
         $data['class_list'] = $this->cmodel->getClassInYear($this->session->userdata['logged_in']['manamhoc']);
+        $data['people_in_class'] = '';
         
         $data['subview'] = 'admin/division';
         $this->load->view('admin/main', $data);
@@ -23,11 +24,9 @@ class Division extends CI_Controller
     {
         $manamhoc = $this->session->userdata['logged_in']['manamhoc'];
         $malop = $_POST['malop'];
-        print_r($malop);
-        die;
+        
         $this->load->model('admin/glv_model', 'glvmodel');
         $result = $this->glvmodel->getGLVInClass($malop, $manamhoc);
-        print_r($result);
-        die;
+        echo $result;
     }
 }

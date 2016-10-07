@@ -15,11 +15,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 					<div class="panel-body">
 						<table class="table table-user-information">
-
 							<tbody>		
 							<?php foreach ($class_list as $class){?>					
 								<tr class="class_select">
-									<td id="<?= $class['MaLop'] ?>"><a><?= $class['TenPhanDoan'] ?></a></td>
+									<td id="<?= $class['MaLop'] ?>"><?= $class['TenPhanDoan'] ?></td>
 								</tr>	
 							<?php }?>						
 							</tbody>
@@ -40,28 +39,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									<tr>
 										<td>Phân đoàn trưởng:</td>
 										<td id="lead_class"></td>
-										<td><a title="Xóa phân đoàn trưởng"><i class="glyphicon glyphicon-remove-sign"></i></a></td>
+										<td><a title="Xóa phân đoàn trưởng"><i
+												class="glyphicon glyphicon-remove-sign"></i></a></td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
-						<div class="panel-body" id="peopleinclass">
-							<table class="table table-user-information">
-								<tbody>
-									<tr>
-										<th>STT</th>
-										<th>Tên Thánh</th>
-										<th>Họ và Đệm</th>
-										<th>Tên</th>
-									</tr>																	
-								</tbody>
-							</table>							
-						</div>
+						<!-- Show data -->
+						<div class="panel-body" id="peopleinclass"></div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</form>	
+	</form>
 </div>
 
 <script type='text/javascript'

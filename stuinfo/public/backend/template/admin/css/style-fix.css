@@ -187,3 +187,7 @@ td a {
 .table>tbody>tr>td a, .footer-student-detail a {
 	margin-top: -2px;
 }
+
+.active {
+	background-color: #f2ff8a !important;
+}
