@@ -18,7 +18,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<div class="form-group">
 								<label class="control-label col-md-4 col-xs-4">Mã lớp:</label>
 								<div class="col-md-8 col-xs-8">
-									<input type="text" class="form-control" name="malop" />
+									<input type="text" class="form-control" name="malop"/>
 								</div>
 							</div>
 						</div>

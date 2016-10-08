@@ -8,6 +8,7 @@ class Index_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tbl_namhoc');
+        $this->db->order_by('MaNamHoc', 'DESC');
         
         $query = $this->db->get();
         return $result = $query->result_array();

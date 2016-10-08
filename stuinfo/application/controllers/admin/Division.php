@@ -9,12 +9,14 @@ class Division extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->model('admin/class_model', 'cmodel');
+        $this->load->model('admin/glv_model', 'glvmodel');
     }
 
     public function index()
     {
         $data['class_list'] = $this->cmodel->getClassInYear($this->session->userdata['logged_in']['manamhoc']);
-        $data['people_in_class'] = '';
+        $data['role'] = $this->glvmodel->getRole();
+        $data['chidoan'] = $this->cmodel->getChiDoan();
         
         $data['subview'] = 'admin/division';
         $this->load->view('admin/main', $data);
@@ -25,8 +27,27 @@ class Division extends CI_Controller
         $manamhoc = $this->session->userdata['logged_in']['manamhoc'];
         $malop = $_POST['malop'];
         
-        $this->load->model('admin/glv_model', 'glvmodel');
         $result = $this->glvmodel->getGLVInClass($malop, $manamhoc);
         echo $result;
     }
+
+    function getListGLVByRole()
+    {
+        $roleid = $_POST['maquyen'];
+        
+        $result = $this->glvmodel->getGLVByRole($roleid);
+        echo $result;
+    }
+    
+    function addGLVToClass(){
+        $data = array(
+            'MaLop' => $_POST['malop'],
+            'MaHuynhTruong' => $_POST['mahuynhtruong'],
+            'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
+        );
+        
+        $this->glvmodel->addGLVToClass($data);
+        
+    }
+    
 }

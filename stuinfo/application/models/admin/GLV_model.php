@@ -95,7 +95,7 @@ class GLV_model extends CI_Model
             VALUES('$maglv','$glvtenthanh','$glvhovadem','$glvten','$glvngaysinh',
             '$glvbonmang','$glvgioitinh','$glvsdt','$glvemail','$glvdiachi','$glvghichu','$stutrangthai','$username')") or die(mysqli_error());
     }
-    // Tìm kiếm GLV tron trang search
+    // Tìm kiếm GLV trong trang search
     public function searchGLV()
     {
         $searchType = isset($_GET['type']) ? $_GET['type'] : '';
@@ -117,6 +117,7 @@ class GLV_model extends CI_Model
         $this->db->select('*');
         $this->db->from('tbl_huynhtruong');
         $this->db->join('tbl_trangthai', 'tbl_huynhtruong.TrangThai = tbl_trangthai.ID', 'left');
+        $this->db->order_by('ID', 'DESC');
         
         $this->db->limit(20, 0);
         $query = $this->db->get();
@@ -135,12 +136,12 @@ class GLV_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result_array();
     }
-    // Lấy danh sách chức vụ khi tạo mới GLV
+    // Lấy danh sách chức vụ khi tạo mới GLV và phân công
     public function getRole()
     {
         $this->db->select('*');
         $this->db->from('tbl_role');
-        $this->db->where('MaQuyen != 1 AND MaQuyen !=3');
+        $this->db->where('MaQuyen != 1 AND MaQuyen !=2 AND MaQuyen !=3');
         
         $query = $this->db->get();
         return $result = $query->result_array();
@@ -148,8 +149,10 @@ class GLV_model extends CI_Model
     // Lấy Danh sách GLV Được phân công dạy trong lớp
     public function getGLVInClass($malop, $manamhoc)
     {
-        $this->db->select('ht.MaHuynhTruong, ht.TenThanh, ht.HovaDem, ht.Ten');
-        $this->db->from('tbl_phancong pc')->join('tbl_huynhtruong ht', 'ht.MaHuynhTruong = pc.MaHuynhTruong');
+        $this->db->select('ht.MaHuynhTruong, ht.TenThanh, ht.HovaDem, ht.Ten, ht.DienThoai, cd.TenChiDoan');
+        $this->db->from('tbl_phancong pc')
+            ->join('tbl_huynhtruong ht', 'ht.MaHuynhTruong = pc.MaHuynhTruong')
+            ->join('tbl_chidoan cd', 'cd.MaChiDoan = pc.MaChiDOan');
         $this->db->where('pc.MaLop', $malop);
         $this->db->where('pc.MaNamHoc', $manamhoc);
         
@@ -161,27 +164,60 @@ class GLV_model extends CI_Model
             $output_string .= '<tbody>';
             $output_string .= '<tr>';
             $output_string .= '<th>STT</th>';
+            $output_string .= '<th>Chi đoàn</th>';
             $output_string .= '<th>Tên Thánh</th>';
             $output_string .= '<th>Họ Tên</th>';
+            $output_string .= '<th>SĐT</th>';
             $output_string .= '<th></th>';
             $output_string .= '</tr>';
             
             foreach ($query->result_array() as $key => $row) {
                 $index = $key + 1;
                 $name = $row['HovaDem'] . ' ' . $row['Ten'];
+                $url = base_url();
+                
                 $output_string .= '<tr class="row_glv" id="' . "{$row['MaHuynhTruong']}" . '">';
                 $output_string .= "<td>{$index}</td>";
+                $output_string .= "<td>{$row['TenChiDoan']}</td>";
                 $output_string .= "<td>{$row['TenThanh']}</td>";
                 $output_string .= "<td>{$name}</td>";
-                $output_string .= '<td><a title="Xóa"><i class="glyphicon glyphicon-remove" onClick="deleteGLV();"></i></a></td>';
+                $output_string .= "<td>{$row['DienThoai']}</td>";
+                $output_string .= '<td><a title="Xóa"><i class="glyphicon glyphicon-remove"></i></a></td>';
                 $output_string .= '</tr>';
             }
             $output_string .= '</tbody>';
             $output_string .= '</table>';
+            $output_string .= '<script type="text/javascript"
+	src="' . "{$url}" . 'public/backend/template/admin/custom_js/division.js"></script>';
         } else {
             return 'Chưa có phân công cho phân đoàn này';
         }
-        // echo json_encode($output_string);
+        
         return $output_string;
     }
+    // lấy danh sách GLV theo quyền -> trả về danh sách GLV
+    public function getGLVByRole($roleid)
+    {
+        $this->db->select('ht.MaHuynhTruong, ht.TenThanh, ht.HovaDem, ht.Ten');
+        $this->db->from('tbl_user u')->join('tbl_huynhtruong ht', 'ht.Username = u.Username');
+        $this->db->where('u.MaQuyen', $roleid);
+        
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            $output_string = '';
+            $output_string .= '<option value="0">Chọn . .</option>';
+            foreach ($query->result_array() as $key => $row) {
+                $output = $row['TenThanh'] . ' ' . $row['HovaDem'] . ' ' . $row['Ten'];
+                $output_string .= "<option value='{$row['MaHuynhTruong']}'>{$output}</option>";
+            }
+        } else {
+            return '<option>Không có anh chị nào!</option>';
+        }
+        
+        return $output_string;
+    }
+    // Thêm GLV vào lớp dạy và update trạng thái của glv
+    function addGLVToClass($data)
+    {}
 }
