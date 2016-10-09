@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2016 at 12:46 PM
+-- Generation Time: Oct 10, 2016 at 01:52 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -233,7 +233,9 @@ CREATE TABLE `tbl_lop` (
 INSERT INTO `tbl_lop` (`ID`, `MaLop`, `MaNganh`, `MaPhanDoan`, `MaNamHoc`, `MaPhanDoanTruong`) VALUES
 (9, 'ChienCon2016', 1, 1, 2, ''),
 (10, 'KT2016', 2, 2, 2, ''),
-(11, 'RL12016', 2, 3, 2, '');
+(11, 'RL12016', 2, 3, 2, ''),
+(12, 'RL22016', 2, 4, 2, ''),
+(15, 'TS12016', 3, 5, 2, '');
 
 -- --------------------------------------------------------
 
@@ -718,7 +720,7 @@ ALTER TABLE `tbl_huynhtruong`
 -- AUTO_INCREMENT for table `tbl_lop`
 --
 ALTER TABLE `tbl_lop`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `tbl_namhoc`
 --
