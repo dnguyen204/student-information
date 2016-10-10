@@ -29,7 +29,7 @@ class Search extends CI_Controller
             }
         } else {
             if ($glv_mode) {
-                $this->load->model('admin/GLV_model', 'glvmodel');
+                $this->load->model('admin/glv_model', 'glvmodel');
                 $result = $this->glvmodel->searchGLV();
                 
                 $data['result'] = $result;

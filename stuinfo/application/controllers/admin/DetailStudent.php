@@ -10,7 +10,7 @@ class DetailStudent extends CI_Controller
         $this->load->helper('url');
         $this->load->model('admin/Student_model', 'stumodel');
         $this->load->model('admin/Sroce_model', 'smodel');
-        $this->load->model('admin/GLV_model', 'glvmodel');
+        $this->load->model('admin/glv_model', 'glvmodel');
     }
 
     public function index()

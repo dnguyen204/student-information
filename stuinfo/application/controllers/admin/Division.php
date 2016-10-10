@@ -21,7 +21,8 @@ class Division extends CI_Controller
         $data['subview'] = 'admin/division';
         $this->load->view('admin/main', $data);
     }
-
+    
+    // Get all GLV in Class
     function getPeopleInClass()
     {
         $manamhoc = $this->session->userdata['logged_in']['manamhoc'];
@@ -30,7 +31,7 @@ class Division extends CI_Controller
         $result = $this->glvmodel->getGLVInClass($malop, $manamhoc);
         echo $result;
     }
-
+    // Get list Cấp Bậc
     function getListGLVByRole()
     {
         $roleid = $_POST['maquyen'];
@@ -38,7 +39,7 @@ class Division extends CI_Controller
         $result = $this->glvmodel->getGLVByRole($roleid);
         echo $result;
     }
-
+    // Add new GLV to Class
     function addGLVToClass()
     {
         $data = array(
@@ -48,9 +49,22 @@ class Division extends CI_Controller
             'MaHuynhTruong' => $_POST['mahuynhtruong']
         );
         
-        $this->glvmodel->addGLVToClass($data);      
+        $this->glvmodel->addGLVToClass($data, $_POST['mahuynhtruong']);
         
         $result = $this->glvmodel->getGLVInClass($_POST['malop'], $this->session->userdata['logged_in']['manamhoc']);
         echo $result;
+    }
+    // Remove Glv from Class
+    function removeGLVFromClass()
+    {
+        $data = array(
+            'MaLop' => $_POST['malop'],
+            'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc'],
+            'MaHuynhTruong' => $_POST['mahuynhtruong']
+        );
+        
+        $this->glvmodel->removeGLV($data);
+        
+        $this->getPeopleInClass($_POST['malop']);
     }
 }

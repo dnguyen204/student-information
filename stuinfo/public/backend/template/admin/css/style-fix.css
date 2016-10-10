@@ -191,3 +191,7 @@ td a {
 .active {
 	background-color: #f2ff8a !important;
 }
+
+#menu-academico a{
+	cursor: pointer;
+}
