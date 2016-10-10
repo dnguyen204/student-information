@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class TenThanh_model extends CI_Model
+class Tenthanh_model extends CI_Model
 {
 
     public function getList($q)

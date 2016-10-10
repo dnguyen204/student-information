@@ -88,7 +88,7 @@ if (isset($this->session->userdata['logged_in'])) {
 				<span class="name-caret"><?=$tenthanh.'<br/>'.$hovadem.' '.$ten?></span>
 				<p><?=$chucvu?></p>
 				<ul>
-					<li><a class="tooltips" href="viewprofile"><span>Cá nhân</span><i
+					<li><a class="tooltips" href="viewProfile"><span>Cá nhân</span><i
 							class="glyphicon glyphicon-user"></i></a></li>
 					<li><a class="tooltips" href="changepass"><span>Đổi mật khẩu</span><i
 							class="glyphicon glyphicon-cog"></i></a></li>
@@ -106,7 +106,7 @@ if (isset($this->session->userdata['logged_in'])) {
 								thống</span> <span class="fa fa-angle-right"
 							style="float: right"></span></a>
 						<ul id="menu-academico-sub">
-							<li id="menu-academico-boletim"><a href="newdatabase">Chỉnh sửa
+							<li id="menu-academico-boletim"><a href="newDatabase">Chỉnh sửa
 									DB</a></li>
 						</ul></li>
 
@@ -114,9 +114,9 @@ if (isset($this->session->userdata['logged_in'])) {
 							class="glyphicon glyphicon-list-alt"></i> <span>Danh mục</span> <span
 							class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
-							<li id="menu-academico-boletim"><a href="newstudent">Thêm đoàn
+							<li id="menu-academico-boletim"><a href="newStudent">Thêm đoàn
 									sinh mới</a></li>
-							<li id="menu-academico-avaliacoes"><a href="typesroce">Nhập điểm</a></li>
+							<li id="menu-academico-avaliacoes"><a href="typeSroce">Nhập điểm</a></li>
 							<li id="menu-academico-avaliacoes"><a href="">Xếp lớp</a></li>
 							<li id="menu-academico-boletim"><a href="">Xét lên lớp</a></li>
 						</ul></li>
@@ -124,8 +124,8 @@ if (isset($this->session->userdata['logged_in'])) {
 					<li id="menu-academico"><a href=""><i class="fa fa-desktop"></i> <span>Quản
 								lý</span> <span class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
-							<li id="menu-academico-avaliacoes"><a href="newglv">Thêm GLV mới</a></li>
-							<li id="menu-academico-boletim"><a href="newclass">Tạo lớp học</a></li>
+							<li id="menu-academico-avaliacoes"><a href="newGlv">Thêm GLV mới</a></li>
+							<li id="menu-academico-boletim"><a href="newClass">Tạo lớp học</a></li>
 							<li id="menu-academico-boletim"><a href="division">Phân công
 									giảng dạy</a></li>
 						</ul></li>

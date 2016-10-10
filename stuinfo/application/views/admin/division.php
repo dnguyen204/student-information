@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 
 <div class="outter-wp">
-	<form role="form">
+	<form role="form" id="form">
 		<div class="top-menu">
 			<h1 class="text-center">Phân công giảng dạy</h1>
 		</div>
@@ -68,12 +68,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									<div class="form-group">
 										<label class="control-label col-md-4 col-xs-4">Chi đoàn:</label>
 										<div class="col-md-8 col-xs-8">
-											<select id="role" class="form-control">
+											<select id="list_chidoan"" class="form-control">
 												<option value="0">Chọn . . .</option>
 												<?php foreach ($chidoan as $r){?>
 												<option value="<?= $r['MaChiDoan'] ?>"><?= $r['TenChiDoan'] ?></option>
 												<?php }?>
-											</select>
+											</select> <input type="hidden" id="chidoan_selected"> <label
+												class="control-label chidoan-warning"
+												style="display: none; color: red">Chọn chi đoàn</label>
 										</div>
 									</div>
 								</div>
@@ -84,7 +86,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										<label class="control-label col-md-4 col-xs-4">Anh chị phụ
 											trách:</label>
 										<!-- Danh sách glv -->
-										<div class="col-md-8 col-xs-8"> 
+										<div class="col-md-8 col-xs-8">
 											<select id="list_glv" class="form-control">
 											</select> <input type="hidden" id="glv_selected"> <label
 												class="control-label glv-warning"

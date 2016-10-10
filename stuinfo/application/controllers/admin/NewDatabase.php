@@ -9,7 +9,7 @@ class NewDatabase extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->database();
-        $this->load->model('admin/TenThanh_model', 'modelTenThanh');
+        $this->load->model('admin/tenthanh_model', 'tmodel');
     }
 
     public function index()
@@ -18,7 +18,7 @@ class NewDatabase extends CI_Controller
             $data['subview'] = 'resultpage/no_permision';
             $this->load->view('admin/main', $data);
         } else {
-            $data['result'] = $this->modelTenThanh->getAll();
+            $data['result'] = $this->tmodel->getAll();
             $data['subview'] = 'admin/newdatabase';
             $this->load->view('admin/main', $data);
         }
@@ -28,7 +28,7 @@ class NewDatabase extends CI_Controller
     {
         if (isset($_POST["newTenThanh"])) {
             // do your newTenThanh code
-            $this->modelTenThanh->addNew();
+            $this->tmodel->addNew();
         }
     }
 }

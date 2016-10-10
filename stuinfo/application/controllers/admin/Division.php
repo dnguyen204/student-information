@@ -38,16 +38,19 @@ class Division extends CI_Controller
         $result = $this->glvmodel->getGLVByRole($roleid);
         echo $result;
     }
-    
-    function addGLVToClass(){
+
+    function addGLVToClass()
+    {
         $data = array(
             'MaLop' => $_POST['malop'],
-            'MaHuynhTruong' => $_POST['mahuynhtruong'],
-            'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
+            'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc'],
+            'MaChiDoan' => $_POST['machidoan'],
+            'MaHuynhTruong' => $_POST['mahuynhtruong']
         );
         
-        $this->glvmodel->addGLVToClass($data);
+        $this->glvmodel->addGLVToClass($data);      
         
+        $result = $this->glvmodel->getGLVInClass($_POST['malop'], $this->session->userdata['logged_in']['manamhoc']);
+        echo $result;
     }
-    
 }

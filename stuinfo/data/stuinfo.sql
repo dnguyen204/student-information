@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Database: `stuinfo`
+-- Database: `u524800034_info`
 --
 
 -- --------------------------------------------------------
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbl_chidoan` (
   `MaChiDoan` int(11) NOT NULL,
   `TenChiDoan` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_chidoan`
@@ -56,7 +56,7 @@ CREATE TABLE `tbl_danhsachlopdoansinh` (
   `MaDoanSinh` varchar(6) DEFAULT NULL,
   `MaNamHoc` int(11) DEFAULT NULL,
   `MaLopCu` varchar(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_danhsachlopdoansinh`
@@ -81,7 +81,7 @@ CREATE TABLE `tbl_diemhk1` (
   `KT1TietHKI` float DEFAULT NULL,
   `KTHK1` float DEFAULT NULL,
   `TBHK1` float DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_diemhk1`
@@ -106,7 +106,7 @@ CREATE TABLE `tbl_diemhk2` (
   `KT1TietHKII` float DEFAULT NULL,
   `KTHK2` float DEFAULT NULL,
   `TBHK2` float DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_diemhk2`
@@ -145,7 +145,7 @@ CREATE TABLE `tbl_doansinh` (
   `DiaChi` varchar(150) DEFAULT NULL,
   `GhiChu` varchar(150) DEFAULT NULL,
   `TrangThai` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_doansinh`
@@ -166,7 +166,7 @@ INSERT INTO `tbl_doansinh` (`ID`, `HinhDoanSinh`, `MaDoanSinh`, `TenThanh`, `Hov
 CREATE TABLE `tbl_doi` (
   `MaDoi` int(11) NOT NULL,
   `TenDoi` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_doi`
@@ -200,7 +200,7 @@ CREATE TABLE `tbl_huynhtruong` (
   `GhiChu` varchar(150) DEFAULT NULL,
   `TrangThai` int(11) DEFAULT NULL,
   `Username` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_huynhtruong`
@@ -224,7 +224,7 @@ CREATE TABLE `tbl_lop` (
   `MaPhanDoan` int(11) NOT NULL,
   `MaNamHoc` int(11) NOT NULL,
   `MaPhanDoanTruong` varchar(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_lop`
@@ -248,7 +248,7 @@ CREATE TABLE `tbl_namhoc` (
   `NamBatDau` int(11) NOT NULL,
   `NamKetThuc` int(11) NOT NULL,
   `GhiChu` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_namhoc`
@@ -267,7 +267,7 @@ INSERT INTO `tbl_namhoc` (`MaNamHoc`, `NamBatDau`, `NamKetThuc`, `GhiChu`) VALUE
 CREATE TABLE `tbl_nganh` (
   `MaNganh` int(11) NOT NULL,
   `TenNganh` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_nganh`
@@ -301,7 +301,7 @@ CREATE TABLE `tbl_permision` (
   `fnGiayKhen` tinyint(1) DEFAULT NULL,
   `fnThuBao` tinyint(1) DEFAULT NULL,
   `fnThuMoi` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_permision`
@@ -330,7 +330,7 @@ CREATE TABLE `tbl_phancong` (
   `MaNamHoc` int(11) NOT NULL,
   `MaChiDoan` int(11) NOT NULL,
   `MaHuynhTruong` varchar(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_phancong`
@@ -348,7 +348,7 @@ INSERT INTO `tbl_phancong` (`ID`, `MaLop`, `MaNamHoc`, `MaChiDoan`, `MaHuynhTruo
 CREATE TABLE `tbl_phandoan` (
   `MaPhanDoan` int(11) NOT NULL,
   `TenPhanDoan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_phandoan`
@@ -378,7 +378,7 @@ INSERT INTO `tbl_phandoan` (`MaPhanDoan`, `TenPhanDoan`) VALUES
 CREATE TABLE `tbl_role` (
   `MaQuyen` int(11) NOT NULL,
   `TenQuyen` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_role`
@@ -400,7 +400,7 @@ INSERT INTO `tbl_role` (`MaQuyen`, `TenQuyen`) VALUES
 CREATE TABLE `tbl_tenthanh` (
   `MaTenThanh` int(11) NOT NULL,
   `TenThanh` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_tenthanh`
@@ -431,7 +431,7 @@ CREATE TABLE `tbl_tonghopdiemtb` (
   `DiemTB` float DEFAULT NULL,
   `HocLuc` varchar(10) DEFAULT NULL,
   `HanhKiem` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -453,7 +453,7 @@ CREATE TABLE `tbl_tongketcanam` (
   `XepHangCN` int(11) DEFAULT NULL,
   `CotPhu` int(11) DEFAULT NULL,
   `XetLop` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_tongketcanam`
@@ -478,7 +478,7 @@ CREATE TABLE `tbl_tongkethk1` (
   `HKHK1` varchar(10) DEFAULT NULL,
   `XepHang` int(11) DEFAULT NULL,
   `XepHangHK1` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -496,7 +496,7 @@ CREATE TABLE `tbl_tongkethk2` (
   `HKHK2` varchar(10) DEFAULT NULL,
   `XepHang` int(11) DEFAULT NULL,
   `XepHangHK2` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -507,7 +507,7 @@ CREATE TABLE `tbl_tongkethk2` (
 CREATE TABLE `tbl_trangthai` (
   `ID` int(11) NOT NULL,
   `TrangThai` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_trangthai`
@@ -536,7 +536,7 @@ CREATE TABLE `tbl_user` (
   `MaQuyen` int(11) NOT NULL,
   `Created` date NOT NULL,
   `LastModified` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_user`

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class GLV_model extends CI_Model
+class Glv_model extends CI_Model
 {
     // xóa dấu tiếng việt
     function vn_str_filter($str)
@@ -117,7 +117,7 @@ class GLV_model extends CI_Model
         $this->db->select('*');
         $this->db->from('tbl_huynhtruong');
         $this->db->join('tbl_trangthai', 'tbl_huynhtruong.TrangThai = tbl_trangthai.ID', 'left');
-        $this->db->order_by('ID', 'DESC');
+        $this->db->order_by('tbl_huynhtruong.ID', 'DESC');
         
         $this->db->limit(20, 0);
         $query = $this->db->get();
@@ -155,6 +155,7 @@ class GLV_model extends CI_Model
             ->join('tbl_chidoan cd', 'cd.MaChiDoan = pc.MaChiDOan');
         $this->db->where('pc.MaLop', $malop);
         $this->db->where('pc.MaNamHoc', $manamhoc);
+        $this->db->order_by('cd.TenChiDoan','ASC');
         
         $query = $this->db->get();
         
@@ -188,7 +189,7 @@ class GLV_model extends CI_Model
             $output_string .= '</tbody>';
             $output_string .= '</table>';
             $output_string .= '<script type="text/javascript"
-	src="' . "{$url}" . 'public/backend/template/admin/custom_js/division.js"></script>';
+	src="' . "{$url}" . 'public/backend/template/admin/custom_js/division-extend.js"></script>';
         } else {
             return 'Chưa có phân công cho phân đoàn này';
         }
@@ -218,6 +219,17 @@ class GLV_model extends CI_Model
         return $output_string;
     }
     // Thêm GLV vào lớp dạy và update trạng thái của glv
-    function addGLVToClass($data)
-    {}
+    public function addGLVToClass($data)
+    {
+        $this->db->where($data);
+        if($this->db->count_all_results('tbl_phancong') == 0){
+            $this->db->insert('tbl_phancong', $data);
+            
+            $maht = $data[0]->MaHuynhTruong;
+            // Trạng thái 7 là đang dạy
+            $this->db->query("UPDATE tbl_huynhtruong
+                SET TrangThai = 7,               
+                WHERE MaHuynhTruong = '$maht'") or die(mysqli_error());
+        }
+    }
 }

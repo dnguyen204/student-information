@@ -69,9 +69,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
     							<td><?php echo $r['DiaChi'];?></td>
     							<td><?php echo $r['TrangThai'];?></td>
     							<td><a
-    								href="detailstudent?id=GLV&code=<?php echo $r['MaHuynhTruong'];?>"
+    								href="detailStudent?id=GLV&code=<?php echo $r['MaHuynhTruong'];?>"
     								title="Quá trình học"><i class="glyphicon glyphicon-education"></i></a></td>
-    							<td><a href="editstudent?code=<?php echo $r['MaHuynhTruong'];?>"
+    							<td><a href="editStudent?code=<?php echo $r['MaHuynhTruong'];?>"
     								title="Chỉnh sửa"><i class="glyphicon glyphicon-edit"></i></a></td>
 							<?php }else{?>
     							<td><?php echo $r['MaDoanSinh'];?></td>							
@@ -81,9 +81,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
     							<td><?php echo $r['DiaChi'];?></td>
     							<td><?php echo $r['TrangThai'];?></td>
     							<td><a
-    								href="detailstudent?id=đoàn sinh&code=<?php echo $r['MaDoanSinh'];?>"
+    								href="detailStudent?id=đoàn sinh&code=<?php echo $r['MaDoanSinh'];?>"
     								title="Quá trình học"><i class="glyphicon glyphicon-education"></i></a></td>
-    							<td><a href="editstudent?code=<?php echo $r['MaDoanSinh'];?>"
+    							<td><a href="editStudent?code=<?php echo $r['MaDoanSinh'];?>"
     								title="Chỉnh sửa"><i class="glyphicon glyphicon-edit"></i></a></td>
 							<?php }?>
 						</tr>						

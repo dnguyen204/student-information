@@ -1,8 +1,8 @@
 eclipse.preferences.version=1
 encoding//application/controllers/admin/NewStudent.php=UTF-8
 encoding//application/controllers/admin/Search.php=UTF-8
-encoding//application/models/admin/GLV_model.php=UTF-8
-encoding//application/models/admin/TenThanh_model.php=UTF-8
+encoding//application/models/admin/Glv_model.php=UTF-8
+encoding//application/models/admin/Tenthanh_model.php=UTF-8
 encoding//application/models/user/User_model.php=UTF-8
 encoding//application/views/admin/detailstudent.php=UTF-8
 encoding//application/views/admin/division.php=UTF-8
