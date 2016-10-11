@@ -13,14 +13,15 @@ class Tenthanh_model extends CI_Model
             foreach ($query->result_array() as $row) {
                 $row_set[] = htmlentities(stripslashes($row['TenThanh'])); // build an array
             }
-            echo json_encode($row_set); // format the array into json data
+            // format the array into json data
+            echo html_entity_decode(json_encode($row_set)); // format utf8
         }
     }
 
     public function getAll()
     {
         $this->db->select('*');
-        $this->db->from('tbl_tenthanh');        
+        $this->db->from('tbl_tenthanh');
         $query = $this->db->get();
         return $result = $query->result_array();
     }
@@ -31,10 +32,10 @@ class Tenthanh_model extends CI_Model
         
         $this->db->select('TenThanh');
         $this->db->from('tbl_tenthanh');
-        $this->db->where('TenThanh' , $tenthanh);
+        $this->db->where('TenThanh', $tenthanh);
         $query = $this->db->get();
         
-        if ($query->num_rows() > 0) { // if return 1, email exist.            
+        if ($query->num_rows() > 0) { // if return 1, email exist.
             echo 'Tên Thánh ' . $tenthanh . ' đã có rồi!';
         } else { // else not, insert to the table
             $this->db->query("INSERT INTO tbl_tenthanh (TenThanh) VALUES('$tenthanh')");

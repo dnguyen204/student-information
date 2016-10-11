@@ -14,18 +14,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-sm-6 col-xs-6">
+						<div class="col-sm-6 col-xs-12">
 							<div class="form-group">
 								<label class="control-label col-md-4 col-xs-4">Mã lớp:</label>
 								<div class="col-md-8 col-xs-8">
-									<input type="text" class="form-control" name="malop"/>
+									<input type="text" class="form-control" name="malop" />
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-xs-12">
+							<div class="form-group">
+								<label class="control-label col-md-4 col-xs-4">Phân đoàn trưởng:</label>
+								<div class="col-md-8 col-xs-8">
+									<select class="selectpicker form-control" name="mapdt">
+									<?php foreach ($listglv as $pd){?>
+										<option value="<?= $pd['Username']?>"><?= $pd['TenThanh'].' '.$pd['HovaDem'].' '.$pd['Ten']?></option>
+									<?php }?>										
+									</select>
 								</div>
 							</div>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-sm-6 col-xs-6">
+						<div class="col-sm-6 col-xs-12">
 							<div class="form-group">
 								<label class="control-label col-md-4 col-xs-4">Ngành:</label>
 								<div class="col-md-8 col-xs-8">
@@ -40,7 +53,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 
 					<div class="row">
-						<div class="col-sm-6 col-xs-6">
+						<div class="col-sm-6 col-xs-12">
 							<div class="form-group">
 								<label class="control-label col-md-4 col-xs-4">Phân đoàn:</label>
 								<div class="col-md-8 col-xs-8">
@@ -67,8 +80,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<tr>
 							<th>Mã lớp</th>
 							<th>Ngành</th>
-							<th>Phân đoàn</th>							
+							<th>Phân đoàn</th>
 							<th>Năm học</th>
+							<th>Phân đoàn trưởng</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -80,6 +94,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<td><?= $c['TenNganh']?></td>
 							<td><?= $c['TenPhanDoan']?></td>
 							<td><?= $c['NamBatDau'].' - '.$c['NamKetThuc']?></td>
+							<td><?= $c['TenThanh'].' '.$c['HovaDem'].' '.$c['Ten']?></td>
 							<td><a><i class="glyphicon glyphicon-pencil"
 									title="Chỉnh sửa lớp"></i></a></td>
 							<td><a><i class="glyphicon glyphicon-remove" title="Xóa lớp"></i></a></td>

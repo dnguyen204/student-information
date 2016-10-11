@@ -12,7 +12,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		</div>
 		<!-- Row 0 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Mã GLV:</label>
 
@@ -26,7 +26,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 1 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Tên Thánh:</label>
 
@@ -40,7 +40,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 2 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Họ và tên đệm:</label>
 					<div class="col-md-8 col-xs-8">
@@ -49,7 +49,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Tên:</label>
 					<div class="col-md-8 col-xs-8">
@@ -62,7 +62,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 3 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Giới tính:</label>
 					<div class="col-md-8 col-xs-8">
@@ -78,7 +78,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 4 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ngày sinh:</label>
 					<div class="col-md-8 col-xs-8">
@@ -91,11 +91,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ngày bổn mạng:</label>
 					<div class="col-md-8 col-xs-8">
-						<input class="form-control" type="text" name="glvBonMang">
+						<input class="form-control" type="text" name="glvBonMang" placeholder="ngày-tháng. EX: 01-05">
 					</div>
 				</div>
 			</div>
@@ -103,7 +103,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 9 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Số điện thoại:</label>
 					<div class="col-md-8 col-xs-8">
@@ -112,7 +112,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Email:</label>
 					<div class="col-md-8 col-xs-8">
@@ -124,7 +124,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 12 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Địa chỉ:</label>
 					<div class="col-md-8 col-xs-8">
@@ -132,7 +132,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ghi chú:</label>
 					<div class="col-md-8 col-xs-8">
@@ -144,7 +144,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 13 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Cấp bậc:</label>
 					<div class="col-md-8 col-xs-8">

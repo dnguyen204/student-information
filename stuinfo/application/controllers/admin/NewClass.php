@@ -20,6 +20,7 @@ class NewClass extends CI_Controller
             $data['nganh'] = $this->cmodel->getNganh();
             $data['phandoan'] = $this->cmodel->getPhanDoan();            
             $data['class'] = $this->cmodel->getClassInYear($this->session->userdata['logged_in']['manamhoc']);
+            $data['listglv'] = $this->cmodel->getAllHuynhTruong(4); //get danh sach huynh truong
             
             $data['subview'] = 'admin/newclass';
             $this->load->view('admin/main', $data);
@@ -33,10 +34,11 @@ class NewClass extends CI_Controller
                 'MaLop' => $_POST['malop'],
                 'MaNganh' => $_POST['manganh'],
                 'MaPhanDoan' => $_POST['maphandoan'],                
-                'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
+                'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc'],
+                'Username' => $_POST['mapdt']
             );
             
-            $this->cmodel->addClass($add_class);
+            $this->cmodel->addClass($add_class, $_POST['mapdt']);
         }
     }
 

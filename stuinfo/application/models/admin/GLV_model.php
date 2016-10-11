@@ -62,23 +62,27 @@ class Glv_model extends CI_Model
     // thÃªm má»›i 1 GLV
     public function addNewGLV()
     {
-        $maglv = $_POST['maglv'];
-        $glvtenthanh = $_POST['glvTenThanh'];
         $glvhovadem = $_POST['glvLastName'];
         $glvten = $_POST['glvFirstName'];
-        $glvgioitinh = $_POST['glvSex'];
-        $glvngaysinh = date('Y-m-d', strtotime($_POST['glvDOB']));
-        $glvbonmang = $_POST['glvBonMang'];
-        
-        $glvsdt = $_POST['SDT'];
-        $glvemail = $_POST['Email'];
-        
-        $glvdiachi = $_POST['glvAddress'];
-        $glvghichu = $_POST['glvNote'];
-        
-        $stutrangthai = ($_POST['maquyen'] === 4) ? 5 : 4; // tráº¡ng thÃ¡i má»›i táº¡o
-        
         $username = strtolower($this->vn_str_filter($glvten)) . '.' . $this->getFirstChar($glvhovadem) . date('dm', strtotime($_POST['glvDOB']));
+        
+        $newGLV = array(
+            'MaHuynhTruong' => $_POST['maglv'],
+            'TenThanh' => $_POST['glvTenThanh'],
+            'HovaDem' => $glvhovadem,
+            'Ten' => $glvten,
+            'NgaySinh' => date('Y-m-d', strtotime($_POST['glvDOB'])),
+            'NgayBonMang' => $_POST['glvBonMang'],
+            'GioiTinh' => $_POST['glvSex'],
+            'DienThoai' => $_POST['SDT'],
+            'Email' => $_POST['Email'],
+            'DiaChi' => $_POST['glvAddress'],
+            'GhiChu' => $_POST['glvNote'],
+            'TrangThai' => ($_POST['maquyen'] === 4) ? 5 : 6, // 5 là huynh trưởng mới, 6 là dự trưởng mới
+            'MaQuyen' => $_POST['maquyen'],
+            'Username' => $username
+        );
+        $this->db->insert('tbl_huynhtruong', $newGLV);
         
         $user = array(
             'Username' => $username,
@@ -87,13 +91,7 @@ class Glv_model extends CI_Model
             'Created' => date("Y-m-d"),
             'LastModified' => date("Y-m-d")
         );
-        
         $this->db->insert('tbl_user', $user);
-        
-        $this->db->query("INSERT INTO tbl_huynhtruong (MaHuynhTruong,TenThanh,HovaDem,Ten,NgaySinh,
-            NgayBonMang,GioiTinh,DienThoai,Email,DiaChi,GhiChu,TrangThai,Username) 
-            VALUES('$maglv','$glvtenthanh','$glvhovadem','$glvten','$glvngaysinh',
-            '$glvbonmang','$glvgioitinh','$glvsdt','$glvemail','$glvdiachi','$glvghichu','$stutrangthai','$username')") or die(mysqli_error());
     }
     // TÃ¬m kiáº¿m GLV trong trang search
     public function searchGLV()
@@ -146,7 +144,24 @@ class Glv_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result_array();
     }
-    // Láº¥y Danh sÃ¡ch GLV Ä�Æ°á»£c phÃ¢n cÃ´ng dáº¡y trong lá»›p
+    // Lấy Tên Phân Đoàn Trưởng
+    public function getPhanDoanTruong($malop)
+    {
+        $this->db->select('ht.TenThanh, ht.HovaDem, ht.Ten');
+        $this->db->from('tbl_lop l')->join('tbl_huynhtruong ht', 'ht.Username = l.Username');
+        $this->db->where('l.MaLop', $malop);
+        
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $key => $row) {
+                $name = $row['TenThanh'] . ' ' . $row['HovaDem'] . ' ' . $row['Ten'];
+                $output_string = '<h3>' . $name . '</h3>';
+            }
+        }
+        return $output_string;
+    }
+    
+    // Lấy danh sách glv phân công dạy trong lớp
     public function getGLVInClass($malop, $manamhoc)
     {
         $this->db->select('ht.MaHuynhTruong, ht.TenThanh, ht.HovaDem, ht.Ten, ht.DienThoai, cd.TenChiDoan');
@@ -196,7 +211,7 @@ class Glv_model extends CI_Model
         
         return $output_string;
     }
-    // láº¥y danh sÃ¡ch GLV theo quyá»�n -> tráº£ vá»� danh sÃ¡ch GLV
+    // lấy danh sách glv theo cấp bậc chọn trên form
     public function getGLVByRole($roleid)
     {
         $this->db->select('ht.MaHuynhTruong, ht.TenThanh, ht.HovaDem, ht.Ten');
@@ -218,7 +233,7 @@ class Glv_model extends CI_Model
         
         return $output_string;
     }
-    // ThÃªm GLV vÃ o lá»›p dáº¡y vÃ  update tráº¡ng thÃ¡i cá»§a glv
+    // Thêm glv vào lớp đang dạy và update status
     public function addGLVToClass($data, $maht)
     {
         $this->db->where($data);
@@ -232,9 +247,16 @@ class Glv_model extends CI_Model
             ));
         }
     }
-    // Xóa glv theo class
-    public function removeGLV($data){
+    // Xóa glv theo class và update lại status của glv
+    public function removeGLV($data, $maht)
+    {
         $this->db->where($data);
         $this->db->delete('tbl_phancong');
+        
+        // Trạng thái 5 là Huynh trưởng mới
+        $this->db->where('MaHuynhTruong', $maht);
+        $this->db->update('tbl_huynhtruong', array(
+            'TrangThai' => '5'
+        ));
     }
 }

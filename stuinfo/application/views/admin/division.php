@@ -41,8 +41,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									<tr>
 										<td>Phân đoàn trưởng:</td>
 										<td id="lead_class"></td>
-										<td><a title="Xóa phân đoàn trưởng"><i
-												class="glyphicon glyphicon-remove-sign"></i></a></td>
+										<td></td>
 									</tr>
 								</tbody>
 							</table>

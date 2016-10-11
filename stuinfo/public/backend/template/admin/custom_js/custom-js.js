@@ -7,7 +7,7 @@
 	});
 
 	$(".auto-TenThanh").autocomplete({
-		source : "newstudent/get_list" // path to the get_birds method
+		source : "newstudent/get_list"// path to the get_birds method		
 	});
 
 	var toggle = true;

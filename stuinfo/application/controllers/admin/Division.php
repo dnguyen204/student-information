@@ -63,8 +63,13 @@ class Division extends CI_Controller
             'MaHuynhTruong' => $_POST['mahuynhtruong']
         );
         
-        $this->glvmodel->removeGLV($data);
+        $this->glvmodel->removeGLV($data, $_POST['mahuynhtruong']);
         
         $this->getPeopleInClass($_POST['malop']);
+    }
+    // Lấy tên Phân đoàn trưởng
+    function getLeadOfClass()
+    {
+        echo $this->glvmodel->getPhanDoanTruong($_POST['malop']);
     }
 }
