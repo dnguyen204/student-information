@@ -195,3 +195,7 @@ td a {
 #menu-academico a{
 	cursor: pointer;
 }
+
+.btn {
+	margin-top: -1px;
+}

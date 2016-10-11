@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Student_model extends CI_Model
 {
-
+    // Tìm kiếm Đoàn sinh trong search
     public function searchStudent()
     {
         $searchType = isset($_GET['type']) ? $_GET['type'] : '';
@@ -27,11 +27,11 @@ class Student_model extends CI_Model
         $this->db->join('tbl_trangthai', 'tbl_doansinh.TrangThai = tbl_trangthai.ID', 'left');
         $this->db->limit(50, 0);
         $this->db->order_by('tbl_doansinh.ID', 'DESC');
-      
+        
         $query = $this->db->get();
         return $result = $query->result_array();
     }
-
+    // Tạo mã đoàn sinh khi tạo mới
     public function createNewCode()
     {
         $currentYear = date('y');
@@ -50,9 +50,10 @@ class Student_model extends CI_Model
             return $result = $currentYear . '0001';
         }
     }
-
+    // Thệ ĐS mới vào hệ thống
     public function addNew()
     {
+        // Nếu ĐS đó được thêm vào lớp
         $isAddClass = $_POST['isClass'];
         if ($isAddClass === 'checked') {
             $stutrangthai = 2;
@@ -97,7 +98,7 @@ class Student_model extends CI_Model
         
         $this->db->insert('tbl_doansinh', $newStudent);
     }
-
+    // cập nhật thông tin cho ĐS
     public function updateStudent()
     {
         $stumadoansinh = $_POST['stuMa'];
@@ -146,7 +147,7 @@ class Student_model extends CI_Model
                 GhiChu = '$stughichu'
             WHERE MaDoanSinh = '$stumadoansinh'") or die(mysqli_error());
     }
-
+    // Lấy thông tin chi tiết cho ĐS theo Mã
     public function getStudentDetail($code)
     {
         $this->db->select('*');
@@ -157,7 +158,7 @@ class Student_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result_array();
     }
-
+    // lấy quá trình học của ĐS
     public function getStudentProcess($code)
     {
         $this->db->select('*');
@@ -173,5 +174,15 @@ class Student_model extends CI_Model
         
         $query = $this->db->get();
         return $result = $query->result_array();
+    }
+    // Lấy danh sách ĐS theo trạng thái
+    public function getListStudentByStatus($status)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_doansinh');
+        $this->db->where('TrangThai', $status);
+        
+        $query = $this->db->get();
+        return $query->result_array();
     }
 }

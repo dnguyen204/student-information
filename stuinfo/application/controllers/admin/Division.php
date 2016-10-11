@@ -14,12 +14,18 @@ class Division extends CI_Controller
 
     public function index()
     {
-        $data['class_list'] = $this->cmodel->getClassInYear($this->session->userdata['logged_in']['manamhoc']);
-        $data['role'] = $this->glvmodel->getRole();
-        $data['chidoan'] = $this->cmodel->getChiDoan();
-        
-        $data['subview'] = 'admin/division';
-        $this->load->view('admin/main', $data);
+        if (in_array($this->uri->segments[1] . '/' . $this->uri->segments[2], $this->session->userdata['logged_in']['quyen']) == FALSE) {
+            $data['subview'] = 'resultpage/no_permision';
+            $this->load->view('admin/main', $data);
+        } else {
+            
+            $data['class_list'] = $this->cmodel->getClassInYear($this->session->userdata['logged_in']['manamhoc']);
+            $data['role'] = $this->glvmodel->getRole();
+            $data['chidoan'] = $this->cmodel->getChiDoan();
+            
+            $data['subview'] = 'admin/division';
+            $this->load->view('admin/main', $data);
+        }
     }
     
     // Get all GLV in Class
