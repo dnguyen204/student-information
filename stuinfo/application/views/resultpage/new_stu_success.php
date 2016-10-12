@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <script type="text/javascript">
 	var time = 3; // Thời gian đếm ngược
-	var page = "<?php echo base_url()?>index.php/admin/newstudent"; // Trang bạn muốn chuyển đến
+	var page = "<?php echo base_url()?>index.php/admin/newStudent"; // Trang bạn muốn chuyển đến
 	function countDown(){
 		time--;
 		if(time == -1){

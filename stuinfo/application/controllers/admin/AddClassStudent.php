@@ -42,5 +42,16 @@ class AddClassStudent extends CI_Controller
     }
 
     function addStudent()
-    {}
+    {
+        $data_insert = array(
+            'MaLop' => $_POST['malop'],
+            'MaChiDoan' => $_POST['machidoan'],
+            'MaDoanSinh' => $_POST['madoansinh'],
+            'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
+        );
+        
+        $this->smodel->addStudentToClass($data_insert, $_POST['madoansinh']);
+        
+        $this->getStudentInClass();
+    }
 }

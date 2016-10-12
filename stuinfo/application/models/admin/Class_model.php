@@ -36,7 +36,7 @@ class Class_model extends CI_Model
             $output_string = '';
             $output_string .= '<option value="0">- Chọn chi đoàn -</option>';
             foreach ($query->result_array() as $key => $row) {
-                $output_string .= "<option value" . "{$row['MaChiDoan']}" . ">{$row['TenChiDoan']}</option>";
+                $output_string .= "<option value=" . "{$row['MaChiDoan']}" . ">{$row['TenChiDoan']}</option>";
             }
             return $output_string;
         }

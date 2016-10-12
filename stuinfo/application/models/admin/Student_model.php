@@ -199,7 +199,7 @@ class Student_model extends CI_Model
                 $name = $row['HovaDem'] . ' ' . $row['Ten'];
                 $url = base_url();
                 
-                $output_string .= '<tr class="row_glv" id="' . "{$row['MaDoanSinh']}" . '">';
+                $output_string .= '<tr id="' . "{$row['MaDoanSinh']}" . '">';
                 $output_string .= "<td>{$index}</td>";
                 $output_string .= "<td>{$row['TenThanh']}</td>";
                 $output_string .= "<td>{$name}</td>";
@@ -241,11 +241,11 @@ class Student_model extends CI_Model
                 $name = $row['HovaDem'] . ' ' . $row['Ten'];
                 $url = base_url();
                 
-                $output_string .= '<tr class="row_glv" id="' . "{$row['MaDoanSinh']}" . '">';
+                $output_string .= '<tr id="' . "{$row['MaDoanSinh']}" . '">';
                 $output_string .= "<td>{$index}</td>";
                 $output_string .= "<td>{$row['TenThanh']}</td>";
                 $output_string .= "<td>{$name}</td>";
-                $output_string .= '<td><a title="Thêm vào chi đoàn này"><i class="glyphicon glyphicon-chevron-right add-to-class"></i></a></td>';
+                $output_string .= '<td><a title="Xóa khỏi chi đoàn này"><i class="glyphicon glyphicon-remove remove-in-class"></i></a></td>';
                 $output_string .= '</tr>';
             }
             
@@ -262,8 +262,13 @@ class Student_model extends CI_Model
         return $output_string;
     }
     // Thêm đoàn sinh vào lớp và cập nhật trạng thái
-    public function addStudentToClass($data)
+    public function addStudentToClass($data, $mads)
     {
-        $this->db->insert('tbl_')
+        $this->db->insert('tbl_danhsachlopdoansinh', $data); // thêm ĐS vào lớp
+        
+        $this->db->where('MaDoanSinh', $mads);
+        $this->db->update('tbl_doansinh', array(
+           'TrangThai' => 2 // Trạng thái đang học
+        ));
     }
 }
