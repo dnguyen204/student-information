@@ -50,7 +50,7 @@ class Student_model extends CI_Model
             return $result = $currentYear . '0001';
         }
     }
-    // Thệ ĐS mới vào hệ thống
+    // Thêm ĐS mới vào hệ thống
     public function addNew()
     {
         // Nếu ĐS đó được thêm vào lớp
@@ -175,7 +175,7 @@ class Student_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result_array();
     }
-    // Lấy danh sách ĐS theo trạng thái
+    // Lấy danh sách ĐS theo trạng thái mới or đang học
     public function getListStudentByStatus($status)
     {
         $this->db->select('*');
@@ -183,6 +183,87 @@ class Student_model extends CI_Model
         $this->db->where('TrangThai', $status);
         
         $query = $this->db->get();
-        return $query->result_array();
+        if ($query->num_rows() > 0) {
+            $output_string = '';
+            $output_string .= '<table class="table table-user-information">';
+            $output_string .= '<tbody>';
+            $output_string .= '<tr>';
+            $output_string .= '<th>STT</th>';
+            $output_string .= '<th>Tên Thánh</th>';
+            $output_string .= '<th>Họ và Tên</th>';
+            $output_string .= '<th></th>';
+            $output_string .= '</tr>';
+            
+            foreach ($query->result_array() as $key => $row) {
+                $index = $key + 1;
+                $name = $row['HovaDem'] . ' ' . $row['Ten'];
+                $url = base_url();
+                
+                $output_string .= '<tr class="row_glv" id="' . "{$row['MaDoanSinh']}" . '">';
+                $output_string .= "<td>{$index}</td>";
+                $output_string .= "<td>{$row['TenThanh']}</td>";
+                $output_string .= "<td>{$name}</td>";
+                $output_string .= '<td><a title="Thêm vào chi đoàn này"><i class="glyphicon glyphicon-chevron-right add-to-class"></i></a></td>';
+                $output_string .= '</tr>';
+            }
+            
+            $output_string .= '</tbody>';
+            $output_string .= '</table>';
+            // $output_string .= '<script type="text/javascript"
+            // src="' . "{$url}" . 'public/backend/template/admin/custom_js/addclass-student-extend.js"></script>';
+        } else {
+            return 'Không có học sinh mới nào';
+        }
+        
+        return $output_string;
+    }
+    // Lấy danh sách ĐS theo lớp và chi đoàn
+    public function getStudentByClass($data)
+    {
+        $this->db->select('*');
+        $this->db->where($data);
+        $this->db->from('tbl_danhsachlopdoansinh dslds')->join('tbl_doansinh ds', 'ds.MaDoanSinh = dslds.MaDoanSinh');
+        
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $output_string = '';
+            $output_string .= '<table class="table table-user-information">';
+            $output_string .= '<tbody>';
+            $output_string .= '<tr>';
+            $output_string .= '<th>STT</th>';
+            $output_string .= '<th>Tên Thánh</th>';
+            $output_string .= '<th>Họ và Tên</th>';
+            $output_string .= '<th></th>';
+            $output_string .= '</tr>';
+            
+            foreach ($query->result_array() as $key => $row) {
+                $index = $key + 1;
+                $name = $row['HovaDem'] . ' ' . $row['Ten'];
+                $url = base_url();
+                
+                $output_string .= '<tr class="row_glv" id="' . "{$row['MaDoanSinh']}" . '">';
+                $output_string .= "<td>{$index}</td>";
+                $output_string .= "<td>{$row['TenThanh']}</td>";
+                $output_string .= "<td>{$name}</td>";
+                $output_string .= '<td><a title="Thêm vào chi đoàn này"><i class="glyphicon glyphicon-chevron-right add-to-class"></i></a></td>';
+                $output_string .= '</tr>';
+            }
+            
+            $output_string .= '</tbody>';
+            $output_string .= '</table>';
+            $output_string .= '<script type="text/javascript"
+	src="' . "{$url}" . 'public/backend/template/admin/custom_js/addclass-student-extend.js"></script>';
+        } else {
+            $url = base_url();
+            return 'Không có đoàn sinh nào trong lớp' . '<script type="text/javascript"
+	src="' . "{$url}" . 'public/backend/template/admin/custom_js/addclass-student-extend.js"></script>';
+            ;
+        }
+        return $output_string;
+    }
+    // Thêm đoàn sinh vào lớp và cập nhật trạng thái
+    public function addStudentToClass($data)
+    {
+        $this->db->insert('tbl_')
     }
 }

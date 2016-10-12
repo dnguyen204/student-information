@@ -21,14 +21,25 @@ class Class_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result_array();
     }
-
-    public function getChiDoan()
+    // lấy danh sách chi đoàn với params loại là kiểu select hay array
+    public function getChiDoan($type)
     {
         $this->db->select('*');
         $this->db->from('tbl_chidoan');
-        
         $query = $this->db->get();
-        return $result = $query->result_array();
+        
+        if ($type != 'select') {
+            return $result = $query->result_array();
+        }
+        
+        if ($query->num_rows() > 0) {
+            $output_string = '';
+            $output_string .= '<option value="0">- Chọn chi đoàn -</option>';
+            foreach ($query->result_array() as $key => $row) {
+                $output_string .= "<option value" . "{$row['MaChiDoan']}" . ">{$row['TenChiDoan']}</option>";
+            }
+            return $output_string;
+        }
     }
 
     public function getDoi()
@@ -85,20 +96,20 @@ class Class_model extends CI_Model
             ->join('tbl_user u', 'u.Username = l.Username');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
-            foreach ($query->result_array() as $key => $row) {               
+            foreach ($query->result_array() as $key => $row) {
                 $this->db->where('MaLop', $row['MaLop']);
                 $this->db->delete('tbl_lop');
                 
                 $this->db->where('Username', $row['Username']);
                 $this->db->update('tbl_huynhtruong', array(
                     'MaQuyen' => 4, // chuyển thành Huynh Trưởng
-                    'TrangThai' => 5, // chuyển thành Huynh Trưởng mới
-                ));
+                    'TrangThai' => 5
+                )); // chuyển thành Huynh Trưởng mới
                 
                 $this->db->where('Username', $row['Username']);
                 $this->db->update('tbl_user', array(
                     'MaQuyen' => 4, // chuyển thành Huynh Trưởng
-                    'LastModified' =>  date("Y-m-d")
+                    'LastModified' => date("Y-m-d")
                 ));
             }
         }

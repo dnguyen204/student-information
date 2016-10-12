@@ -200,5 +200,6 @@ if (isset($this->session->userdata['logged_in'])) {
 		src="<?php echo base_url();?>public/backend/template/admin/js/bootstrap.min.js"></script>
 	<script
 		src="<?php echo base_url();?>public/backend/template/admin/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript">var site = "<?php echo site_url(); ?>";</script>
 </body>
 </html>

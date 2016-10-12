@@ -9,16 +9,38 @@ class AddClassStudent extends CI_Controller
         parent::__construct();
         
         $this->load->helper('url');
+        $this->load->model('admin/class_model', 'cmodel');
         $this->load->model('admin/student_model', 'smodel');
     }
 
     public function index()
     {
-        $data['list_new_stu'] = $this->smodel->getListStudentByStatus(1);
+        $data['lop'] = $this->cmodel->getClassInYear($this->session->userdata['logged_in']['manamhoc']);
         
         $data['subview'] = 'admin/add_class_student';
         $this->load->view('admin/main', $data);
     }
-    
-    
+
+    function getNewStudent()
+    {
+        echo $this->smodel->getListStudentByStatus(1);
+    }
+
+    function getListChiDoan()
+    {
+        echo $this->cmodel->getChiDoan('select');
+    }
+
+    function getStudentInClass()
+    {
+        $data = array(
+            'MaLop' => $_POST['malop'],
+            'MaChiDoan' => $_POST['machidoan']
+        );
+        
+        echo $this->smodel->getStudentByClass($data);
+    }
+
+    function addStudent()
+    {}
 }

@@ -85,6 +85,7 @@
 		$maht = $('#glv_selected').attr('value');
 		$macd = $('#chidoan_selected').attr('value');
 
+		// Kiểm tra các field không đươc trống
 		if ($malop == undefined) {
 			$('.tbl-phandoan').css('border-color', 'red');
 			$('.phandoan-warning').css('display', '');

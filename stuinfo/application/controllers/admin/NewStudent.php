@@ -20,7 +20,7 @@ class NewStudent extends CI_Controller
             $this->load->view('admin/main', $data);
         } else {            
             $data['newcode'] = $this->stumodel->createNewCode();
-            $data['chidoan'] = $this->classmodel->getChiDoan();
+            $data['chidoan'] = $this->classmodel->getChiDoan('');
             $data['doi'] = $this->classmodel->getDoi();
             $data['lop'] = $this->classmodel->getClassInYear($this->session->userdata['logged_in']['manamhoc']);
             

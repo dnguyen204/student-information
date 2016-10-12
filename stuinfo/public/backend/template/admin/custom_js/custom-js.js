@@ -5,7 +5,7 @@
 			todayHighlight : true
 		}).datepicker();
 	});
-
+	
 	$(".auto-TenThanh").autocomplete({
 		source : "newstudent/get_list"// path to the get_birds method		
 	});
@@ -107,9 +107,6 @@
 				$('#valueHidden').attr('value', 'unchecked');
 			}
 		});
-	});
-	// Thêm session chỉnh sửa trong view_profile
-	$(function() {
 	});	
 	
 }(window.jQuery));

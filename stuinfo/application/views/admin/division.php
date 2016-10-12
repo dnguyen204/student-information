@@ -110,4 +110,3 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <script id="division_js" type='text/javascript'
 	src="<?php echo base_url();?>public/backend/template/admin/custom_js/division.js"></script>
-<script type="text/javascript">var site = "<?php echo site_url(); ?>";</script>
