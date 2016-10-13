@@ -168,9 +168,9 @@ class Student_model extends CI_Model
         $this->db->join('tbl_lop l', 'dsl.MaLop = l.MaLop')
             ->join('tbl_phandoan pd', 'l.MaPhanDoan = pd.MaPhanDoan')
             ->join('tbl_nganh n', 'l.MaNganh = n.MaNganh')
-            ->join('tbl_chidoan cd', 'dsl.MaChiDoan = cd.MaChiDoan');
-        $this->db->join('tbl_namhoc nh', 'dsl.MaNamHoc = nh.MaNamHoc');
-        $this->db->join('tbl_doi d', 'dsl.MaDoi = d.MaDoi');
+            ->join('tbl_chidoan cd', 'dsl.MaChiDoan = cd.MaChiDoan')
+            ->join('tbl_namhoc nh', 'dsl.MaNamHoc = nh.MaNamHoc')
+            ->join('tbl_doi d', 'dsl.MaDoi = d.MaDoi');
         
         $query = $this->db->get();
         return $result = $query->result_array();
@@ -191,7 +191,7 @@ class Student_model extends CI_Model
             $output_string .= '<th>STT</th>';
             $output_string .= '<th>Tên Thánh</th>';
             $output_string .= '<th>Họ và Tên</th>';
-            $output_string .= '<th></th>';
+            $output_string .= '<th>Tổng: ' . "{$query->num_rows()}" . '</th>';
             $output_string .= '</tr>';
             
             foreach ($query->result_array() as $key => $row) {
@@ -233,7 +233,7 @@ class Student_model extends CI_Model
             $output_string .= '<th>STT</th>';
             $output_string .= '<th>Tên Thánh</th>';
             $output_string .= '<th>Họ và Tên</th>';
-            $output_string .= '<th></th>';
+            $output_string .= '<th>Tổng: ' . "{$query->num_rows()}" . '</th>';
             $output_string .= '</tr>';
             
             foreach ($query->result_array() as $key => $row) {
@@ -257,7 +257,6 @@ class Student_model extends CI_Model
             $url = base_url();
             return 'Không có đoàn sinh nào trong lớp' . '<script type="text/javascript"
 	src="' . "{$url}" . 'public/backend/template/admin/custom_js/addclass-student-extend.js"></script>';
-            ;
         }
         return $output_string;
     }
@@ -268,7 +267,116 @@ class Student_model extends CI_Model
         
         $this->db->where('MaDoanSinh', $mads);
         $this->db->update('tbl_doansinh', array(
-           'TrangThai' => 2 // Trạng thái đang học
+            'TrangThai' => 2
+        )); // Trạng thái đang học
+    }
+    // Xóa Đoàn sinh khỏi lớp
+    public function removeStudentInClass($data, $mads)
+    {
+        $this->db->where($data);
+        $this->db->delete('tbl_danhsachlopdoansinh'); // Xóa ĐS trong lớp
+        
+        $this->db->where('MaDoanSinh', $mads);
+        $this->db->update('tbl_doansinh', array(
+            'TrangThai' => 1
+        )); // Trạng thái đang học
+    }
+    // Lấy danh sách đoàn sinh trong chi đoàn của GLV
+    public function getListStudentInChiDoan($data)
+    {
+        $this->db->where($data);
+        $this->db->from('tbl_danhsachlopdoansinh dslds')->join('tbl_doansinh ds', 'ds.MaDoanSinh = dslds.MaDoanSinh');
+        $this->db->select('*');
+        
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $output_string = '';
+            $output_string .= '<table class="table table-user-information">';
+            $output_string .= '<tbody>';
+            $output_string .= '<tr>';
+            $output_string .= '<th>STT</th>';
+            $output_string .= '<th>Tên Thánh</th>';
+            $output_string .= '<th>Họ và Tên</th>';
+            $output_string .= '<th>Tổng: ' . "{$query->num_rows()}" . '</th>';
+            $output_string .= '</tr>';
+            
+            foreach ($query->result_array() as $key => $row) {
+                $index = $key + 1;
+                $name = $row['HovaDem'] . ' ' . $row['Ten'];
+                $url = base_url();
+                
+                $output_string .= '<tr id="' . "{$row['MaDoanSinh']}" . '">';
+                $output_string .= "<td>{$index}</td>";
+                $output_string .= "<td>{$row['TenThanh']}</td>";
+                $output_string .= "<td>{$name}</td>";
+                $output_string .= '<td><a title="Thêm vào đội này"><i class="glyphicon glyphicon-chevron-right add-to-team"></i></a></td>';
+                $output_string .= '</tr>';
+            }
+            
+            $output_string .= '</tbody>';
+            $output_string .= '</table>';
+        } else {
+            return 'Không có đoàn sinh nào';
+        }
+        return $output_string;
+    }
+    // Lấy danh sách đoàn sinh theo từng đội của GLV
+    public function getListStudentInTeam($data)
+    {
+        $this->db->where($data);
+        $this->db->from('tbl_danhsachlopdoansinh dslds')->join('tbl_doansinh ds', 'ds.MaDoanSinh = dslds.MaDoanSinh');
+        $this->db->select('*');
+        
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $output_string = '';
+            $output_string .= '<table class="table table-user-information">';
+            $output_string .= '<tbody>';
+            $output_string .= '<tr>';
+            $output_string .= '<th>STT</th>';
+            $output_string .= '<th>Tên Thánh</th>';
+            $output_string .= '<th>Họ và Tên</th>';
+            $output_string .= '<th>Tổng: ' . "{$query->num_rows()}" . '</th>';
+            $output_string .= '</tr>';
+            
+            foreach ($query->result_array() as $key => $row) {
+                $index = $key + 1;
+                $name = $row['HovaDem'] . ' ' . $row['Ten'];
+                $url = base_url();
+                
+                $output_string .= '<tr id="' . "{$row['MaDoanSinh']}" . '">';
+                $output_string .= "<td>{$index}</td>";
+                $output_string .= "<td>{$row['TenThanh']}</td>";
+                $output_string .= "<td>{$name}</td>";
+                $output_string .= '<td><a title="Xóa đội này"><i class="glyphicon glyphicon-remove remove-in-team"></i></a></td>';
+                $output_string .= '</tr>';
+            }
+            
+            $output_string .= '</tbody>';
+            $output_string .= '</table>';
+            $output_string .= '<script type="text/javascript"
+	src="' . "{$url}" . 'public/backend/template/admin/custom_js/addteam-student-extend.js"></script>';
+        } else {
+            $url = base_url();
+            return $this->getListStudentInChiDoan($data) . '<script type="text/javascript"
+	src="' . "{$url}" . 'public/backend/template/admin/custom_js/addteam-student-extend.js"></script>';
+        }
+        return $output_string;
+    }
+    // Thêm ĐS từ Chi đoàn vào Đội
+    public function addStudentToTeam($data_where, $madoi)
+    {
+        $this->db->where($data_where);
+        $this->db->update('tbl_danhsachlopdoansinh', array(
+            'MaDoi' => $madoi
+        ));
+    }
+    // Xóa ĐS ra khỏi đội
+    public function removeStudentInTeam($data_where)
+    {
+        $this->db->where($data_where);
+        $this->db->update('tbl_danhsachlopdoansinh', array(
+            'MaDoi' => 0
         ));
     }
 }

@@ -34,7 +34,7 @@ class Class_model extends CI_Model
         
         if ($query->num_rows() > 0) {
             $output_string = '';
-            $output_string .= '<option value="0">- Chọn chi đoàn -</option>';
+            $output_string .= '<option value="0">Chọn chi đoàn. .</option>';
             foreach ($query->result_array() as $key => $row) {
                 $output_string .= "<option value=" . "{$row['MaChiDoan']}" . ">{$row['TenChiDoan']}</option>";
             }
@@ -42,13 +42,23 @@ class Class_model extends CI_Model
         }
     }
 
-    public function getDoi()
+    public function getDoi($type)
     {
         $this->db->select('*');
         $this->db->from('tbl_doi');
         
         $query = $this->db->get();
-        return $result = $query->result_array();
+        if ($type != 'select') {
+            return $result = $query->result_array();
+        }
+        if ($query->num_rows() > 0) {
+            $output_string = '';
+            $output_string .= '<option value="0">Chọn đội. .</option>';
+            foreach ($query->result_array() as $key => $row) {
+                $output_string .= "<option value=" . "{$row['MaDoi']}" . ">{$row['TenDoi']}</option>";
+            }
+            return $output_string;
+        }
     }
     // Lấy danh sách lớp có trong năm học này
     public function getClassInYear($manamhoc)

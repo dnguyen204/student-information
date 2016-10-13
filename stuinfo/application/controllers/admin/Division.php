@@ -21,7 +21,7 @@ class Division extends CI_Controller
             
             $data['class_list'] = $this->cmodel->getClassInYear($this->session->userdata['logged_in']['manamhoc']);
             $data['role'] = $this->glvmodel->getRole();
-            $data['chidoan'] = $this->cmodel->getChiDoan();
+            $data['chidoan'] = $this->cmodel->getChiDoan('');
             
             $data['subview'] = 'admin/division';
             $this->load->view('admin/main', $data);

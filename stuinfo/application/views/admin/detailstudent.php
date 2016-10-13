@@ -138,7 +138,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								</tr>
 							</thead>
 							<tbody>
-							<?php if(count($result_process) > 0){ ?>
+							<?php if(count($result_process) > 0){?>
 								<?php foreach ($result_process as $pro){?>
 								<tr>
 									<td class="btn btn-md" data-toggle="collapse"

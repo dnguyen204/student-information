@@ -122,14 +122,15 @@ class Glv_model extends CI_Model
         
         return $result = $query->result_array();
     }
-    // Láº¥y danh sÃ¡ch GLV dáº¡y cá»§a Ä�oÃ n sinh
+    // Lấy danh sách GLV dạy của đoàn sinh
     public function getGLVFromClass($code)
     {
         $this->db->select('dsl.MaLop, ht.TenThanh, ht.HovaDem, ht.Ten');
         
-        $this->db->from('tbl_danhsachlopdoansinh dsl');
+        $this->db->from('tbl_danhsachlopdoansinh dsl')
+            ->join('tbl_phancong pc', 'dsl.MaLop = pc.MaLop')
+            ->join('tbl_huynhtruong ht', 'ht.MaHuynhTruong = pc.MaHuynhTruong');
         $this->db->where('dsl.MaDoanSinh', $code);
-        $this->db->join('tbl_phancong pc', 'dsl.MaLop = pc.MaLop')->join('tbl_huynhtruong ht', 'ht.MaHuynhTruong = pc.MaHuynhTruong');
         
         $query = $this->db->get();
         return $result = $query->result_array();
@@ -258,5 +259,38 @@ class Glv_model extends CI_Model
         $this->db->update('tbl_huynhtruong', array(
             'TrangThai' => '5'
         ));
+    }
+    // Lấy danh sách lớp mà GLV này đang dạy theo Mã GLV và Năm Học
+    public function getClassOfGLV($data)
+    {
+        $this->db->where($data);
+        $this->db->from('tbl_phancong pc')
+            ->join('tbl_lop l', 'l.MaLop = pc.MaLop')
+            ->join('tbl_phandoan pd', 'pd.MaPhanDoan = l.MaPhanDoan');
+        $this->db->select('l.MaLop, pd.TenPhanDoan');
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    // Lấy danh sách chi đoàn đang dạy theo mã lớp của GLV
+    public function getListChiDoanOfGLV($data)
+    {
+        $this->db->where($data);
+        $this->db->from('tbl_phancong pc')->join('tbl_chidoan cd', 'pc.MaChiDoan = cd.MaChiDoan');
+        $this->db->select('*');
+        
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            $output_string = '';
+            $output_string .= '<option value="0">Chọn chi đoàn. .</option>';
+            foreach ($query->result_array() as $key => $row) {
+                $output_string .= "<option value='{$row['MaChiDoan']}'>{$row['TenChiDoan']}</option>";
+            }
+        } else {
+            return '<option>Chưa có</option>';
+        }
+        
+        return $output_string;
     }
 }

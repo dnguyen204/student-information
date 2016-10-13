@@ -28,7 +28,8 @@ class Login extends CI_Controller
                     'ten' => $result[0]->Ten,
                     'chucvu' => $result[0]->TenQuyen,
                     'quyen' => $permision,
-                    'manamhoc' => $manamhoc
+                    'manamhoc' => $manamhoc,
+                    'mahuynhtruong' => $result[0]->MaHuynhTruong
                 );
                 // Add user data in session
                 $this->session->set_userdata('logged_in', $session_data);

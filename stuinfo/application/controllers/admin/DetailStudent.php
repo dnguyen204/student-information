@@ -27,9 +27,9 @@ class DetailStudent extends CI_Controller
         $data['hk1'] = $result_hk1;
         $data['hk2'] = $result_hk2;
         $data['canam'] = $result_cn; 
-        $data['glv'] = $result_glv;
+        $data['glv'] = $result_glv;        
         $data['subview'] = 'admin/detailstudent';
-        
+       
         $this->load->view('admin/main', $data);
     }
 }

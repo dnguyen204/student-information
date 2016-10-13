@@ -21,7 +21,7 @@ class NewStudent extends CI_Controller
         } else {            
             $data['newcode'] = $this->stumodel->createNewCode();
             $data['chidoan'] = $this->classmodel->getChiDoan('');
-            $data['doi'] = $this->classmodel->getDoi();
+            $data['doi'] = $this->classmodel->getDoi('');
             $data['lop'] = $this->classmodel->getClassInYear($this->session->userdata['logged_in']['manamhoc']);
             
             $data['subview'] = 'admin/newstudent';
