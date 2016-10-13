@@ -106,19 +106,29 @@ if (isset($this->session->userdata['logged_in'])) {
 							<span>Hệ thống</span> <span class="fa fa-angle-right"
 							style="float: right"></span></a>
 						<ul id="menu-academico-sub">
-							<li id="menu-academico-boletim"><a href="../admin/newDatabase">Chỉnh sửa
-									DB</a></li>
+							<li id="menu-academico-boletim"><a href="../admin/newDatabase">Chỉnh
+									sửa DB</a></li>
 						</ul></li>
 
 					<li id="menu-academico"><a><i class="glyphicon glyphicon-list-alt"></i>
 							<span>Danh mục</span> <span class="fa fa-angle-right"
 							style="float: right"></span></a>
 						<ul id="menu-academico-sub">
-							<li id="menu-academico-avaliacoes"><a href="../student/addClassStudent">Xếp
-									lớp đoàn sinh mới</a></li>
-							<li id="menu-academico-avaliacoes"><a href="../student/addTeamStudent">Xếp
-									đội đoàn sinh</a></li>
-							<li id="menu-academico-avaliacoes"><a href="../admin/typeSroce">Nhập điểm</a></li>
+							<li id="menu-academico-avaliacoes"><a
+								href="../student/addClassStudent">Xếp lớp đoàn sinh mới</a></li>
+							<li id="menu-academico-avaliacoes"><a
+								href="../student/addTeamStudent">Xếp đội đoàn sinh</a></li>
+							<li id="menu-academico"><a><span>Nhập điểm</span> <span
+									class="fa fa-angle-right" style="float: right"></span></a>
+								<ul id="menu-academico-sub">
+									<li id="menu-academico-boletim" style="width: 90px"><a
+										href="../student/typeSroce?hk=1">Học kì I</a></li>
+									<li id="menu-academico-boletim" style="width: 90px"><a
+										href="../student/typeSroce?hk=2">Học kì II</a></li>
+									<li id="menu-academico-boletim" style="width: 90px"><a
+										href="../student/typeSroce?hk=3">Cả năm</a></li>
+								</ul></li>
+
 							<li id="menu-academico-avaliacoes"><a href="">Đánh giá hạnh kiểm</a></li>
 							<li id="menu-academico-avaliacoes"><a href="">Xét lên lớp</a></li>
 						</ul></li>
@@ -126,20 +136,23 @@ if (isset($this->session->userdata['logged_in'])) {
 					<li id="menu-academico"><a><i class="fa fa-desktop"></i> <span>Quản
 								lý</span> <span class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
-							<li id="menu-academico-boletim"><a href="../admin/newStudent">Thêm đoàn
-									sinh mới</a></li>
-							<li id="menu-academico-avaliacoes"><a href="../admin/newGLV">Thêm GLV mới</a></li>
-							<li id="menu-academico-avaliacoes"><a href="../admin/newClass">Tạo lớp học</a></li>
-							<li id="menu-academico-avaliacoes"><a href="../admin/division">Phân công
-									giảng dạy</a></li>
+							<li id="menu-academico-boletim"><a href="../admin/newStudent">Thêm
+									đoàn sinh mới</a></li>
+							<li id="menu-academico-avaliacoes"><a href="../admin/newGLV">Thêm
+									GLV mới</a></li>
+							<li id="menu-academico-avaliacoes"><a href="../admin/newClass">Tạo
+									lớp học</a></li>
+							<li id="menu-academico-avaliacoes"><a href="../admin/division">Phân
+									công giảng dạy</a></li>
 						</ul></li>
 
 					<li id="menu-academico"><a><i class="fa fa-search"></i> <span>Tìm
 								kiếm</span> <span class="fa fa-angle-right" style="float: right"></span></a>
 						<ul id="menu-academico-sub">
-							<li id="menu-academico-avaliacoes"><a href="../admin/search?id=đoàn sinh">Đoàn
-									sinh</a></li>
-							<li id="menu-academico-avaliacoes"><a href="../admin/search?id=GLV">GLV/HT</a></li>
+							<li id="menu-academico-avaliacoes"><a
+								href="../admin/search?id=đoàn sinh">Đoàn sinh</a></li>
+							<li id="menu-academico-avaliacoes"><a
+								href="../admin/search?id=GLV">GLV/HT</a></li>
 						</ul></li>
 
 					<li id="menu-academico"><a><i class="glyphicon glyphicon-book"></i>
