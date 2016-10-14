@@ -9,6 +9,7 @@ if (isset($this->session->userdata['logged_in'])) {
     $hovadem = ($this->session->userdata['logged_in']['hovadem']);
     $ten = ($this->session->userdata['logged_in']['ten']);
     $chucvu = ($this->session->userdata['logged_in']['chucvu']);
+    $image = ($this->session->userdata['logged_in']['image']);
 } else {
     $url = base_url();
     redirect($url);
@@ -83,9 +84,8 @@ if (isset($this->session->userdata['logged_in'])) {
 			<div style="border-top: 1px solid rgba(69, 74, 84, 0.7)"></div>
 			<!--/down-->
 			<div class="down">
-				<a><img
-					src="<?php echo base_url(); ?>public/backend/template/admin/images/admin.jpg" /></a>
-				<span class="name-caret"><?=$tenthanh.'<br/>'.$hovadem.' '.$ten?></span>
+				<a><img src="<?php echo base_url().$image?>" /></a> <span
+					class="name-caret"><?=$tenthanh.'<br/>'.$hovadem.' '.$ten?></span>
 				<p><?=$chucvu?></p>
 				<ul>
 					<li><a class="tooltips" href="viewProfile"><span>Cá nhân</span><i
@@ -118,8 +118,8 @@ if (isset($this->session->userdata['logged_in'])) {
 								href="../student/addClassStudent">Xếp lớp đoàn sinh mới</a></li>
 							<li id="menu-academico-avaliacoes"><a
 								href="../student/addTeamStudent">Xếp đội đoàn sinh</a></li>
-							<li id="menu-academico"><a><span>Nhập điểm</span> <span
-									class="fa fa-angle-right" style="float: right"></span></a>
+							<li id="menu-academico-avaliacoes"><a>Nhập điểm<i
+									class="fa fa-angle-right" style="float: right"></i></a>
 								<ul id="menu-academico-sub">
 									<li id="menu-academico-boletim" style="width: 90px"><a
 										href="../student/typeSroce?hk=1">Học kì I</a></li>
@@ -128,7 +128,6 @@ if (isset($this->session->userdata['logged_in'])) {
 									<li id="menu-academico-boletim" style="width: 90px"><a
 										href="../student/typeSroce?hk=3">Cả năm</a></li>
 								</ul></li>
-
 							<li id="menu-academico-avaliacoes"><a href="">Đánh giá hạnh kiểm</a></li>
 							<li id="menu-academico-avaliacoes"><a href="">Xét lên lớp</a></li>
 						</ul></li>

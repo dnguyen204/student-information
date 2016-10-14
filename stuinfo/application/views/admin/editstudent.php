@@ -13,6 +13,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 0 -->
 		<div class="row">
+			<div class="col-sm-6 col-xs-12">
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4">Ảnh Đoàn Sinh:</label>
+					<div class="col-md-8 col-xs-8">
+						<img id="Image"
+							src="<?=base_url().$result_stuinfo[0]['HinhDoanSinh']?>" /> <input
+							type="button" class="btn" value="Chọn" onclick="BrowseServer();" />
+						<input type="hidden" id="stuImage" name="stuImage">
+					</div>
+				</div>
+			</div>
 			<div class="col-sm-6 col-xs-6">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Mã Đoàn Sinh:</label>
@@ -294,3 +305,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		</div>
 	</form>
 </div>
+<script type='text/javascript'
+	src="<?php echo base_url();?>public/ckfinder/ckfinder.js"></script>
+<script type="text/javascript">
+    function BrowseServer() {
+        var finder = new CKFinder();
+        finder.baseUrl = '/upload/stu_images/';
+        finder.selectActionFunction = SetFileField;
+        finder.popup();
+    }
+    function SetFileField(fileUrl) {
+        document.getElementById('Image').src = fileUrl;
+        document.getElementById('stuImage').value = fileUrl;
+    }
+</script>

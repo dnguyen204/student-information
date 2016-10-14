@@ -18,8 +18,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-3 col-lg-3" align="center">
-								<img alt="User Pic"
-									src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
+								<img alt="User Pic" src="<?=base_url(). $row['HinhDoanSinh']?>"
 									class="img-circle img-responsive">
 							</div>
 
@@ -104,7 +103,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<a data-original-title="Broadcast Message" data-toggle="tooltip"
 							type="button" class="btn btn-sm btn-primary"><i
 							class="glyphicon glyphicon-envelope"></i></a> <span
-							class="pull-right"> <a href="editstudent?code=<?php echo $row['MaDoanSinh']?>"
+							class="pull-right"> <a
+							href="editstudent?code=<?php echo $row['MaDoanSinh']?>"
 							title="Chỉnh sửa thông tin đoàn sinh" data-toggle="tooltip"
 							type="button" class="btn btn-sm btn-warning"><i
 								class="glyphicon glyphicon-edit"></i></a> <a
@@ -151,7 +151,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									<td><?php echo $pro['TenNganh']?></td>
 									<td><?php echo $pro['TenPhanDoan']?></td>
 									<td><?php echo $pro['TenChiDoan']?></td>
-									<td><?php echo $pro['TenDoi']?></td>									
+									<td><?php echo $pro['TenDoi']?></td>
 									<td>
 									<?php foreach ($glv as $g){	?>
 										<?php if($pro['MaLop'] == $g['MaLop']){?>

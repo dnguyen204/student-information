@@ -71,6 +71,7 @@ class Student_model extends CI_Model
         }
         
         $newStudent = array(
+            'HinhDoanSinh' => $_POST['stuImage'],
             'MaDoanSinh' => $_POST['stuMa'],
             'TenThanh' => $_POST['stuTenThanh'],
             'HovaDem' => $_POST['stuLastName'],
@@ -101,6 +102,7 @@ class Student_model extends CI_Model
     // cập nhật thông tin cho ĐS
     public function updateStudent()
     {
+        $stuImage = $_POST['stuImage'];
         $stumadoansinh = $_POST['stuMa'];
         $stutenthanh = $_POST['stuTenThanh'];
         $stuhovadem = $_POST['stuLastName'];
@@ -125,7 +127,8 @@ class Student_model extends CI_Model
         $stughichu = $_POST['stuNote'];
         
         $this->db->query("UPDATE tbl_doansinh
-            SET MaDoanSinh = '$stumadoansinh',
+            SET HinhDoanSinh = '$stuImage',
+                MaDoanSinh = '$stumadoansinh',
                 TenThanh = '$stutenthanh',
                 HovaDem = '$stuhovadem',
                 Ten = '$stuten',

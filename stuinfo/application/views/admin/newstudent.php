@@ -13,7 +13,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 0 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
+				<div class="form-group">
+					<label class="control-label col-md-4 col-xs-4">Ảnh Đoàn Sinh:</label>
+					<div class="col-md-8 col-xs-8">
+						<img id="Image" /> <input type="button" class="btn" value="Chọn"
+							onclick="BrowseServer();" /> <input type="hidden" id="stuImage"
+							name="stuImage">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Mã Đoàn Sinh:</label>
 
@@ -27,7 +40,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 1 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Tên Thánh:</label>
 
@@ -41,7 +54,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 2 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Họ và tên đệm:</label>
 					<div class="col-md-8 col-xs-8">
@@ -50,7 +63,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Tên:</label>
 					<div class="col-md-8 col-xs-8">
@@ -63,7 +76,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 3 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Giới tính:</label>
 					<div class="col-md-8 col-xs-8">
@@ -78,7 +91,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 4 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ngày sinh:</label>
 					<div class="col-md-8 col-xs-8">
@@ -95,7 +108,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 5 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ngày rửa tội:</label>
 					<div class="col-md-8 col-xs-8">
@@ -108,7 +121,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Tại Giáo Xứ:</label>
 					<div class="col-md-8 col-xs-8">
@@ -120,7 +133,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 6 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ngày rước lễ:</label>
 					<div class="col-md-8 col-xs-8">
@@ -133,7 +146,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Tại Giáo Xứ:</label>
 					<div class="col-md-8 col-xs-8">
@@ -145,7 +158,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 7 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ngày thêm sức:</label>
 					<div class="col-md-8 col-xs-8">
@@ -158,7 +171,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Tại Giáo Xứ:</label>
 					<div class="col-md-8 col-xs-8">
@@ -170,7 +183,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 8 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Tên Thánh:</label>
 					<div class="col-md-8 col-xs-8">
@@ -179,7 +192,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Họ và Tên Cha:</label>
 					<div class="col-md-8 col-xs-8">
@@ -191,7 +204,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 9 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Số điện thoại cha:</label>
 					<div class="col-md-8 col-xs-8">
@@ -203,7 +216,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 10 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Tên Thánh:</label>
 					<div class="col-md-8 col-xs-8">
@@ -212,7 +225,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Họ và Tên Mẹ:</label>
 					<div class="col-md-8 col-xs-8">
@@ -224,7 +237,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 11 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Số điện thoại mẹ:</label>
 					<div class="col-md-8 col-xs-8">
@@ -236,7 +249,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<!-- Row 12 -->
 		<div class="row">
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Địa chỉ:</label>
 					<div class="col-md-8 col-xs-8">
@@ -244,7 +257,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 col-xs-6">
+			<div class="col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ghi chú:</label>
 					<div class="col-md-8 col-xs-8">
@@ -268,7 +281,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		<div id="addClass" style="display: none">
 			<div class="row">
-				<div class="col-sm-4 col-xs-4">
+				<div class="col-sm-4 col-xs-6">
 					<div class="form-group">
 						<label class="control-label col-md-4 col-xs-4">Lớp:</label>
 						<div class="col-md-8 col-xs-8">
@@ -280,7 +293,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-4 col-xs-4">
+				<div class="col-sm-4 col-xs-6">
 					<div class="form-group">
 						<label class="control-label col-md-4 col-xs-4">Chi đoàn:</label>
 						<div class="col-md-8 col-xs-8">
@@ -292,7 +305,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-4 col-xs-4">
+				<div class="col-sm-4 col-xs-6">
 					<div class="form-group">
 						<label class="control-label col-md-4 col-xs-4">Đội:</label>
 						<div class="col-md-8 col-xs-8">
@@ -324,3 +337,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <script type='text/javascript'
 	src="<?php echo base_url();?>public/backend/template/admin/js/custom-js.js"></script>
+<script type='text/javascript'
+	src="<?php echo base_url();?>public/ckfinder/ckfinder.js"></script>
+<script type="text/javascript">
+    function BrowseServer() {
+        var finder = new CKFinder();
+        finder.baseUrl = '/upload/stu_images/';
+        finder.selectActionFunction = SetFileField;
+        finder.popup();
+    }
+    function SetFileField(fileUrl) {
+        document.getElementById('Image').src = fileUrl;
+        document.getElementById('stuImage').value = fileUrl;
+    }
+</script>
