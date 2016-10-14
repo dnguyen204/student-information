@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2016 at 10:38 AM
+-- Generation Time: Oct 14, 2016 at 12:05 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -155,7 +155,7 @@ CREATE TABLE `tbl_doansinh` (
 --
 
 INSERT INTO `tbl_doansinh` (`ID`, `HinhDoanSinh`, `MaDoanSinh`, `TenThanh`, `HovaDem`, `Ten`, `NgaySinh`, `GioiTinh`, `NgayRuaToi`, `GXRuaToi`, `NgayRuocLe`, `GXRuocLe`, `NgayThemSuc`, `GXThemSuc`, `TenThanhCha`, `HoTenCha`, `SDTCha`, `TenThanhMe`, `HoTenMe`, `SDTMe`, `DiaChi`, `GhiChu`, `TrangThai`) VALUES
-(1, NULL, '160001', 'Giuse', 'Nguyễn Hùng', 'Dũng', '2016-09-01', 1, '2016-09-02', 'Thạch Đà', '2016-09-02', '', '2016-09-20', '', 'Giuse', 'Nguyễn Hùng Bắc', '01229004101', 'Maria', '', '', 'update 6', '123444555', 2),
+(1, '/stuinfo/upload/images/4x6.png', '160001', 'Giuse', 'Nguyễn Hùng', 'Dũng', '2016-09-01', 1, '2016-09-02', 'Thạch Đà', '2016-09-02', '', '2016-09-20', '', 'Giuse', 'Nguyễn Hùng Bắc', '01229004101', 'Maria', '', '', 'update 6', '123444555', 2),
 (2, NULL, '160002', 'Maria', 'Nguyễn Thị Hồng', 'Thảo', '2016-09-21', 1, '2016-09-16', 'TD', '2016-09-16', 'TD', '2016-10-01', 'TD', 'Maria', 't', '1111', 'Gioan', 'sdfsdfsdf', 'sdfdsfds', 'Update', '', 2),
 (3, NULL, '160003', 'Giuse', 'Trần Thiện', 'Nhân', '2016-10-01', 1, '1970-01-01', '', '1970-01-01', '', '1970-01-01', '', '', '', '', '', '', '', '', '', 2),
 (4, NULL, '160004', 'Gioan Baotixita', 'Lê Trần Thiên', 'Lộc', '2016-10-02', 1, '1970-01-01', '', '1970-01-01', '', '1970-01-01', '', '', '', '', '', '', '', '', '', 2);
@@ -190,6 +190,7 @@ INSERT INTO `tbl_doi` (`MaDoi`, `TenDoi`) VALUES
 
 CREATE TABLE `tbl_huynhtruong` (
   `ID` int(11) NOT NULL,
+  `HinhHuynhTruong` varchar(200) NOT NULL,
   `TenThanh` varchar(50) DEFAULT NULL,
   `MaHuynhTruong` varchar(6) DEFAULT NULL,
   `HovaDem` varchar(150) DEFAULT NULL,
@@ -210,11 +211,11 @@ CREATE TABLE `tbl_huynhtruong` (
 -- Dumping data for table `tbl_huynhtruong`
 --
 
-INSERT INTO `tbl_huynhtruong` (`ID`, `TenThanh`, `MaHuynhTruong`, `HovaDem`, `Ten`, `NgaySinh`, `NgayBonMang`, `GioiTinh`, `DienThoai`, `Email`, `DiaChi`, `GhiChu`, `TrangThai`, `MaQuyen`, `Username`) VALUES
-(1, NULL, NULL, NULL, 'Administrator', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'admin'),
-(12, 'Giuse', '160002', 'Nguyễn Hùng', 'Dũng', '1992-05-17', '01-05', 1, '01229004101', 'dung.nh1705@gmail.com', '310/60 Phạm Văn Chiêu, phường 9, Gò Vấp', '', 7, 3, 'dung.nh1705'),
-(14, 'Maria', '160003', 'Nguyễn Thị Hồng', 'Thảo', '1993-01-19', '', 0, '01227237184', '', '', '', 7, 3, 'thao.nth1901'),
-(15, 'Gioan Baotixita', '160004', 'Nguyễn Viết', 'Chiến', '2016-07-01', '', 1, '01229004101', '', '', '', 7, 4, 'chien.nv0107');
+INSERT INTO `tbl_huynhtruong` (`ID`, `HinhHuynhTruong`, `TenThanh`, `MaHuynhTruong`, `HovaDem`, `Ten`, `NgaySinh`, `NgayBonMang`, `GioiTinh`, `DienThoai`, `Email`, `DiaChi`, `GhiChu`, `TrangThai`, `MaQuyen`, `Username`) VALUES
+(1, '', NULL, NULL, NULL, 'Administrator', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'admin'),
+(12, '', 'Giuse', '160002', 'Nguyễn Hùng', 'Dũng', '1992-05-17', '01-05', 1, '01229004101', 'dung.nh1705@gmail.com', '310/60 Phạm Văn Chiêu, phường 9, Gò Vấp', '', 7, 3, 'dung.nh1705'),
+(14, '', 'Maria', '160003', 'Nguyễn Thị Hồng', 'Thảo', '1993-01-19', '', 0, '01227237184', '', '', '', 7, 3, 'thao.nth1901'),
+(15, '', 'Gioan Baotixita', '160004', 'Nguyễn Viết', 'Chiến', '2016-07-01', '', 1, '01229004101', '', '', '', 7, 4, 'chien.nv0107');
 
 -- --------------------------------------------------------
 
