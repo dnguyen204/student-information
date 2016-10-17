@@ -3,23 +3,36 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Glv_model extends CI_Model
 {
-    // xÃ³a dáº¥u tiáº¿ng viá»‡t
+    // Xóa Tiếng Việt
     function vn_str_filter($str)
     {
         $unicode = array(
             'a' => 'á|à|ả|ã|ạ|ă|ắ|ặ|ằ|ẳ|ẵ|â|ấ|ầ|ẩ|ẫ|ậ',
+            
             'd' => 'đ',
+            
             'e' => 'é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ',
+            
             'i' => 'í|ì|ỉ|ĩ|ị',
+            
             'o' => 'ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ',
+            
             'u' => 'ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự',
+            
             'y' => 'ý|ỳ|ỷ|ỹ|ỵ',
+            
             'A' => 'Á|À|Ả|Ã|Ạ|Ă|Ắ|Ặ|Ằ|Ẳ|Ẵ|Â|Ấ|Ầ|Ẩ|Ẫ|Ậ',
+            
             'D' => 'Đ',
+            
             'E' => 'É|È|Ẻ|Ẽ|Ẹ|Ê|Ế|Ề|Ể|Ễ|Ệ',
+            
             'I' => 'Í|Ì|Ỉ|Ĩ|Ị',
+            
             'O' => 'Ó|Ò|Ỏ|Õ|Ọ|Ô|Ố|Ồ|Ổ|Ỗ|Ộ|Ơ|Ớ|Ờ|Ở|Ỡ|Ợ',
+            
             'U' => 'Ú|Ù|Ủ|Ũ|Ụ|Ư|Ứ|Ừ|Ử|Ữ|Ự',
+            
             'Y' => 'Ý|Ỳ|Ỷ|Ỹ|Ỵ'
         );
         
@@ -29,7 +42,7 @@ class Glv_model extends CI_Model
         return $str;
     }
     
-    // láº¥y kÃ­ tá»± Ä‘áº§u tiÃªn
+    // Lấy kí tự đầu tiên để tạo username
     function getFirstChar($input)
     {
         $result = '';
@@ -40,7 +53,7 @@ class Glv_model extends CI_Model
         }
         return $result;
     }
-    // mÃ£ GLV tá»± Ä‘á»™ng
+    // tạo mã GLV mới
     public function createNewCode()
     {
         $currentYear = date('y');
@@ -59,7 +72,7 @@ class Glv_model extends CI_Model
             return $result = $currentYear . '0001';
         }
     }
-    // thÃªm má»›i 1 GLV
+    // Thêm mới 1 GLV
     public function addNewGLV()
     {
         $glvhovadem = $_POST['glvLastName'];
@@ -78,7 +91,7 @@ class Glv_model extends CI_Model
             'Email' => $_POST['Email'],
             'DiaChi' => $_POST['glvAddress'],
             'GhiChu' => $_POST['glvNote'],
-            'TrangThai' => ($_POST['maquyen'] === 4) ? 5 : 6, // 5 là huynh trưởng mới, 6 là dự trưởng mới
+            'TrangThai' => ($_POST['maquyen'] === 4) ? 5 : 6, // 5 lÃ  huynh trÆ°á»Ÿng má»›i, 6 lÃ  dá»± trÆ°á»Ÿng má»›i
             'MaQuyen' => $_POST['maquyen'],
             'Username' => $username
         );
@@ -93,7 +106,7 @@ class Glv_model extends CI_Model
         );
         $this->db->insert('tbl_user', $user);
     }
-    // TÃ¬m kiáº¿m GLV trong trang search
+    // Tìm kiếm GLV trong trang search
     public function searchGLV()
     {
         $searchType = isset($_GET['type']) ? $_GET['type'] : '';
@@ -122,7 +135,7 @@ class Glv_model extends CI_Model
         
         return $result = $query->result_array();
     }
-    // Lấy danh sách GLV dạy của đoàn sinh
+    // Lấy danh sách GLV đã dạy theo mã đoàn sinh
     public function getGLVFromClass($code)
     {
         $this->db->select('dsl.MaLop, ht.TenThanh, ht.HovaDem, ht.Ten');
@@ -135,7 +148,7 @@ class Glv_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result_array();
     }
-    // Láº¥y danh sÃ¡ch chá»©c vá»¥ khi táº¡o má»›i GLV vÃ  phÃ¢n cÃ´ng
+    // Lấy danh sách quyền khi tạo mới GLV
     public function getRole()
     {
         $this->db->select('*');
@@ -145,7 +158,7 @@ class Glv_model extends CI_Model
         $query = $this->db->get();
         return $result = $query->result_array();
     }
-    // Lấy Tên Phân Đoàn Trưởng
+    // Lấy Tên Phân đoàn trưởng
     public function getPhanDoanTruong($malop)
     {
         $this->db->select('ht.TenThanh, ht.HovaDem, ht.Ten');
@@ -162,10 +175,10 @@ class Glv_model extends CI_Model
         return $output_string;
     }
     
-    // Lấy danh sách glv phân công dạy trong lớp
+    // LẤy danh sách GLV phân công trong lớp
     public function getGLVInClass($malop, $manamhoc)
     {
-        $this->db->select('ht.MaHuynhTruong, ht.TenThanh, ht.HovaDem, ht.Ten, ht.DienThoai, cd.TenChiDoan');
+        $this->db->select('ht.MaHuynhTruong, ht.TenThanh, ht.HovaDem, ht.Ten, ht.DienThoai, cd.TenChiDoan, cd.MaChiDoan');
         $this->db->from('tbl_phancong pc')
             ->join('tbl_huynhtruong ht', 'ht.MaHuynhTruong = pc.MaHuynhTruong')
             ->join('tbl_chidoan cd', 'cd.MaChiDoan = pc.MaChiDOan');
@@ -193,9 +206,9 @@ class Glv_model extends CI_Model
                 $name = $row['HovaDem'] . ' ' . $row['Ten'];
                 $url = base_url();
                 
-                $output_string .= '<tr class="row_glv" id="' . "{$row['MaHuynhTruong']}" . '">';
+                $output_string .= '<tr id="' . "{$row['MaHuynhTruong']}" . '">';
                 $output_string .= "<td>{$index}</td>";
-                $output_string .= "<td>{$row['TenChiDoan']}</td>";
+                $output_string .= '<td class="id_cd" id="' . "{$row['MaChiDoan']}" . '">' . "{$row['TenChiDoan']}</td>";
                 $output_string .= "<td>{$row['TenThanh']}</td>";
                 $output_string .= "<td>{$name}</td>";
                 $output_string .= "<td>{$row['DienThoai']}</td>";
@@ -212,7 +225,7 @@ class Glv_model extends CI_Model
         
         return $output_string;
     }
-    // lấy danh sách glv theo cấp bậc chọn trên form
+    // Lấy danh sách GLV theo cấp bậc trên form phân công
     public function getGLVByRole($roleid)
     {
         $this->db->select('ht.MaHuynhTruong, ht.TenThanh, ht.HovaDem, ht.Ten');
@@ -234,33 +247,33 @@ class Glv_model extends CI_Model
         
         return $output_string;
     }
-    // Thêm glv vào lớp đang dạy và update status
+    // Thêm GLV vào lớp và update trạng thái
     public function addGLVToClass($data, $maht)
     {
         $this->db->where($data);
         if ($this->db->count_all_results('tbl_phancong') == 0) {
             $this->db->insert('tbl_phancong', $data);
             
-            // Trạng thái 7 là đang dạy
+            // Tráº¡ng thÃ¡i 7 lÃ  Ä‘ang dáº¡y
             $this->db->where('MaHuynhTruong', $maht);
             $this->db->update('tbl_huynhtruong', array(
                 'TrangThai' => '7'
             ));
         }
     }
-    // Xóa glv theo class và update lại status của glv
+    // Xóa GLV theo lớp và update trạng thái
     public function removeGLV($data, $maht)
     {
         $this->db->where($data);
         $this->db->delete('tbl_phancong');
         
-        // Trạng thái 5 là Huynh trưởng mới
+        // Tráº¡ng thÃ¡i 5 lÃ  Huynh trÆ°á»Ÿng má»›i
         $this->db->where('MaHuynhTruong', $maht);
         $this->db->update('tbl_huynhtruong', array(
             'TrangThai' => '5'
         ));
     }
-    // Lấy danh sách lớp mà GLV này đang dạy theo Mã GLV và Năm Học
+    // Lấy danh sách lớp mà GLV này đang dạy
     public function getClassOfGLV($data)
     {
         $this->db->where($data);
@@ -268,11 +281,12 @@ class Glv_model extends CI_Model
             ->join('tbl_lop l', 'l.MaLop = pc.MaLop')
             ->join('tbl_phandoan pd', 'pd.MaPhanDoan = l.MaPhanDoan');
         $this->db->select('l.MaLop, pd.TenPhanDoan');
+        $this->db->order_by('pc.MaLop');
         
         $query = $this->db->get();
         return $query->result_array();
     }
-    // Lấy danh sách chi đoàn đang dạy theo mã lớp của GLV
+    // Lấy danh sách chi đoàn đang dạy của GLV theo mã lớp
     public function getListChiDoanOfGLV($data)
     {
         $this->db->where($data);
@@ -289,6 +303,27 @@ class Glv_model extends CI_Model
             }
         } else {
             return '<option>Chưa có</option>';
+        }
+        
+        return $output_string;
+    }
+    
+    // Lấy danh sách GLV dạy theo từng chi đoàn
+    public function getListGLVInClass($where)
+    {
+        $this->db->where($where);
+        $this->db->from('tbl_phancong pc')->join('tbl_huynhtruong ht', 'pc.MaHuynhTruong = ht.MaHuynhTruong');
+        $this->db->select('*');
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            $output_string = '';            
+            foreach ($query->result_array() as $key => $row) {
+                $name = $row['TenThanh'] . ' ' . $row['HovaDem'] . ' ' . $row['Ten'];
+                $output_string .= "<h4>{$name}</h4>";
+            }
+        } else {
+            return '';
         }
         
         return $output_string;

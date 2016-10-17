@@ -31,7 +31,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<div class="col-xs-6 col-md-6">
 				<select id="list_machidoan" class="form-control" name="machidoan">
 					<!-- show list chi đoàn -->
-				</select><input id="chidoan_selected" type="hidden">
+				</select><input id="chidoan_selected" type="hidden"><label
+					class="machidoan_warning" style="color: red; display: none">Hãy chọn
+					chi đoàn</label>
 			</div>
 
 			<div class="panel panel-info" style="margin-top: 50px">

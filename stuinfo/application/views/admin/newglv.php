@@ -95,7 +95,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Ngày bổn mạng:</label>
 					<div class="col-md-8 col-xs-8">
-						<input class="form-control" type="text" name="glvBonMang" placeholder="ngày-tháng. EX: 01-05">
+						<input class="form-control" type="text" name="glvBonMang"
+							placeholder="ngày-tháng. EX: 01-05">
 					</div>
 				</div>
 			</div>
@@ -107,8 +108,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="form-group">
 					<label class="control-label col-md-4 col-xs-4">Số điện thoại:</label>
 					<div class="col-md-8 col-xs-8">
-						<input type="number" class="form-control" name="SDT"
-							required="required" />
+						<input class="form-control" name="SDT" required="required" />
 					</div>
 				</div>
 			</div>

@@ -66,7 +66,8 @@ class Division extends CI_Controller
         $data = array(
             'MaLop' => $_POST['malop'],
             'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc'],
-            'MaHuynhTruong' => $_POST['mahuynhtruong']
+            'MaHuynhTruong' => $_POST['mahuynhtruong'],
+            'MaChiDoan' => $_POST['machidoan']
         );
         
         $this->glvmodel->removeGLV($data, $_POST['mahuynhtruong']);

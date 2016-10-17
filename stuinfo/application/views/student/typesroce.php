@@ -10,19 +10,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<div class="row">
 		<div class="col-xs-12 col-md-6">
 			<div class="form-group">
-				<label class="control-label col-xs-5 col-md-5">Huynh trưởng phụ
-					trách:</label>
-				<div class="col-xs-7 col-md-7 list-lead-class">
-					<!-- danh sách huynh trưởng phụ trách lớp -->
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-12 col-md-6">
-			<div class="form-group">
 				<div class="col-xs-6 col-md-6">
 					<select id="list_malop" class="form-control" name="malop">
 						<option value="0">Chọn lớp. .</option>
-
+                        <?php
+                        
+                        foreach ($list_class as $key => $class) {
+                            if ($key > 0 && $list_class[-- $key]['MaLop'] === $class['MaLop'])
+                                continue;
+                            ?>                        
+                        <option value="<?=$class['MaLop']?>"><?=$class['TenPhanDoan']?></option>
+                        <?php }?>
 					</select> <input id="lop_selected" type="hidden"><label
 						class="malop_warning" style="color: red; display: none">Hãy chọn
 						lớp</label>
@@ -33,7 +31,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</select><input id="chidoan_selected" type="hidden"><label
 						class="chidoan_warning" style="color: red; display: none">Hãy chọn
 						chi đoàn</label>
-				</div>				
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-6">
+			<div class="form-group">				
+				<label class="control-label col-xs-5 col-md-5">Huynh trưởng phụ
+					trách:</label>
+				<div class="col-xs-7 col-md-7 list-lead-class">
+					<!-- danh sách huynh trưởng phụ trách lớp -->
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -49,7 +57,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 col-md-6"></div>
+		<div class="col-xs-12 col-md-6">
+		
+		</div>
 	</div>
 </div>
 

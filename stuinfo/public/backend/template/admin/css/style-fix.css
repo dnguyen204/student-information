@@ -192,10 +192,17 @@ td a {
 	background-color: #f2ff8a !important;
 }
 
-#menu-academico a{
+#menu-academico a {
 	cursor: pointer;
 }
 
 .btn {
 	margin-top: -1px;
+}
+
+tr.group, tr.group:hover {
+	background-color: #ddd !important;
+}
+#student_filter, #student_info {
+	display: none;
 }

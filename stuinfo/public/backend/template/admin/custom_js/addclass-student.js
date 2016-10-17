@@ -41,7 +41,9 @@
 		$('#chidoan_selected').attr('value', $macd);
 
 		$malop = $('#malop_selected').attr('value');
-
+		
+		$('#list_machidoan').css('border-color', '');
+		$('.machidoan_warning').css('display', 'none');
 		if ($macd === undefined || $macd == 0) {
 			$('#list_machidoan').css('border-color', 'red');
 			$('.machidoan_warning').css('display', '');
