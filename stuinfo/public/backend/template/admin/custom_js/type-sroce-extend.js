@@ -21,8 +21,22 @@
 				'hk': $hk
 			},
 			success : function(output) {
-				var data = $.parseJSON(output[0]);
-				console.log(data['MaDoanSinh']);
+				var obj = JSON.parse(output);
+								if ($hk == 1) {
+									$('#diem_mieng').attr('value',
+											obj[0].MiengHKI);
+
+									$('#diem_15phut').attr('value',
+											obj[0].KT15PhutHKI);
+
+									$('#diem_1tiet').attr('value',
+											obj[0].KT1TietHKI);
+
+									$('#diem_hocki')
+											.attr('value', obj[0].KTHK1);
+
+									$('#diem_tb').attr('value', obj[0].TBHK1);
+								}
 			},
 			error : function(e) {
 				alert(e.message);
