@@ -373,6 +373,15 @@ class Student_model extends CI_Model
         $this->db->update('tbl_danhsachlopdoansinh', array(
             'MaDoi' => $madoi
         ));
+        // add record vào bảng điểm hk 1 và 2
+        $data_add= array(
+            'MaLop' => array_values($data_where)[0],
+            'MaDoanSinh' => array_values($data_where)[2],
+            'MaNamHoc' => array_values($data_where)[3]
+        );
+        $this->db->insert('tbl_diemhk1', $data_add);
+        
+        $this->db->insert('tbl_diemhk2', $data_add);        
     }
     // Xóa ĐS ra khỏi đội
     public function removeStudentInTeam($data_where)
@@ -381,5 +390,16 @@ class Student_model extends CI_Model
         $this->db->update('tbl_danhsachlopdoansinh', array(
             'MaDoi' => 0
         ));
+        // xóa bảng điểm 1 và 2
+        $data_remove = array(
+            'MaDoanSinh' => array_values($data_where)[2],
+            'MaLop' => array_values($data_where)[0],
+            'MaNamHoc' => array_values($data_where)[3],
+        );
+        $this->db->where($data_remove);
+        $this->db->delete('tbl_diemhk1');
+        
+        $this->db->where($data_remove);
+        $this->db->delete('tbl_diemhk2');
     }
 }

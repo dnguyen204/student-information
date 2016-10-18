@@ -1,49 +1,33 @@
 (function($, undefined) {
-	var table = $('#student')
-			.DataTable(
-					{
-						 
-						"columnDefs" : [ {
-							"visible" : false,
-							"targets" : 3,
-							"responsive": true
-						} ],
-						"order" : [ [ 3, 'asc' ] ],
-						"displayLength" : 10,
-						"drawCallback" : function(settings) {
-							var api = this.api();
-							var rows = api.rows({
-								page : 'current'
-							}).nodes();
-							var last = null;
+	$('.add-score').click(function(e) {
+		e.preventDefault();
+		$('tr').children('td').removeClass('active');
+		$(this).children('td').addClass('active');
 
-							api.column(3, {
-								page : 'current'
-							}).data().each(
-									function(group, i) {
-										if (last !== group) {
-											$(rows).eq(i).before(
-													'<tr class="group"><td colspan="5"> Đội: '
-															+ group
-															+ '</td></tr>');
-
-											last = group;
-										}
-									});
-						}
-						
-					});
-
-	// Order by the grouping
-	// $('#student tbody').on('click', 'tr.group', function() {
-	// var currentOrder = table.order()[0];
-	// if (currentOrder[0] === 3 && currentOrder[1] === 'asc') {
-	// table.order([ 3, 'desc' ]).draw();
-	// } else {
-	// table.order([ 3, 'asc' ]).draw();
-	// }
-	// });
-	table.on( 'responsive-display', function ( e, datatable, row, showHide, update ) {	    
-	} );
-	
+		$mads = $(this).attr('id');
+		
+		$('#mads_display').text($mads);
+		$('#tt_display').text($('.add-score').closest('tr').find('.active')[2].textContent);
+		$('#ten_display').text($('.add-score').closest('tr').find('.active')[3].textContent);
+		
+		$hk = $('#hk').attr('value');
+		$malop = $('#lop_selected').attr('value');
+		$.ajax({
+			type : 'POST',
+			url : site + '/student/typeSroce/getSroce',
+			data : {
+				'malop' : $malop,
+				'mads' : $mads,
+				'hk': $hk
+			},
+			success : function(output) {
+				var data = $.parseJSON(output[0]);
+				console.log(data['MaDoanSinh']);
+			},
+			error : function(e) {
+				alert(e.message);
+			}
+		});
+		
+	})
 }(window.jQuery));

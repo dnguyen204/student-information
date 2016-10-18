@@ -23,17 +23,19 @@ class TypeSroce extends CI_Controller
         $data['subview'] = 'student/typesroce';
         $this->load->view('admin/main', $data);
     }
-    
-    function getListStudent(){
+
+    function getListStudent()
+    {
         $data_where = array(
             'MaLop' => $_POST['malop'],
             'MaChiDoan' => $_POST['machidoan']
         );
         
-         echo $this->smodel->getListStudentForTypeSroce($data_where);
+        echo $this->smodel->getListStudentForTypeSroce($data_where);
     }
-    
-    function getListGLV(){
+
+    function getListGLV()
+    {
         $data_where = array(
             'MaLop' => $_POST['malop'],
             'MaChiDoan' => $_POST['machidoan']
@@ -41,5 +43,15 @@ class TypeSroce extends CI_Controller
         
         echo $this->gmodel->getListGLVInClass($data_where);
     }
-    
+
+    function getSroce()
+    {
+        $hk = $_POST['hk'];
+        $malop = $_POST['malop'];
+        $mads = $_POST['mads'];
+        
+        if ($hk == 1) {
+            print_r($this->smodel->getAllSroceHKIStudent($mads, $malop));
+        } elseif ($hk == 2) {}
+    }
 }

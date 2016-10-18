@@ -35,7 +35,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			</div>
 		</div>
 		<div class="col-xs-12 col-md-6">
-			<div class="form-group">				
+			<div class="form-group">
 				<label class="control-label col-xs-5 col-md-5">Huynh trưởng phụ
 					trách:</label>
 				<div class="col-xs-7 col-md-7 list-lead-class">
@@ -58,12 +58,100 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			</div>
 		</div>
 		<div class="col-xs-12 col-md-6">
-		
+			<div class="panel panel-info" style="margin-top: 10px">
+				<div class="panel-heading">
+					<h3 class="panel-title">Thông tin đoàn sinh</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<label class="control-label col-xs-4 col-md-4">Mã đoàn sinh:</label>
+						<label class="control-label col-xs-8 col-md-8" id="mads_display"></label>
+					</div>
+					<div class="row">
+						<label class="control-label col-xs-4 col-md-4">Tên Thánh:</label>
+						<label class="control-label col-xs-8 col-md-8" id="tt_display"></label>
+					</div>
+					<div class="row">
+						<label class="control-label col-xs-4 col-md-4">Họ và tên:</label>
+						<label class="control-label col-xs-8 col-md-8" id="ten_display"></label>
+					</div>
+				</div>
+			</div>
+			<?php $hk = htmlspecialchars($_GET["hk"]);?>
+			<input type="hidden" id="hk" value="<?=$hk?>" >
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Nhập điểm <?= ($hk == 1)? ' Học Kì 1' : ' Học Kì 2'?></h3>
+				</div>
+				<div class="panel-body">
+					<form class="form" id="form">
+						<div class="row">
+							<div class="col-xs-6 col-md-6">
+								<div class="form-group">
+									<label class="control-label col-xs-8 col-md-8">Điểm miệng:</label>
+									<div class="col-md-3 col-xs-3">
+										<input type="text" class="form-control input-sroce"
+											name="diem_mieng" id="diem_mieng" />
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6 col-md-6">
+								<div class="form-group">
+									<label class="control-label col-xs-8 col-md-8">15 phút:</label>
+									<div class="col-md-3 col-xs-3">
+										<input type="text" class="form-control input-sroce"
+											name="diem_15phut" id="diem_15phut" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 20px">
+							<div class="col-xs-6 col-md-6">
+								<div class="form-group">
+									<label class="control-label col-xs-8 col-md-8">1 tiết:</label>
+									<div class="col-md-3 col-xs-3">
+										<input type="text" class="form-control input-sroce"
+											name="diem_1tiet" id="diem_1tiet" />
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6 col-md-6">
+								<div class="form-group">
+									<label class="control-label col-xs-8 col-md-8">Học kì:</label>
+									<div class="col-md-3 col-xs-3">
+										<input type="text" class="form-control input-sroce"
+											name="diem_hocki" id="diem_hocki" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 20px">
+							<div class="col-xs-6 col-md-6">
+								<div class="form-group">
+									<label class="control-label col-xs-8 col-md-8">Điểm TB:</label>
+									<div class="col-md-3 col-xs-3">
+										<input type="text" class="form-control input-sroce"
+											name="diem_tb" id="diem_tb" readonly />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 20px">
+							<div class="col-xs-6 col-md-6">
+								<div class="form-group">
+									<div class="col-md-3 col-xs-3">
+										<input type="button" class="btn btn-info" id="save_sroce"
+											value="Lưu lại" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
-<script type='text/javascript'
-	src="<?php echo base_url();?>public/backend/template/admin/js/jquery.dataTables.min.js"></script>
 <script type='text/javascript'
 	src="<?php echo base_url();?>public/backend/template/admin/custom_js/type-sroce.js"></script>

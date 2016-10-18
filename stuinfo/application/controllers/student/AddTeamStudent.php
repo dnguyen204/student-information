@@ -17,7 +17,8 @@ class AddTeamStudent extends CI_Controller
         $data_where = array(
             'pc.MaHuynhTruong' => $this->session->userdata['logged_in']['mahuynhtruong'],
             'pc.MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
-        );
+        );            
+        
         $data['list_class'] = $this->gmodel->getClassOfGLV($data_where);
         
         $data['subview'] = 'student/add_team_student';
