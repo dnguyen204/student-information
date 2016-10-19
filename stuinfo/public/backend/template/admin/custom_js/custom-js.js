@@ -64,12 +64,7 @@
 			$("#form")[0].reset();
 		});
 	});
-	// Close tab
-	$(function() {
-		$('#btn-close').click(function() {
-			window.close();
-		});
-	});
+	
 	// xem điểm chi tiết
 	$('tbody tr td')
 			.click(

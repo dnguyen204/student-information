@@ -10,7 +10,7 @@ class Sroce_model extends CI_Model
         
         $this->db->from('tbl_diemhk1');
         if (empty($malop)) {
-            $this->db->where('dsl.MaDoanSinh', $code);
+            $this->db->where('MaDoanSinh', $code);
             
             $query = $this->db->get();
             return $result = $query->result_array();
@@ -22,15 +22,23 @@ class Sroce_model extends CI_Model
         }
     }
 
-    public function getAllSroceHKIIStudent($code)
+    public function getAllSroceHKIIStudent($code, $malop)
     {
         $this->db->select('*');
         
-        $this->db->from('tbl_diemhk2 dsl');
-        $this->db->where('dsl.MaDoanSinh', $code);
+        $this->db->from('tbl_diemhk2');
         
-        $query = $this->db->get();
-        return $result = $query->result_array();
+        if (empty($malop)) {
+            $this->db->where('MaDoanSinh', $code);
+            
+            $query = $this->db->get();
+            return $result = $query->result_array();
+        } else {
+            $this->db->where('MaDoanSinh', $code);
+            $this->db->where('MaLop', $malop);
+            
+            return json_encode($this->db->get()->result_array());
+        }
     }
 
     public function getAllSroceCaNamStudent($code)
@@ -98,5 +106,12 @@ class Sroce_model extends CI_Model
             return 'Không có đoàn sinh';
         }
         return $output_string;
+    }
+    
+    // Add điểm cho Đoàn sinh
+    public function addSroceForStudent($where, $data, $hk)
+    {
+        $this->db->where($where);
+        $this->db->update('tbl_diemhk' . $hk, $data);
     }
 }

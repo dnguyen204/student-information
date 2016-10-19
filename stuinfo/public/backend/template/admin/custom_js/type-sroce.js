@@ -13,13 +13,20 @@
 			$('.malop_warning').css('display', '');
 
 			$('#list_machidoan').empty();
-			$('#list_madoi').empty();
-			$('#list_stu_in_team').empty();
-			$('#list_stu_in_class').empty();
+			$('#list_stu_in_class').empty();			
+			$('#mads_display').empty();
+			$('#tt_display').empty();
+			$('#ten_display').empty();
+			$('#diem_mieng').val('')
+			$('#diem_15phut').val('')
+			$('#diem_1tiet').val('')
+			$('#diem_hocki').val('')
+			$('#diem_tb').val('')
+			$('.list-lead-class').empty()
 			return false;
 		}
 
-		$('#list_machidoan').empty();
+		$('#list_machidoan').empty();		
 
 		$.ajax({
 			type : 'POST',
@@ -48,11 +55,11 @@
 		if ($macd === undefined || $macd == 0) {
 			$('#list_machidoan').css('border-color', 'red');
 			$('.chidoan_warning').css('display', '');
-				
+
 			$('#list_stu_in_class').empty();
 			return false;
 		}
-		
+
 		$malop = $('#lop_selected').attr('value');
 		$.ajax({
 			type : 'POST',
@@ -82,4 +89,52 @@
 			}
 		});
 	})
+	// check change
+	$('input').change(
+			function() {
+				$heso1 = ($('#diem_mieng').val() ? parseFloat($('#diem_mieng')
+						.val()) : 0)
+						+ ($('#diem_15phut').val() ? parseFloat($(
+								'#diem_15phut').val()) : 0)
+				$heso2 = ($('#diem_1tiet').val()) ? parseFloat($('#diem_1tiet')
+						.val()) * 2 : 0
+				$heso3 = ($('#diem_hocki').val()) ? parseFloat($('#diem_hocki')
+						.val()) * 3 : 0
+
+				$tb = parseFloat(($heso1 + $heso2 + $heso3) / 7).toFixed(1)
+
+				$('#diem_tb').val($tb)
+			})
+
+	// add sroce student
+	$('#save_sroce').click(function() {
+		$malop = $('#lop_selected').attr('value')
+		$mads = $('#mads').attr('value')
+		$data = $('#form').serialize()
+
+		if ($malop == 0 || $mads == undefined) {
+			alert("Chọn thông tin trước khi thêm điểm")
+			return false
+		}
+
+		$.ajax({
+			type : 'POST',
+			url : site + '/student/typeSroce/addSroce',
+			data : $data ,
+			success : function() {
+				alert('Lưu điểm thành công!')
+				
+				$('#diem_mieng').val('')
+				$('#diem_15phut').val('')
+				$('#diem_1tiet').val('')
+				$('#diem_hocki').val('')
+				$('#diem_tb').val('')				
+			},
+			error : function(e) {
+				alert(e.message);
+			}
+		});
+
+	})
+
 }(window.jQuery));

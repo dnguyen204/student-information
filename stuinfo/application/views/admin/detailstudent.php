@@ -179,9 +179,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 													<?php if($pro['MaLop'] == $s['MaLop']){?>
 													<tr>
 														<td>Điểm HKI</td>
-														<td><?php echo $s['MiengHKI']?></td>
-														<td><?php echo $s['KT15PhutHKI']?></td>
-														<td><?php echo $s['KT1TietHKI']?></td>
+														<td><?php echo $s['MiengHK1']?></td>
+														<td><?php echo $s['KT15PhutHK1']?></td>
+														<td><?php echo $s['KT1TietHK1']?></td>
 														<td><?php echo $s['KTHK1']?></td>
 														<td><?php echo $s['TBHK1']?></td>
 													</tr>
@@ -191,9 +191,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 													<?php if($pro['MaLop'] == $s['MaLop']){?>
 													<tr>
 														<td>Điểm HKII</td>
-														<td><?php echo $s['MiengHKII']?></td>
-														<td><?php echo $s['KT15PhutHKII']?></td>
-														<td><?php echo $s['KT1TietHKII']?></td>
+														<td><?php echo $s['MiengHK2']?></td>
+														<td><?php echo $s['KT15PhutHK2']?></td>
+														<td><?php echo $s['KT1TietHK2']?></td>
 														<td><?php echo $s['KTHK2']?></td>
 														<td><?php echo $s['TBHK2']?></td>
 													</tr>

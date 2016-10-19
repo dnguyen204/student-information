@@ -17,19 +17,19 @@ class DetailStudent extends CI_Controller
     {
         $result = $this->stumodel->getStudentDetail(htmlspecialchars($_GET["code"]));
         $result_process = $this->stumodel->getStudentProcess(htmlspecialchars($_GET["code"]));
-        $result_hk1 = $this->smodel->getAllSroceHKIStudent(htmlspecialchars($_GET["code"]));
-        $result_hk2 = $this->smodel->getAllSroceHKIIStudent(htmlspecialchars($_GET["code"]));
-        $result_cn = $this->smodel->getAllSroceCaNamStudent(htmlspecialchars($_GET["code"]));        
+        $result_hk1 = $this->smodel->getAllSroceHKIStudent(htmlspecialchars($_GET["code"]), '');
+        $result_hk2 = $this->smodel->getAllSroceHKIIStudent(htmlspecialchars($_GET["code"]), '');
+        $result_cn = $this->smodel->getAllSroceCaNamStudent(htmlspecialchars($_GET["code"]));
         $result_glv = $this->glvmodel->getGLVFromClass(htmlspecialchars($_GET["code"]));
         
         $data['result_stuinfo'] = $result;
         $data['result_process'] = $result_process;
         $data['hk1'] = $result_hk1;
         $data['hk2'] = $result_hk2;
-        $data['canam'] = $result_cn; 
-        $data['glv'] = $result_glv;        
+        $data['canam'] = $result_cn;
+        $data['glv'] = $result_glv;
         $data['subview'] = 'admin/detailstudent';
-       
+        
         $this->load->view('admin/main', $data);
     }
 }
