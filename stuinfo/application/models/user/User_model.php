@@ -38,8 +38,8 @@ class User_model extends CI_Model
             return $query->result();
         } else {
             return false;
-        }        
-    }   
+        }
+    }
     // Lấy thông tin Permision của User đăng nhập
     // Param: MaQuyen
     public function get_role($ma_role)
@@ -70,7 +70,26 @@ class User_model extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
-    
-    
-    
+    // Lấy mật khẩu bằng username
+    public function getPassByUser($us, $mk)
+    {
+        $this->db->from('tbl_user');
+        $this->db->where('Username', $us);
+        $this->db->where('Password', $mk);
+        
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return 1;
+        }
+        return 0;
+    }
+    // Cập nhật pass bằng username
+    public function updatePassByUser($us, $mk)
+    {        
+        $this->db->where('Username', $us);
+        $this->db->update('tbl_user', array(
+            'Password' => $mk,
+            'LastModified' => date("Y-m-d") 
+        ));
+    }
 }

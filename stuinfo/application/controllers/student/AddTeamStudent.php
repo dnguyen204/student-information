@@ -14,15 +14,20 @@ class AddTeamStudent extends CI_Controller
 
     public function index()
     {
-        $data_where = array(
-            'pc.MaHuynhTruong' => $this->session->userdata['logged_in']['mahuynhtruong'],
-            'pc.MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
-        );            
-        
-        $data['list_class'] = $this->gmodel->getClassOfGLV($data_where);
-        
-        $data['subview'] = 'student/add_team_student';
-        $this->load->view('admin/main', $data);
+        if (in_array($this->uri->segments[1] . '/' . $this->uri->segments[2], $this->session->userdata['logged_in']['quyen']) == FALSE) {
+            $data['subview'] = 'resultpage/no_permision';
+            $this->load->view('admin/main', $data);
+        } else {            
+            $data_where = array(
+                'pc.MaHuynhTruong' => $this->session->userdata['logged_in']['mahuynhtruong'],
+                'pc.MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
+            );
+            
+            $data['list_class'] = $this->gmodel->getClassOfGLV($data_where);
+            
+            $data['subview'] = 'student/add_team_student';
+            $this->load->view('admin/main', $data);
+        }
     }
 
     function getChiDoanOfGLV()
@@ -46,8 +51,9 @@ class AddTeamStudent extends CI_Controller
             'MaLop' => $_POST['malop'],
             'MaChiDoan' => $_POST['machidoan'],
             'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc'],
-            'MaDoi' => 0 // Không tính các em có đội rồi
-        );
+            'MaDoi' => 0
+        ) // Không tính các em có đội rồi
+;
         
         echo $this->smodel->getListStudentInChiDoan($data_where);
     }
@@ -70,14 +76,13 @@ class AddTeamStudent extends CI_Controller
             'MaLop' => $_POST['malop'],
             'MaChiDoan' => $_POST['machidoan'],
             'MaDoanSinh' => $_POST['madoansinh'],
-            'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']         
+            'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
         );
         $madoi = $_POST['madoi'];
         $this->smodel->addStudentToTeam($data_where, $madoi);
         
         $this->getListStudentTeam();
     }
-    
 
     function removeInTeam()
     {

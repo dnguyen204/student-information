@@ -56,9 +56,175 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		</div>
 		<div class="panel-footer footer-student-detail">
 			<a id="editProfile" title="Chỉnh sửa thông tin cá nhân"
-				data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i
-				class="glyphicon glyphicon-edit"></i></a>
+				data-toggle="collapse" data-target="#edit-info" type="button"
+				class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
 		</div>
 	</div>
 	<?php }?>
+	<div id="edit-info" class="panel panel-info collapse">
+		<form id="form-edit" role="form">
+			<div class="row" style="margin-top: 10px">
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Ảnh Huynh Trưởng:</label>
+						<div class="col-md-8 col-xs-8">
+							<img id="Image"
+								src="<?=base_url().$profile[0]['HinhHuynhTruong']?>" /> <input
+								type="button" class="btn" value="Chọn" onclick="BrowseServer();" />
+							<input type="hidden" id="glvImage" name="glvImage">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Mã Huynh Trưởng:</label>
+
+						<div class="col-md-8 col-xs-8">
+							<input type="text" class="form-control" readonly name="glvcode"
+								value="<?php echo $profile[0]['MaHuynhTruong']?>" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Row 1 -->
+			<div class="row" style="margin-top: 10px">
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Tên Thánh:</label>
+
+						<div class="col-md-8 col-xs-8">
+							<input type="text" class="form-control auto-TenThanh"
+								autocomplete="on" name="glvTenThanh"
+								value="<?php echo $profile[0]['TenThanh']?>" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Row 2 -->
+			<div class="row" style="margin-top: 10px">
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Họ và tên đệm:</label>
+						<div class="col-md-8 col-xs-8">
+							<input type="text" class="form-control" required
+								name="glvLastName" value="<?php echo $profile[0]['HovaDem']?>" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Tên:</label>
+						<div class="col-md-8 col-xs-8">
+							<input type="text" class="form-control" required
+								name="glvFirstName" value="<?php echo $profile[0]['Ten']?>" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Row 3 -->
+			<div class="row" style="margin-top: 10px">
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Giới tính:</label>
+						<div class="col-md-8 col-xs-8">
+							<div class="radio">
+						<?php if ($profile[0]['GioiTinh']){ ?>
+							<label><input type="radio" name="stuSex" value="1"
+									checked="checked">Nam</label> <label><input type="radio"
+									name="stuSex" value="0">Nữ</label>
+						<?php }else{?>
+							<label><input type="radio" name="stuSex" value="1">Nam</label> <label><input
+									type="radio" name="stuSex" value="0" checked="checked">Nữ</label>
+						<?php }?>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Row 4 -->
+			<div class="row" style="margin-top: 10px">
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Ngày sinh:</label>
+						<div class="col-md-8 col-xs-8">
+							<div class="input-group date datepicker"
+								data-date-format="dd-mm-yyyy">
+								<input class="form-control" type="text" readonly
+									name="glvNgaySinh"
+									value="<?php echo date('d-m-Y', strtotime($profile[0]['NgaySinh']))?>">
+								<span class="input-group-addon"><i
+									class="glyphicon glyphicon-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Ngày bổn mạng:</label>
+						<div class="col-md-8 col-xs-8">
+							<input type="text" class="form-control" required
+								name="glvFirstName"
+								value="<?php echo $profile[0]['NgayBonMang']?>" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px">
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Điện thoại:</label>
+						<div class="col-md-8 col-xs-8">
+							<input type="text" class="form-control" required name="glvSDT"
+								value="<?php echo $profile[0]['DienThoai']?>" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Email:</label>
+						<div class="col-md-8 col-xs-8">
+							<input type="email" class="form-control" required name="glvEmail"
+								value="<?php echo $profile[0]['Email']?>" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px">
+				<div class="col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-xs-4">Địa chỉ:</label>
+						<div class="col-md-8 col-xs-8">
+							<textarea class="form-control" required name="glvDiaChi"><?php echo $profile[0]['DiaChi']?></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px">
+				<input type="button"
+					class="btn btn-danger col-sm-offset-8 col-xs-offset-8"
+					id="update-info" value="Cập nhật thông tin">
+			</div>
+		</form>
+	</div>
 </div>
+
+<script id="division_js" type='text/javascript'
+	src="<?php echo base_url();?>public/backend/template/admin/custom_js/edit-profile.js"></script>
+<script type='text/javascript'
+	src="<?php echo base_url();?>public/ckfinder/ckfinder.js"></script>
+<script type="text/javascript">
+    function BrowseServer() {
+        var finder = new CKFinder();
+        //finder.baseUrl = '/upload/stu_images/';
+        finder.selectActionFunction = SetFileField;
+        finder.popup();
+    }
+    function SetFileField(fileUrl) {
+        document.getElementById('Image').src = fileUrl;
+        document.getElementById('glvImage').value = fileUrl;
+    }
+</script>

@@ -317,7 +317,7 @@ class Glv_model extends CI_Model
         $query = $this->db->get();
         
         if ($query->num_rows() > 0) {
-            $output_string = '';            
+            $output_string = '';
             foreach ($query->result_array() as $key => $row) {
                 $name = $row['TenThanh'] . ' ' . $row['HovaDem'] . ' ' . $row['Ten'];
                 $output_string .= "<h4>{$name}</h4>";

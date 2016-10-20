@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2016 at 10:23 AM
+-- Generation Time: Oct 20, 2016 at 11:29 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -557,7 +557,7 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`ID`, `Username`, `Password`, `MaQuyen`, `Created`, `LastModified`) VALUES
 (1, 'admin', '94b669fad0be68cdcab9e62628a68e58', 1, '0000-00-00', '2016-10-11'),
-(8, 'dung.nh1705', '8475c27a5e949b2551d46c80d15b6ed5', 3, '0000-00-00', '2016-10-12'),
+(8, 'dung.nh1705', '94b669fad0be68cdcab9e62628a68e58', 3, '0000-00-00', '2016-10-20'),
 (10, 'thao.nth1901', '507cf8a5ead5cdf0c857e9a4e69d9ce3', 4, '2016-10-07', '2016-10-19'),
 (11, 'chien.nv0107', 'a5d76a61e149a6fbd071f82ff76dd6cf', 4, '2016-10-11', '2016-10-13');
 

@@ -82,7 +82,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<label class="control-label col-md-4 col-xs-4">Giới tính:</label>
 					<div class="col-md-8 col-xs-8">
 						<div class="radio">
-						<?php if ($result_stuinfo[0]['TenThanh']){ ?>
+						<?php if ($result_stuinfo[0]['GioiTinh']){ ?>
 							<label><input type="radio" name="stuSex" value="1"
 								checked="checked">Nam</label> <label><input type="radio"
 								name="stuSex" value="0">Nữ</label>
