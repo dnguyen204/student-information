@@ -19,4 +19,25 @@ class ViewProfile extends CI_Controller
         
         $this->load->view('admin/main', $data);
     }
+
+    function updateInfo()
+    {
+        $data_update = array(
+            'HinhHuynhTruong' => $_POST['glvImage'],
+            'TenThanh' => $_POST['glvTenThanh'],
+            'HovaDem' => $_POST['glvLastName'],
+            'Ten' => $_POST['glvFirstName'],
+            'GioiTinh' => $_POST['glvSex'],
+            'NgaySinh' => date('d-m-Y', strtotime($_POST['glvNgaySinh'])),
+            'NgayBonMang' => $_POST['glvBonMang'],
+            'DienThoai' => $_POST['glvSDT'],
+            'Email' => $_POST['glvEmail'],
+            'DiaChi' => $_POST['glvDiaChi']
+        );
+        
+        $magt = $_POST['glvcode'];       
+        
+        $this->load->model('admin/glv_model', 'gmodel');
+        $this->gmodel->updateGLVInfo($magt, $data_update);
+    }
 }

@@ -90,6 +90,10 @@ class User_model extends CI_Model
         $this->db->update('tbl_user', array(
             'Password' => $mk,
             'LastModified' => date("Y-m-d") 
-        ));
+        ));     
+        
     }
+    
+    
+    
 }

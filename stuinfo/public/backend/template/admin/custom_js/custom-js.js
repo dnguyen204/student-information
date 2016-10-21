@@ -5,9 +5,9 @@
 			todayHighlight : true
 		}).datepicker();
 	});
-	
+
 	$(".auto-TenThanh").autocomplete({
-		source : "newstudent/get_list"// path to the get_birds method		
+		source : "newstudent/get_list"// path to the get_birds method
 	});
 
 	var toggle = true;
@@ -64,7 +64,7 @@
 			$("#form")[0].reset();
 		});
 	});
-	
+
 	// xem điểm chi tiết
 	$('tbody tr td')
 			.click(
@@ -86,8 +86,8 @@
 										'glyphicon glyphicon-chevron-right')
 							}
 						}
-					});	
-	
+					});
+
 	// Thêm session add lớp cho đoàn sinh
 	$(function() {
 		$("#chkaddClass").click(function() {
@@ -102,6 +102,6 @@
 				$('#valueHidden').attr('value', 'unchecked');
 			}
 		});
-	});	
-	
+	});
+
 }(window.jQuery));

@@ -25,7 +25,7 @@ class Changepass extends CI_Controller
     
     function updatePass(){
         $us = $this->session->userdata['logged_in']['username'];
-        $mk = md5($_POST['mk']);
+        $mk = md5($_POST['newmk']);
         $this->umodel->updatePassByUser($us, $mk);
     }
     

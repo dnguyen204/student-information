@@ -328,4 +328,11 @@ class Glv_model extends CI_Model
         
         return $output_string;
     }
+    
+    // Cập nhật thông tin của GLV
+    public function updateGLVInfo($code, $data)
+    {
+        $this->db->where('MaHuynhTruong', $code);
+        $this->db->update('tbl_huynhtruong', $data);
+    }
 }

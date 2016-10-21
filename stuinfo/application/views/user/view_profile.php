@@ -108,8 +108,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="form-group">
 						<label class="control-label col-md-4 col-xs-4">Họ và tên đệm:</label>
 						<div class="col-md-8 col-xs-8">
-							<input type="text" class="form-control" required
-								name="glvLastName" value="<?php echo $profile[0]['HovaDem']?>" />
+							<input type="text" class="form-control" name="glvLastName"
+								value="<?php echo $profile[0]['HovaDem']?>" />
 						</div>
 					</div>
 				</div>
@@ -117,8 +117,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="form-group">
 						<label class="control-label col-md-4 col-xs-4">Tên:</label>
 						<div class="col-md-8 col-xs-8">
-							<input type="text" class="form-control" required
-								name="glvFirstName" value="<?php echo $profile[0]['Ten']?>" />
+							<input type="text" class="form-control" name="glvFirstName"
+								value="<?php echo $profile[0]['Ten']?>" />
 						</div>
 					</div>
 				</div>
@@ -134,10 +134,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<?php if ($profile[0]['GioiTinh']){ ?>
 							<label><input type="radio" name="stuSex" value="1"
 									checked="checked">Nam</label> <label><input type="radio"
-									name="stuSex" value="0">Nữ</label>
+									name="glvSex" value="0">Nữ</label>
 						<?php }else{?>
 							<label><input type="radio" name="stuSex" value="1">Nam</label> <label><input
-									type="radio" name="stuSex" value="0" checked="checked">Nữ</label>
+									type="radio" name="glvSex" value="0" checked="checked">Nữ</label>
 						<?php }?>
 						</div>
 						</div>
@@ -166,8 +166,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="form-group">
 						<label class="control-label col-md-4 col-xs-4">Ngày bổn mạng:</label>
 						<div class="col-md-8 col-xs-8">
-							<input type="text" class="form-control" required
-								name="glvFirstName"
+							<input type="text" class="form-control" name="glvBonMang"
 								value="<?php echo $profile[0]['NgayBonMang']?>" />
 						</div>
 					</div>
@@ -178,7 +177,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="form-group">
 						<label class="control-label col-md-4 col-xs-4">Điện thoại:</label>
 						<div class="col-md-8 col-xs-8">
-							<input type="text" class="form-control" required name="glvSDT"
+							<input type="text" class="form-control" name="glvSDT"
 								value="<?php echo $profile[0]['DienThoai']?>" />
 						</div>
 					</div>
@@ -187,7 +186,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="form-group">
 						<label class="control-label col-md-4 col-xs-4">Email:</label>
 						<div class="col-md-8 col-xs-8">
-							<input type="email" class="form-control" required name="glvEmail"
+							<input type="email" class="form-control" name="glvEmail"
 								value="<?php echo $profile[0]['Email']?>" />
 						</div>
 					</div>
@@ -198,7 +197,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="form-group">
 						<label class="control-label col-md-4 col-xs-4">Địa chỉ:</label>
 						<div class="col-md-8 col-xs-8">
-							<textarea class="form-control" required name="glvDiaChi"><?php echo $profile[0]['DiaChi']?></textarea>
+							<textarea class="form-control" name="glvDiaChi"><?php echo $profile[0]['DiaChi']?></textarea>
 						</div>
 					</div>
 				</div>
