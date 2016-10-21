@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2016 at 11:29 AM
+-- Generation Time: Oct 21, 2016 at 12:35 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -219,7 +219,7 @@ CREATE TABLE `tbl_huynhtruong` (
 
 INSERT INTO `tbl_huynhtruong` (`ID`, `HinhHuynhTruong`, `TenThanh`, `MaHuynhTruong`, `HovaDem`, `Ten`, `NgaySinh`, `NgayBonMang`, `GioiTinh`, `DienThoai`, `Email`, `DiaChi`, `GhiChu`, `TrangThai`, `MaQuyen`, `Username`) VALUES
 (1, '', NULL, NULL, NULL, 'Administrator', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'admin'),
-(12, '', 'Giuse', '160002', 'Nguyễn Hùng', 'Dũng', '1992-05-17', '01-05', 1, '01229004101', 'dung.nh1705@gmail.com', '310/60 Phạm Văn Chiêu, phường 9, Gò Vấp', '', 7, 3, 'dung.nh1705'),
+(12, '', 'Gioan', '160002', 'Nguyễn Hùng', 'Dũng', '0000-00-00', '01-05', NULL, '01229004101', 'dung.nh1705@gmail.com', '310/60 Phạm Văn Chiêu, phường 9, Gò Vấp', '', 7, 3, 'dung.nh1705'),
 (14, '', 'Maria', '160003', 'Nguyễn Thị Hồng', 'Thảo', '1993-01-19', '', 0, '01227237184', '', '', '', 7, 4, 'thao.nth1901'),
 (15, '', 'Gioan Baotixita', '160004', 'Nguyễn Viết', 'Chiến', '2016-07-01', '', 1, '01229004101', '', '', '', 5, 4, 'chien.nv0107');
 
@@ -557,7 +557,7 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`ID`, `Username`, `Password`, `MaQuyen`, `Created`, `LastModified`) VALUES
 (1, 'admin', '94b669fad0be68cdcab9e62628a68e58', 1, '0000-00-00', '2016-10-11'),
-(8, 'dung.nh1705', '94b669fad0be68cdcab9e62628a68e58', 3, '0000-00-00', '2016-10-20'),
+(8, 'dung.nh1705', 'e10adc3949ba59abbe56e057f20f883e', 3, '0000-00-00', '2016-10-21'),
 (10, 'thao.nth1901', '507cf8a5ead5cdf0c857e9a4e69d9ce3', 4, '2016-10-07', '2016-10-19'),
 (11, 'chien.nv0107', 'a5d76a61e149a6fbd071f82ff76dd6cf', 4, '2016-10-11', '2016-10-13');
 
