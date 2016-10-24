@@ -15,8 +15,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-3 col-lg-3" align="center">
-					<img alt="User Pic"
-						src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
+					<img alt="User Pic" src="<?= base_url().$pro['HinhHuynhTruong'] ?>"
 						class="img-circle img-responsive">
 				</div>
 				<div class="col-md-9 col-lg-9">
@@ -69,7 +68,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<label class="control-label col-md-4 col-xs-4">Ảnh Huynh Trưởng:</label>
 						<div class="col-md-8 col-xs-8">
 							<img id="Image"
-								src="<?=base_url().$profile[0]['HinhHuynhTruong']?>" /> <input
+								src="<?=base_url().$profile[0]['HinhHuynhTruong']?>" height="300px" width="300px" /> <input
 								type="button" class="btn" value="Chọn" onclick="BrowseServer();" />
 							<input type="hidden" id="glvImage" name="glvImage">
 						</div>

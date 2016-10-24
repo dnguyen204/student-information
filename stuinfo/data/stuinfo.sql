@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2016 at 12:35 PM
+-- Generation Time: Oct 24, 2016 at 12:21 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -221,7 +221,7 @@ INSERT INTO `tbl_huynhtruong` (`ID`, `HinhHuynhTruong`, `TenThanh`, `MaHuynhTruo
 (1, '', NULL, NULL, NULL, 'Administrator', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'admin'),
 (12, '', 'Gioan', '160002', 'Nguyễn Hùng', 'Dũng', '0000-00-00', '01-05', NULL, '01229004101', 'dung.nh1705@gmail.com', '310/60 Phạm Văn Chiêu, phường 9, Gò Vấp', '', 7, 3, 'dung.nh1705'),
 (14, '', 'Maria', '160003', 'Nguyễn Thị Hồng', 'Thảo', '1993-01-19', '', 0, '01227237184', '', '', '', 7, 4, 'thao.nth1901'),
-(15, '', 'Gioan Baotixita', '160004', 'Nguyễn Viết', 'Chiến', '2016-07-01', '', 1, '01229004101', '', '', '', 5, 4, 'chien.nv0107');
+(15, '', 'Gioan Baotixita', '160004', 'Nguyễn Viết', 'Chiến', '0000-00-00', '', NULL, '01229004101', '', 'update', '', 5, 4, 'chien.nv0107');
 
 -- --------------------------------------------------------
 
@@ -468,13 +468,6 @@ CREATE TABLE `tbl_tongketcanam` (
   `XetLop` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tbl_tongketcanam`
---
-
-INSERT INTO `tbl_tongketcanam` (`ID`, `MaDoanSinh`, `MaLop`, `MaNamHoc`, `TBCN`, `TruocTBCN`, `HLCN`, `TruocHLCN`, `HKCN`, `XepHang`, `XepHangCN`, `CotPhu`, `XetLop`) VALUES
-(1, '160001', 'Chien161', 1, 8.5, NULL, 'Giỏi', NULL, 'Tốt', NULL, NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -484,11 +477,12 @@ INSERT INTO `tbl_tongketcanam` (`ID`, `MaDoanSinh`, `MaLop`, `MaNamHoc`, `TBCN`,
 CREATE TABLE `tbl_tongkethk1` (
   `ID` int(11) NOT NULL,
   `MaDoanSinh` varchar(6) DEFAULT NULL,
-  `MaLop` varchar(6) DEFAULT NULL,
+  `MaLop` varchar(20) DEFAULT NULL,
   `MaNamHoc` int(11) DEFAULT NULL,
   `TBHK1` float DEFAULT NULL,
   `HLHK1` varchar(10) DEFAULT NULL,
   `HKHK1` varchar(10) DEFAULT NULL,
+  `NhanXetHK1` varchar(250) NOT NULL,
   `XepHang` int(11) DEFAULT NULL,
   `XepHangHK1` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -502,11 +496,12 @@ CREATE TABLE `tbl_tongkethk1` (
 CREATE TABLE `tbl_tongkethk2` (
   `ID` int(11) NOT NULL,
   `MaDoanSinh` varchar(6) DEFAULT NULL,
-  `MaLop` varchar(6) DEFAULT NULL,
+  `MaLop` varchar(20) DEFAULT NULL,
   `MaNamHoc` int(11) DEFAULT NULL,
   `TBHK2` float DEFAULT NULL,
   `HLHK2` varchar(10) DEFAULT NULL,
   `HKHK2` varchar(10) DEFAULT NULL,
+  `NhanXetHK2` varchar(250) NOT NULL,
   `XepHang` int(11) DEFAULT NULL,
   `XepHangHK2` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -734,7 +729,7 @@ ALTER TABLE `tbl_huynhtruong`
 -- AUTO_INCREMENT for table `tbl_lop`
 --
 ALTER TABLE `tbl_lop`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `tbl_namhoc`
 --

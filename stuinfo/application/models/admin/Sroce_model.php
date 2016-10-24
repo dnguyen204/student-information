@@ -3,7 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Sroce_model extends CI_Model
 {
-
+    // Lấy toàn bộ điểm hk1 của đoàn sinh
+    // nếu có mã lớp thì sẽ lấy chính xác không thì sẽ lấy toàn bộ
     public function getAllSroceHKIStudent($code, $malop)
     {
         $this->db->select('*');
@@ -21,7 +22,8 @@ class Sroce_model extends CI_Model
             return json_encode($this->db->get()->result_array());
         }
     }
-
+    // Lấy toàn bộ điểm hk2 của đoàn sinh
+    // nếu có mã lớp thì sẽ lấy chính xác không thì sẽ lấy toàn bộ
     public function getAllSroceHKIIStudent($code, $malop)
     {
         $this->db->select('*');
@@ -40,7 +42,7 @@ class Sroce_model extends CI_Model
             return json_encode($this->db->get()->result_array());
         }
     }
-
+    // lấy tổng kết cả năm cho đoàn sinh
     public function getAllSroceCaNamStudent($code)
     {
         $this->db->select('*');
@@ -50,6 +52,32 @@ class Sroce_model extends CI_Model
         
         $query = $this->db->get();
         return $result = $query->result_array();
+    }
+    // xét học lực
+    function reviewAcademic($sroce)
+    {
+        switch ($sroce) {
+            case $sroce <= 3.5:
+                $result = 'Kém';
+                break;
+            case 3.5 < $sroce <= 5:
+                $result = 'Yếu';
+                break;
+            case 5 < $sroce <= 6.5:
+                $result = 'Trung Bình';
+                break;
+            case 6.5 < $sroce <= 8.5:
+                $result = 'Khá';
+                break;
+            case 8.5 < $sroce <= 9.2:
+                $result = 'Giỏi';
+                break;
+            case 9.2 < $sroce:
+                $result = 'Xuất Sắc';
+                break;
+        }
+        
+        return $result;
     }
     
     // Lấy danh sách
@@ -113,5 +141,12 @@ class Sroce_model extends CI_Model
     {
         $this->db->where($where);
         $this->db->update('tbl_diemhk' . $hk, $data);
+        
+        $data_update = array(
+            'TBHK' . $hk => array_values($data)[4],
+            'HLHK' . $hk => $this->reviewAcademic(array_values($data)[4])
+        );
+        $this->db->where($where);
+        $this->db->update('tbl_tongkethk' . $hk, $data_update);
     }
 }

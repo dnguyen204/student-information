@@ -380,8 +380,9 @@ class Student_model extends CI_Model
             'MaNamHoc' => array_values($data_where)[3]
         );
         $this->db->insert('tbl_diemhk1', $data_add);
-        
-        $this->db->insert('tbl_diemhk2', $data_add);        
+        $this->db->insert('tbl_tongkethk1', $data_add);
+        $this->db->insert('tbl_diemhk2', $data_add);
+        $this->db->insert('tbl_tongkethk2', $data_add);
     }
     // Xóa ĐS ra khỏi đội
     public function removeStudentInTeam($data_where)
@@ -400,6 +401,12 @@ class Student_model extends CI_Model
         $this->db->delete('tbl_diemhk1');
         
         $this->db->where($data_remove);
+        $this->db->delete('tbl_tongkethk1');       
+        
+        $this->db->where($data_remove);
         $this->db->delete('tbl_diemhk2');
+        
+        $this->db->where($data_remove);
+        $this->db->delete('tbl_tongkethk2');
     }
 }
