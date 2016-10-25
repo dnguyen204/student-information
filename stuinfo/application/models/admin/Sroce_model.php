@@ -56,31 +56,24 @@ class Sroce_model extends CI_Model
     // xét học lực
     function reviewAcademic($sroce)
     {
-        switch ($sroce) {
-            case $sroce <= 3.5:
-                $result = 'Kém';
-                break;
-            case 3.5 < $sroce <= 5:
-                $result = 'Yếu';
-                break;
-            case 5 < $sroce <= 6.5:
-                $result = 'Trung Bình';
-                break;
-            case 6.5 < $sroce <= 8.5:
-                $result = 'Khá';
-                break;
-            case 8.5 < $sroce <= 9.2:
-                $result = 'Giỏi';
-                break;
-            case 9.2 < $sroce:
-                $result = 'Xuất Sắc';
-                break;
+        if ($sroce <= 3.5) {
+            $result = 'Kém';
+        } elseif (3.5 < $sroce && $sroce <= 5) {
+            $result = 'Yếu';
+        } elseif (5 < $sroce && $sroce <= 6.5) {
+            $result = 'Trung Bình';
+        } elseif (6.5 < $sroce && $sroce <= 8.5) {
+            $result = 'Khá';
+        } elseif (8.5 < $sroce && $sroce <= 9.2) {
+            $result = 'Giỏi';
+        } else {
+            $result = 'Xuất Sắc';
         }
         
         return $result;
     }
     
-    // Lấy danh sách
+    // Lấy danh sách đoàn sinh để nhập điểm
     public function getListStudentForTypeSroce($where)
     {
         $url = base_url();

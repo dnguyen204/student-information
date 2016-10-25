@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2016 at 12:21 PM
+-- Generation Time: Oct 25, 2016 at 10:47 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -291,6 +291,40 @@ INSERT INTO `tbl_nganh` (`MaNganh`, `TenNganh`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_nghihoc`
+--
+
+CREATE TABLE `tbl_nghihoc` (
+  `ID` int(11) NOT NULL,
+  `MaDoanSinh` varchar(6) NOT NULL,
+  `NgayNH` date NOT NULL,
+  `MaLop` varchar(20) NOT NULL,
+  `HocKy` int(11) NOT NULL,
+  `MaNamHoc` int(11) NOT NULL,
+  `CPKP` int(11) NOT NULL,
+  `GhiChu` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_nghile`
+--
+
+CREATE TABLE `tbl_nghile` (
+  `ID` int(11) NOT NULL,
+  `MaDoanSinh` varchar(6) NOT NULL,
+  `NgayNL` date NOT NULL,
+  `MaLop` varchar(20) NOT NULL,
+  `HocKy` int(11) NOT NULL,
+  `MaNamHoc` int(11) NOT NULL,
+  `CPKP` tinyint(1) NOT NULL,
+  `GhiChu` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_permision`
 --
 
@@ -554,7 +588,7 @@ INSERT INTO `tbl_user` (`ID`, `Username`, `Password`, `MaQuyen`, `Created`, `Las
 (1, 'admin', '94b669fad0be68cdcab9e62628a68e58', 1, '0000-00-00', '2016-10-11'),
 (8, 'dung.nh1705', 'e10adc3949ba59abbe56e057f20f883e', 3, '0000-00-00', '2016-10-21'),
 (10, 'thao.nth1901', '507cf8a5ead5cdf0c857e9a4e69d9ce3', 4, '2016-10-07', '2016-10-19'),
-(11, 'chien.nv0107', 'a5d76a61e149a6fbd071f82ff76dd6cf', 4, '2016-10-11', '2016-10-13');
+(11, 'chien.nv0107', 'e10adc3949ba59abbe56e057f20f883e', 4, '2016-10-11', '2016-10-25');
 
 --
 -- Indexes for dumped tables
@@ -619,6 +653,18 @@ ALTER TABLE `tbl_namhoc`
 --
 ALTER TABLE `tbl_nganh`
   ADD PRIMARY KEY (`MaNganh`);
+
+--
+-- Indexes for table `tbl_nghihoc`
+--
+ALTER TABLE `tbl_nghihoc`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tbl_nghile`
+--
+ALTER TABLE `tbl_nghile`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `tbl_permision`
@@ -740,6 +786,16 @@ ALTER TABLE `tbl_namhoc`
 --
 ALTER TABLE `tbl_nganh`
   MODIFY `MaNganh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `tbl_nghihoc`
+--
+ALTER TABLE `tbl_nghihoc`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_nghile`
+--
+ALTER TABLE `tbl_nghile`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_permision`
 --

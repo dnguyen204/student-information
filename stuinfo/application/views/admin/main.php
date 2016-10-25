@@ -109,8 +109,9 @@ if (isset($this->session->userdata['logged_in'])) {
 							<li id="menu-academico-boletim"><a href="../admin/newDatabase">Chỉnh
 									sửa DB</a></li>
 						</ul></li>
-					<li id="menu-academico"><a><i class="glyphicon glyphicon-grain"></i> <span>Phân đoàn trưởng</span>
-							<span class="fa fa-angle-right" style="float: right"></span></a>
+					<li id="menu-academico"><a><i class="glyphicon glyphicon-grain"></i>
+							<span>Phân đoàn trưởng</span> <span class="fa fa-angle-right"
+							style="float: right"></span></a>
 						<ul id="menu-academico-sub">
 							<li id="menu-academico-avaliacoes"><a
 								href="../student/addClassStudent">Xếp lớp đoàn sinh mới</a></li>
@@ -124,6 +125,14 @@ if (isset($this->session->userdata['logged_in'])) {
 						<ul id="menu-academico-sub">
 							<li id="menu-academico-avaliacoes"><a
 								href="../student/addTeamStudent">Xếp đội đoàn sinh</a></li>
+							<li id="menu-academico-avaliacoes"><a>Điểm danh<i
+									class="fa fa-angle-right" style="float: right"></i></a>
+								<ul id="menu-academico-sub">
+									<li id="menu-academico-boletim" style="width: 90px"><a
+										href="../student/checkAbsent?hk=1">Học kì I</a></li>
+									<li id="menu-academico-boletim" style="width: 90px"><a
+										href="../student/checkAbsent?hk=2">Học kì II</a></li>
+								</ul></li>
 							<li id="menu-academico-avaliacoes"><a>Nhập điểm<i
 									class="fa fa-angle-right" style="float: right"></i></a>
 								<ul id="menu-academico-sub">

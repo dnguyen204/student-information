@@ -254,7 +254,7 @@ class Glv_model extends CI_Model
         if ($this->db->count_all_results('tbl_phancong') == 0) {
             $this->db->insert('tbl_phancong', $data);
             
-            // Tráº¡ng thÃ¡i 7 lÃ  Ä‘ang dáº¡y
+            // Trạng thái 7 là đang dạy
             $this->db->where('MaHuynhTruong', $maht);
             $this->db->update('tbl_huynhtruong', array(
                 'TrangThai' => '7'
@@ -267,7 +267,7 @@ class Glv_model extends CI_Model
         $this->db->where($data);
         $this->db->delete('tbl_phancong');
         
-        // Tráº¡ng thÃ¡i 5 lÃ  Huynh trÆ°á»Ÿng má»›i
+        // Trạng thái 5 là huynh trưởng mới
         $this->db->where('MaHuynhTruong', $maht);
         $this->db->update('tbl_huynhtruong', array(
             'TrangThai' => '5'
