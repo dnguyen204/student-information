@@ -58,7 +58,7 @@
 		$malop = $('#lop_selected').attr('value');
 		$.ajax({
 			type : 'POST',
-			url : site + '/student/typeSroce/getListStudent',
+			url : site + '/student/checkAbsent/getListForCheckAbsent',
 			data : {
 				'malop' : $malop,
 				'machidoan' : $macd
@@ -84,5 +84,13 @@
 			}
 		});
 	})
-
+	
+	$('#add-nghi-le').click(function(){		
+		$('#btn-select').attr('value', 'L')
+	})
+	
+	$('#add-nghi-hoc').click(function(){		
+		$('#btn-select').attr('value', 'H')
+	})
+		
 }(window.jQuery));

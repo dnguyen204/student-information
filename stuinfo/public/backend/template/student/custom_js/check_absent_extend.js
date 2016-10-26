@@ -21,11 +21,31 @@
 
 						$hk = $('#hk').attr('value');
 						$malop = $('#lop_selected').attr('value');
-						
+
+						$('.panel-footer').removeClass('hidden');
+
 						getAbsentDiLe($malop, $mads, $hk);
 						getAbsentDiHoc($malop, $mads, $hk);
 					})
 	function getAbsentDiHoc($malop, $mads, $hk) {
+		$.ajax({
+			type : 'POST',
+			url : site + '/student/checkAbsent/getAbsentHoc',
+			data : {
+				'malop' : $malop,
+				'mads' : $mads,
+				'hk' : $hk
+			},
+			success : function(output) {
+				$('#list-nghi-hoc').html(output);
+			},
+			error : function(e) {
+				alert(e.message);
+			}
+		});
+	}
+
+	function getAbsentDiLe($malop, $mads, $hk) {
 		$.ajax({
 			type : 'POST',
 			url : site + '/student/checkAbsent/getAbsentLe',
@@ -35,30 +55,33 @@
 				'hk' : $hk
 			},
 			success : function(output) {
-
+				$('#list-nghi-le').html(output);
 			},
 			error : function(e) {
 				alert(e.message);
 			}
 		});
 	}
-	
-	function getAbsentDiLe($malop, $mads, $hk) {
+
+	$('#add-absent').click(function() {
+		$data = $('#absent-form').serialize();
+
+		$hk = $('#hk').attr('value');
+		$malop = $('#lop_selected').attr('value');
+		$mads = $('#mads_display').text();
+
 		$.ajax({
 			type : 'POST',
-			url : site + '/student/checkAbsent/getAbsent',
-			data : {
-				'malop' : $malop,
-				'mads' : $mads,
-				'hk' : $hk
-			},
-			success : function(output) {
-
+			url : site + '/student/checkAbsent/addAbsent',
+			data : $data,
+			success : function() {
+				getAbsentDiLe($malop, $mads, $hk);
+				getAbsentDiHoc($malop, $mads, $hk);
+				$('#absent-form')[0].reset()
 			},
 			error : function(e) {
 				alert(e.message);
 			}
 		});
-	}
-
+	})
 }(window.jQuery));
