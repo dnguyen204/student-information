@@ -56,12 +56,14 @@
 		}
 
 		$malop = $('#lop_selected').attr('value');
+		$hk = $('#hk').attr('value');
 		$.ajax({
 			type : 'POST',
-			url : site + '/student/checkAbsent/getListForCheckAbsent',
+			url : site + '/student/summary/getListStudent',
 			data : {
 				'malop' : $malop,
-				'machidoan' : $macd
+				'machidoan' : $macd,
+				'hk' : $hk
 			},
 			success : function(result) {
 				$('#list_stu_in_class').html(result);
@@ -83,75 +85,7 @@
 				alert(e.message);
 			}
 		});
-	})
-	// check click btn là adsent lễ hay học
-	$('#add-nghi-le').click(function() {
-		$('#btn-select').attr('value', 'L')
-	})
-
-	$('#add-nghi-hoc').click(function() {
-		$('#btn-select').attr('value', 'H')
-	})
+	})	
 }(window.jQuery));
-function getAbsentDiHoc($malop, $mads, $hk) {
-	$.ajax({
-		type : 'POST',
-		url : site + '/student/checkAbsent/getAbsentHoc',
-		data : {
-			'malop' : $malop,
-			'mads' : $mads,
-			'hk' : $hk
-		},
-		success : function(output) {
-			$('#list-nghi-hoc').html(output);
-		},
-		error : function(e) {
-			alert(e.message);
-		}
-	});
-}
 
-function getAbsentDiLe($malop, $mads, $hk) {
-	$.ajax({
-		type : 'POST',
-		url : site + '/student/checkAbsent/getAbsentLe',
-		data : {
-			'malop' : $malop,
-			'mads' : $mads,
-			'hk' : $hk
-		},
-		success : function(output) {
-			$('#list-nghi-le').html(output);
-		},
-		error : function(e) {
-			alert(e.message);
-		}
-	});
-}
-
-
-function absentDelete($mads, $malop, $hocky, $manh, $CPKP, $type) {
-
-	$.ajax({
-		type : 'POST',
-		url : site + '/student/checkAbsent/deleteAbsent',
-		data : {
-			'malop' : $malop,
-			'mads' : $mads,
-			'hk' : $hocky,
-			'manamhoc' : $manh,
-			'type' : $type,
-			'cpkp': $CPKP
-		},
-		success : function() {
-			if ($type == 'L')
-				getAbsentDiLe($malop, $mads, $hk);
-			else
-				getAbsentDiHoc($malop, $mads, $hk);
-		},
-		error : function(e) {
-			alert(e.message);
-		}
-	})
-};
 

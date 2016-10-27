@@ -67,4 +67,4 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
 <script type='text/javascript'
-	src="<?php echo base_url();?>public/backend/template/admin/custom_js/type-sroce.js"></script>
+	src="<?php echo base_url();?>public/backend/template/student/custom_js/summary.js"></script>

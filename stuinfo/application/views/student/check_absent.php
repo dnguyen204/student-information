@@ -184,6 +184,5 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	</form>
 </div>
 
-
 <script type='text/javascript'
 	src="<?php echo base_url();?>public/backend/template/student/custom_js/check_absent.js"></script>

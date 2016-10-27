@@ -75,8 +75,8 @@ class Absent_model extends CI_Model
             $output_string .= '<tbody>';
             $output_string .= '<tr>';
             $output_string .= '<th>STT</th>';
-            $output_string .= "<th>Có phép: {$countCP}</th>";
-            $output_string .= "<th>Không phép: {$countKP}</th>";
+            $output_string .= "<th>Có phép</th>";
+            $output_string .= "<th>Không phép</th>";
             $output_string .= '<th></th>';
             $output_string .= '</tr>';
             
@@ -84,6 +84,7 @@ class Absent_model extends CI_Model
                 $stt = $key + 1;
                 $url = base_url();
                 $absentDate = date('d-m-Y', strtotime($row['NgayNL']));
+                $malop = "'" . $row['MaLop'] . "'";
                 
                 $output_string .= '<tr>';
                 $output_string .= "<td>{$stt}</td>";
@@ -94,14 +95,14 @@ class Absent_model extends CI_Model
                     $countKP ++;
                     $output_string .= "<td></td><td>{$absentDate}</td>";
                 }
-                $output_string .= '<td><a title="Xóa"><i class="glyphicon glyphicon-remove"></i></a></td>';
+                $output_string .= '<td><a title="Xóa"><i class="glyphicon glyphicon-remove" onclick="absentDelete(' . "{$row['MaDoanSinh']}, {$malop}, {$row['HocKy']}, {$row['MaNamHoc']}, {$row['CPKP']},'L'" . ')"></i></a></td>';
                 $output_string .= '</tr>';
             }
             $output_string .= '<tr>';
             $output_string .= '<td>Tổng: </td>';
             $output_string .= "<td>{$countCP}</td>";
             $output_string .= "<td>{$countKP}</td>";
-            $output_string .= '<td></td>';
+            $output_string .= "<td></td>";
             $output_string .= '</tr>';
             
             $output_string .= '</tbody>';
@@ -137,6 +138,7 @@ class Absent_model extends CI_Model
                 $stt = $key + 1;
                 $url = base_url();
                 $absentDate = date('d-m-Y', strtotime($row['NgayNH']));
+                $malop = "'" . $row['MaLop'] . "'";
                 
                 $output_string .= '<tr>';
                 $output_string .= "<td>{$stt}</td>";
@@ -147,7 +149,7 @@ class Absent_model extends CI_Model
                     $countKP ++;
                     $output_string .= "<td></td><td>{$absentDate}</td>";
                 }
-                $output_string .= '<td><a title="Xóa"><i class="glyphicon glyphicon-remove"></i></a></td>';
+                $output_string .= '<td><a title="Xóa"><i class="glyphicon glyphicon-remove" onclick="absentDelete(' . "{$row['MaDoanSinh']}, {$malop}, {$row['HocKy']}, {$row['MaNamHoc']}, {$row['CPKP']}, 'H'" . ')"></i></a></td>';
                 $output_string .= '</tr>';
             }
             $output_string .= '<tr>';
@@ -175,13 +177,14 @@ class Absent_model extends CI_Model
         }
     }
     // Xóa ngày nghỉ của Đoàn Sinh
-    public function deleteAbsent($where, $type){
+    public function deleteAbsent($where, $type)
+    {
         if ($type == 'L') {
             $this->db->where($where);
             $this->db->delete('tbl_nghile');
         } else {
             $this->db->where($where);
-            $this->db->insert('tbl_nghihoc');
+            $this->db->delete('tbl_nghihoc');
         }
     }
 }

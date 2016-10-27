@@ -70,6 +70,20 @@ class CheckAbsent extends CI_Controller
             'CPKP' => $_POST['absentType'],
             'GhiChu' => $_POST['absentReason']
         );
-        $this->amodel->addAbsentForStudent($data_insert, $btn);        
+        $this->amodel->addAbsentForStudent($data_insert, $btn);
+    }
+
+    function deleteAbsent()
+    {
+        $type = $_POST['type'];
+        
+        $data_where = array(
+            'MaDoanSinh' => $_POST['mads'],
+            'MaLop' => $_POST['malop'],
+            'HocKy' => $_POST['hk'],
+            'MaNamHoc' => $_POST['manamhoc'],
+            'CPKP' => $_POST['cpkp']
+        );
+        $this->amodel->deleteAbsent($data_where, $type);        
     }
 }

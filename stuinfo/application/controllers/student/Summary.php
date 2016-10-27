@@ -9,7 +9,7 @@ class Summary extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->model('admin/glv_model', 'gmodel');
-        $this->load->model('admin/sroce_model', 'smodel');
+        $this->load->model('student/summary_model', 'smodel');
     }
 
     public function index()
@@ -26,12 +26,13 @@ class Summary extends CI_Controller
 
     function getListStudent()
     {
+        $hk = $_POST['hk'];
         $data_where = array(
-            'MaLop' => $_POST['malop'],
-            'MaChiDoan' => $_POST['machidoan']
+            'dslds.MaLop' => $_POST['malop'],
+            'dslds.MaChiDoan' => $_POST['machidoan']
         );
         
-        echo $this->smodel->getListStudentForTypeSroce($data_where,'summary');
+        echo $this->smodel->getListStudentForSummary($data_where, $hk);
     }
 
     function getListGLV()
