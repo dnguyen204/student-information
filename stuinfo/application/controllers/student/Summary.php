@@ -26,13 +26,12 @@ class Summary extends CI_Controller
 
     function getListStudent()
     {
-        $hk = $_POST['hk'];
         $data_where = array(
             'dslds.MaLop' => $_POST['malop'],
             'dslds.MaChiDoan' => $_POST['machidoan']
         );
         
-        echo $this->smodel->getListStudentForSummary($data_where, $hk);
+        echo $this->smodel->getListStudentForSummary($data_where);
     }
 
     function getListGLV()

@@ -55,15 +55,13 @@
 			return false;
 		}
 
-		$malop = $('#lop_selected').attr('value');
-		$hk = $('#hk').attr('value');
+		$malop = $('#lop_selected').attr('value');		
 		$.ajax({
 			type : 'POST',
 			url : site + '/student/summary/getListStudent',
 			data : {
 				'malop' : $malop,
-				'machidoan' : $macd,
-				'hk' : $hk
+				'machidoan' : $macd			
 			},
 			success : function(result) {
 				$('#list_stu_in_class').html(result);

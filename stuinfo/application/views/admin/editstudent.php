@@ -295,9 +295,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<div class="col-sm-6 col-xs-6"></div>
 			<div class="col-sm-6 col-xs-6">
 				<div class="form-group">
-					<div class="col-md-offset-2 col-xs-offset-2">
-						<input id="btn-close" type="button" class="btn btn-primary"
-							value="Đóng" />
+					<div class="col-md-offset-2 col-xs-offset-2">						
 						<button type="submit" class="btn btn-primary">Cập nhật</button>
 					</div>
 				</div>

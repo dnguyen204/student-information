@@ -131,11 +131,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<div class="col-md-8 col-xs-8">
 							<div class="radio">
 						<?php if ($profile[0]['GioiTinh']){ ?>
-							<label><input type="radio" name="stuSex" value="1"
+							<label><input type="radio" name="glvSex" value="1"
 									checked="checked">Nam</label> <label><input type="radio"
 									name="glvSex" value="0">Nữ</label>
 						<?php }else{?>
-							<label><input type="radio" name="stuSex" value="1">Nam</label> <label><input
+							<label><input type="radio" name="glvSex" value="1">Nam</label> <label><input
 									type="radio" name="glvSex" value="0" checked="checked">Nữ</label>
 						<?php }?>
 						</div>
