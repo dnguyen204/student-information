@@ -31,7 +31,7 @@
 							},
 							success : function(output) {
 								var obj = JSON.parse(output);
-								if ($hk == 1) {
+								if ($hk == 1) {									
 									$('#diem_mieng').val(obj[0].MiengHK1);
 									$('#diem_15phut').val(obj[0].KT15PhutHK1);
 									$('#diem_1tiet').val(obj[0].KT1TietHK1);

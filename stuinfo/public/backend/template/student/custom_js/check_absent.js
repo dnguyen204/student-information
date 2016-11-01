@@ -130,7 +130,7 @@ function getAbsentDiLe($malop, $mads, $hk) {
 }
 
 
-function absentDelete($mads, $malop, $hocky, $manh, $CPKP, $type) {
+function absentDelete($mads, $malop, $hocky, $manh, $CPKP, $ngaynghi,$type) {
 
 	$.ajax({
 		type : 'POST',
@@ -141,7 +141,8 @@ function absentDelete($mads, $malop, $hocky, $manh, $CPKP, $type) {
 			'hk' : $hocky,
 			'manamhoc' : $manh,
 			'type' : $type,
-			'cpkp': $CPKP
+			'cpkp': $CPKP,
+			'ngaynghi' : $ngaynghi
 		},
 		success : function() {
 			if ($type == 'L')

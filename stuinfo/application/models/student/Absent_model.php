@@ -95,7 +95,7 @@ class Absent_model extends CI_Model
                     $countKP ++;
                     $output_string .= "<td></td><td>{$absentDate}</td>";
                 }
-                $output_string .= '<td><a title="Xóa"><i class="glyphicon glyphicon-remove" onclick="absentDelete(' . "{$row['MaDoanSinh']}, {$malop}, {$row['HocKy']}, {$row['MaNamHoc']}, {$row['CPKP']},'L'" . ')"></i></a></td>';
+                $output_string .= '<td><a title="Xóa"><i class="glyphicon glyphicon-remove" onclick="absentDelete(' . "{$row['MaDoanSinh']}, {$malop}, {$row['HocKy']}, {$row['MaNamHoc']}, {$row['CPKP']},'" . "{$absentDate}" . "' , 'L'" . ')"></i></a></td>';
                 $output_string .= '</tr>';
             }
             $output_string .= '<tr>';
@@ -149,7 +149,7 @@ class Absent_model extends CI_Model
                     $countKP ++;
                     $output_string .= "<td></td><td>{$absentDate}</td>";
                 }
-                $output_string .= '<td><a title="Xóa"><i class="glyphicon glyphicon-remove" onclick="absentDelete(' . "{$row['MaDoanSinh']}, {$malop}, {$row['HocKy']}, {$row['MaNamHoc']}, {$row['CPKP']}, 'H'" . ')"></i></a></td>';
+                $output_string .= '<td><a title="Xóa"><i class="glyphicon glyphicon-remove" onclick="absentDelete(' . "{$row['MaDoanSinh']}, {$malop}, {$row['HocKy']}, {$row['MaNamHoc']}, {$row['CPKP']}, '" . "{$absentDate}" . "', 'H'" . ')"></i></a></td>';
                 $output_string .= '</tr>';
             }
             $output_string .= '<tr>';

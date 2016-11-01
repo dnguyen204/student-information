@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Summary extends CI_Controller
+class SummaryAll extends CI_Controller
 {
 
     public function __construct()
@@ -20,7 +20,7 @@ class Summary extends CI_Controller
         );
         $data['list_class'] = $this->gmodel->getClassOfGLV($data_where);
         
-        $data['subview'] = 'student/summary';
+        $data['subview'] = 'student/summary_all';
         $this->load->view('admin/main', $data);
     }
 

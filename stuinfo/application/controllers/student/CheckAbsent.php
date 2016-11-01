@@ -76,14 +76,27 @@ class CheckAbsent extends CI_Controller
     function deleteAbsent()
     {
         $type = $_POST['type'];
+        if ($type == 'L') {
+            $data_where = array(
+                'MaDoanSinh' => $_POST['mads'],
+                'MaLop' => $_POST['malop'],
+                'HocKy' => $_POST['hk'],
+                'MaNamHoc' => $_POST['manamhoc'],
+                'CPKP' => $_POST['cpkp'],
+                'NgayNL' => date('Y-m-d', strtotime($_POST['ngaynghi']))
+            );
+        }
+        if ($type == 'H') {
+            $data_where = array(
+                'MaDoanSinh' => $_POST['mads'],
+                'MaLop' => $_POST['malop'],
+                'HocKy' => $_POST['hk'],
+                'MaNamHoc' => $_POST['manamhoc'],
+                'CPKP' => $_POST['cpkp'],
+                'NgayNH' => date('Y-m-d', strtotime($_POST['ngaynghi']))
+            );
+        }
         
-        $data_where = array(
-            'MaDoanSinh' => $_POST['mads'],
-            'MaLop' => $_POST['malop'],
-            'HocKy' => $_POST['hk'],
-            'MaNamHoc' => $_POST['manamhoc'],
-            'CPKP' => $_POST['cpkp']
-        );
-        $this->amodel->deleteAbsent($data_where, $type);        
+        $this->amodel->deleteAbsent($data_where, $type);
     }
 }

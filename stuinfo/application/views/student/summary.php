@@ -4,12 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <div class="outter-wp">
 <?php $hk = htmlspecialchars($_GET["hk"]);?>
-<input type="hidden" id="hk" value="<?=$hk?>" name="hk"> <input
-		type="hidden" id="mads" name="mads">
 	<div class="top-menu">
 		<h1 class="text-center">Tổng kết <?= ($hk == 1)? ' Học Kì 1' : ' Học Kì 2'?></h1>
 	</div>
 	<form class="form" id="form">
+		<input type="hidden" id="hk" value="<?=$hk?>" name="hk"> <input
+			type="hidden" id="mads" name="mads">
 		<div class="row">
 			<div class="col-xs-12 col-md-6">
 				<div class="form-group">
@@ -96,21 +96,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<tbody>
 								<tr>
 									<td>Nghỉ lễ:</td>
-									<td></td>
-									<td></td>
+									<td><label id="le-CP"></label></td>
+									<td><label id="le-KP"></label></td>
 								</tr>
 								<tr>
 									<td>Nghỉ học:</td>
-									<td></td>
-									<td></td>
+									<td><label id="hoc-CP"></label></td>
+									<td><label id="hoc-KP"></label></td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="row">
 							<label class="control-label col-xs-4 col-md-4">Điểm trung bình:</label>
 							<label class="control-label col-xs-2 col-md-2" id="dtb"></label>
-							<label class="control-label col-xs-4 col-md-4">Học lực:</label> <label
-								class="control-label col-xs-2 col-md-2" id="hocluc"></label>
+							<label class="control-label col-xs-3 col-md-3">Học lực:</label> <label
+								class="control-label col-xs-3 col-md-3" id="hocluc"></label>
 						</div>
 						<div class="row">
 							<label class="control-label col-xs-4 col-md-4">Hạnh kiểm:</label>
@@ -127,11 +127,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<div class="row">
 							<label class="control-label col-xs-4 col-md-4">Nhận xét:</label>
 							<div class="col-md-8 col-xs-8">
-								<textarea class="form-control" name="nhanxet"></textarea>
+								<textarea class="form-control" name="nhanxet" id="nhanxet"></textarea>
 							</div>
 						</div>
 						<div class="row">
-							<input type="button" class="btn btn-danger col-xs-offset-2 col-md-offset-2" value="Lưu lại">
+							<input type="button"
+								class="btn btn-danger col-xs-offset-2 col-md-offset-2 hidden"
+								value="Lưu lại" id="save-summary">
 						</div>
 					</div>
 				</div>

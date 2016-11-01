@@ -149,7 +149,7 @@ if (isset($this->session->userdata['logged_in'])) {
 									<li id="menu-academico-boletim" style="width: 90px"><a
 										href="../student/summary?hk=2">Học kì II</a></li>
 									<li id="menu-academico-boletim" style="width: 90px"><a
-										href="../student/summary?hk=2">Cả Năm</a></li>
+										href="../student/summaryAll">Cả Năm</a></li>
 								</ul></li>
 						</ul></li>
 

@@ -21,7 +21,7 @@ class Sroce_model extends CI_Model
             
             return json_encode($this->db->get()->result_array());
         }
-    }
+    }    
     // Lấy toàn bộ điểm hk2 của đoàn sinh
     // nếu có mã lớp thì sẽ lấy chính xác không thì sẽ lấy toàn bộ
     public function getAllSroceHKIIStudent($code, $malop)
@@ -52,7 +52,7 @@ class Sroce_model extends CI_Model
         
         $query = $this->db->get();
         return $result = $query->result_array();
-    }
+    }    
     // xét học lực
     function reviewAcademic($sroce)
     {

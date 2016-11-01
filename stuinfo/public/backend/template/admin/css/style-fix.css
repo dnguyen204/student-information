@@ -213,3 +213,14 @@ tr.group, tr.group:hover {
 	font-size: xx-large;
 	margin-left: -20px;
 }
+
+.point-danger{
+	border-color: red;
+}
+
+.point-warning{
+	border-color: orange;
+}
+.point-info{
+	border-color: green;
+}

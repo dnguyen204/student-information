@@ -83,7 +83,20 @@
 				alert(e.message);
 			}
 		});
-	})	
+	})
+	
+	$('#save-summary').click(function(){
+		$data = $('#form').serialize();
+		$.ajax({
+			type : 'POST',
+			url : site + '/student/summary/updateSummary',
+			data : $data,
+			success : function() {			
+				
+				alert("Cập nhật thành công")
+			}
+		});		
+	})
 }(window.jQuery));
 
 
