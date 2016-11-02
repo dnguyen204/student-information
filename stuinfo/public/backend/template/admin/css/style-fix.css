@@ -203,24 +203,34 @@ td a {
 tr.group, tr.group:hover {
 	background-color: #ddd !important;
 }
+
 #student_filter, #student_info {
 	display: none;
 }
 
-.input-sroce{
+.input-sroce {
 	width: 80px;
 	height: 50px;
 	font-size: xx-large;
 	margin-left: -20px;
 }
 
-.point-danger{
+.point-danger {
 	border-color: red;
 }
 
-.point-warning{
+.point-warning {
 	border-color: orange;
 }
-.point-info{
+
+.point-info {
 	border-color: green;
+}
+
+.radio, .summary-all{
+	margin-top: auto !important;
+}
+
+.radio label{
+	margin-left: 30px;
 }
