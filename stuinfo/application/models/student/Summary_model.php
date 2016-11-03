@@ -140,6 +140,7 @@ class Summary_model extends CI_Model
             ->join('tbl_diemhk2 dhk2', 'dhk2.MaDoanSinh = dslds.MaDoanSinh AND dhk2.MaLop = dslds.MaLop')
             ->join('tbl_tongkethk1 tkhk1', 'tkhk1.MaDoanSinh = dslds.MaDoanSinh AND tkhk1.MaLop = dslds.MaLop')
             ->join('tbl_tongkethk2 tkhk2', 'tkhk2.MaDoanSinh = dslds.MaDoanSinh AND tkhk2.MaLop = dslds.MaLop');
+        // ->join('tbl_tongketcanam cn', 'cn.MaDoanSinh = dslds.MaDoanSinh AND cn.MaLop = dslds.MaLop');
         $this->db->select('*');
         
         $query = $this->db->get();
@@ -168,7 +169,7 @@ class Summary_model extends CI_Model
                         $TBCN = round(($r['TBHK1'] + $r['TBHK2']) / 3, 1);
                         $HLCN = $this->reviewAcademic($TBCN);
                         
-                        $output_string .= '<tr class="show-summary" id="' . "{$r['MaDoanSinh']}" . '" data-toggle="collapse" data-target="#' . "{$childIndex}" . '">';
+                        $output_string .= '<tr onclick="getTongKet(' . "{$r['MaDoanSinh']}" . ');" id="' . "{$r['MaDoanSinh']}" . '" data-toggle="collapse" data-target="#' . "{$childIndex}" . '">';
                         $output_string .= "<td></td>";
                         $output_string .= "<td>{$index}</td>";
                         $output_string .= "<td>{$r['MaDoanSinh']}</td>";
@@ -228,7 +229,7 @@ class Summary_model extends CI_Model
                         $output_string .= "<td colspan='2'><select class='selectpicker form-control' name='HKCN'><option>Tốt</option><option>Khá</option><option>Trung Bình</option><option>Yếu</option><option>Kém</option></select></td>";
                         $output_string .= "<td>Nhận xét:</td>";
                         $output_string .= "<td colspan='4'><textarea class='form-control' name='NXCN'></textarea></td>";
-                        $output_string .= '<td><input type="button" value="Lưu lại" class="btn btn-info" onClick="saveSummary(' . "'#form-" . "{$childIndex}" . "'" . ');"></td>';
+                        $output_string .= '<td><input type="button" value="Lưu lại" class="btn btn-info" onClick="saveSummary(' . "'#form-" . "{$childIndex}" . "'" . ',' . "{$r['MaDoanSinh']}" . ');"></td>';
                         $output_string .= '</tr>';
                         $output_string .= '</form>';
                         $output_string .= "</tbody></table></form></div></td></tr>";
@@ -247,7 +248,20 @@ class Summary_model extends CI_Model
         return $output_string;
     }
     // insert tổng kết cuối năm
-    public function insertTongKet(){
-        
+    public function insertSummaryAllForStudent($data)
+    {
+        $data_where = array(
+            'MaDoanSinh' => array_values($data)[0],
+            'MaLop' => array_values($data)[1],
+            'MaNamHoc' => array_values($data)[2]
+        );
+        $this->db->from('tbl_tongketcanam');
+        if ($this->db->where($data_where)
+            ->get()
+            ->num_rows() > 0) {
+            $this->db->where($data_where)->update('tbl_tongketcanam', $data);
+        } else {
+            $this->db->insert('tbl_tongketcanam', $data);
+        }
     }
 }

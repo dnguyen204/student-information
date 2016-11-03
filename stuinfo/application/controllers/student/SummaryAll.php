@@ -44,6 +44,20 @@ class SummaryAll extends CI_Controller
         
         echo $this->gmodel->getListGLVInClass($data_where);
     }
-    
-    
+
+    function insertSummaryAll()
+    {
+        $data_insert = array(
+            'MaDoanSinh' => $_POST['mads'],
+            'MaLop' => $_POST['malop'],
+            'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc'],
+            'TBCN' => $_POST['TBCN'],
+            'HLCN' => $_POST['HLCN'],
+            'HKCN' => $_POST['HKCN'],
+            'NhanXetCN' => $_POST['NXCN'],
+            'XetLop' => $_POST['result']
+        );
+        
+        $this->smodel->insertSummaryAllForStudent($data_insert);
+    }
 }

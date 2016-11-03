@@ -13,7 +13,7 @@
 			$('.malop_warning').css('display', '');
 
 			$('#list_machidoan').empty();
-			$('#list_stu_in_class').empty();		
+			$('#list_stu_in_class').empty();
 			$('.list-lead-class').empty()
 			return false;
 		}
@@ -52,13 +52,13 @@
 			return false;
 		}
 
-		$malop = $('#lop_selected').attr('value');		
+		$malop = $('#lop_selected').attr('value');
 		$.ajax({
 			type : 'POST',
 			url : site + '/student/summaryAll/getListStudent',
 			data : {
 				'malop' : $malop,
-				'machidoan' : $macd			
+				'machidoan' : $macd
 			},
 			success : function(result) {
 				$('#list_stu_in_class').html(result);
@@ -81,18 +81,28 @@
 			}
 		});
 	})
-	
+
 }(window.jQuery));
 
-function saveSummary(form){
+function saveSummary(form, mads) {
+	$malop = "&malop=" + $('#list_malop').val();
+	$mads = "&mads=" + mads;
 	$data = $(form).serialize();
 	$.ajax({
 		type : 'POST',
-		url : site + '/student/summaryAll/getListGLV',
-		data : $data,
-		success : function(output) {
-			$('.list-lead-class').html(output);
-
+		url : site + '/student/summaryAll/insertSummaryAll',
+		data : $data + $malop + $mads,
+		success : function() {
+			alert('Lưu thành công !!!');
+		},
+		error : function(e) {
+			alert(e.message);
 		}
 	});
+}
+
+function getTongKet($id) {
+	$tag = "'" + "#" + $id + "'"
+	$()
+	console.log($tag)
 }
