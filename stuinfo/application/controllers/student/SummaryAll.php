@@ -60,4 +60,15 @@ class SummaryAll extends CI_Controller
         
         $this->smodel->insertSummaryAllForStudent($data_insert);
     }
+    
+    function getCurrentSummary()
+    {
+        $data_where = array(
+            'MaDoanSinh' => $_POST['mads'],
+            'MaLop' => $_POST['malop'],
+            'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
+        );
+        
+        echo $this->smodel->getCurrentStudentSummary($data_where);        
+    }
 }

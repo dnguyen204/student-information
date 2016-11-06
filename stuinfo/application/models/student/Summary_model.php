@@ -169,7 +169,7 @@ class Summary_model extends CI_Model
                         $TBCN = round(($r['TBHK1'] + $r['TBHK2']) / 3, 1);
                         $HLCN = $this->reviewAcademic($TBCN);
                         
-                        $output_string .= '<tr onclick="getTongKet(' . "{$r['MaDoanSinh']}" . ');" id="' . "{$r['MaDoanSinh']}" . '" data-toggle="collapse" data-target="#' . "{$childIndex}" . '">';
+                        $output_string .= '<tr onclick="getTongKet(' . "{$r['MaDoanSinh']}" . ',' . "'" . "{$childIndex}" . "'" . ');" id="' . "{$r['MaDoanSinh']}" . '" data-toggle="collapse" data-target="#' . "{$childIndex}" . '">';
                         $output_string .= "<td></td>";
                         $output_string .= "<td>{$index}</td>";
                         $output_string .= "<td>{$r['MaDoanSinh']}</td>";
@@ -221,14 +221,13 @@ class Summary_model extends CI_Model
                         $output_string .= "<td><label class='control-label summary-all'>{$TBCN}</label><input type='hidden' name='TBCN' value='{$TBCN}'></td>";
                         $output_string .= "<td colspan='2'>Học lực:</td>";
                         $output_string .= "<td><label class='control-label summary-all'>{$HLCN}</label><input type='hidden' name='HLCN' value='{$HLCN}'></td>";
-                        $output_string .= "<td colspan='2'><div class='radio'><label><input type='radio' name='result' value='1'>Lên lớp</label> <label><input type='radio'
-								name='result' value='0'>Ở lại</label></div></td>";
+                        $output_string .= "<td colspan='2'><div class='radio' id='radio-{$childIndex}'></div></td>";
                         $output_string .= '</tr>';
                         $output_string .= '<tr>';
                         $output_string .= '<td>Hạnh kiểm:</td>';
-                        $output_string .= "<td colspan='2'><select class='selectpicker form-control' name='HKCN'><option>Tốt</option><option>Khá</option><option>Trung Bình</option><option>Yếu</option><option>Kém</option></select></td>";
+                        $output_string .= "<td colspan='2'><select class='selectpicker form-control' name='HKCN' id='HKCN'><option>Tốt</option><option>Khá</option><option>Trung Bình</option><option>Yếu</option><option>Kém</option></select></td>";
                         $output_string .= "<td>Nhận xét:</td>";
-                        $output_string .= "<td colspan='4'><textarea class='form-control' name='NXCN'></textarea></td>";
+                        $output_string .= "<td colspan='4'><textarea class='form-control' name='NXCN' id='NXCN'></textarea></td>";
                         $output_string .= '<td><input type="button" value="Lưu lại" class="btn btn-info" onClick="saveSummary(' . "'#form-" . "{$childIndex}" . "'" . ',' . "{$r['MaDoanSinh']}" . ');"></td>';
                         $output_string .= '</tr>';
                         $output_string .= '</form>';
@@ -263,5 +262,15 @@ class Summary_model extends CI_Model
         } else {
             $this->db->insert('tbl_tongketcanam', $data);
         }
+    }
+    // lấy Tổng kết của đoàn sinh đang chọn
+    public function getCurrentStudentSummary($where)
+    {
+        $result = $this->db->where($where)
+            ->from('tbl_tongketcanam')
+            ->get()
+            ->result_array();
+        
+        return json_encode($result);
     }
 }

@@ -74,7 +74,6 @@
 					},
 					success : function(output) {
 						$('.list-lead-class').html(output);
-
 					}
 				});
 
@@ -91,8 +90,7 @@
 			type : 'POST',
 			url : site + '/student/summary/updateSummary',
 			data : $data,
-			success : function() {			
-				
+			success : function() {				
 				alert("Cập nhật thành công")
 			}
 		});		
