@@ -140,7 +140,6 @@ class Summary_model extends CI_Model
             ->join('tbl_diemhk2 dhk2', 'dhk2.MaDoanSinh = dslds.MaDoanSinh AND dhk2.MaLop = dslds.MaLop')
             ->join('tbl_tongkethk1 tkhk1', 'tkhk1.MaDoanSinh = dslds.MaDoanSinh AND tkhk1.MaLop = dslds.MaLop')
             ->join('tbl_tongkethk2 tkhk2', 'tkhk2.MaDoanSinh = dslds.MaDoanSinh AND tkhk2.MaLop = dslds.MaLop');
-        // ->join('tbl_tongketcanam cn', 'cn.MaDoanSinh = dslds.MaDoanSinh AND cn.MaLop = dslds.MaLop');
         $this->db->select('*');
         
         $query = $this->db->get();
@@ -225,9 +224,9 @@ class Summary_model extends CI_Model
                         $output_string .= '</tr>';
                         $output_string .= '<tr>';
                         $output_string .= '<td>Hạnh kiểm:</td>';
-                        $output_string .= "<td colspan='2'><select class='selectpicker form-control' name='HKCN' id='HKCN'><option>Tốt</option><option>Khá</option><option>Trung Bình</option><option>Yếu</option><option>Kém</option></select></td>";
+                        $output_string .= "<td colspan='2'><select class='selectpicker form-control' name='HKCN' id='{$childIndex}HKCN'><option>Tốt</option><option>Khá</option><option>Trung Bình</option><option>Yếu</option><option>Kém</option></select></td>";
                         $output_string .= "<td>Nhận xét:</td>";
-                        $output_string .= "<td colspan='4'><textarea class='form-control' name='NXCN' id='NXCN'></textarea></td>";
+                        $output_string .= "<td colspan='4'><textarea class='form-control' name='NXCN' id='{$childIndex}NXCN'></textarea></td>";
                         $output_string .= '<td><input type="button" value="Lưu lại" class="btn btn-info" onClick="saveSummary(' . "'#form-" . "{$childIndex}" . "'" . ',' . "{$r['MaDoanSinh']}" . ');"></td>';
                         $output_string .= '</tr>';
                         $output_string .= '</form>';
@@ -272,5 +271,10 @@ class Summary_model extends CI_Model
             ->result_array();
         
         return json_encode($result);
+    }
+    // Đếm số chi đoàn trong Lớp
+    public function countChiDoanInClass()
+    {
+        
     }
 }

@@ -234,3 +234,7 @@ tr.group, tr.group:hover {
 .radio label{
 	margin-left: 30px;
 }
+
+.selected-row{
+	font-weight: bolder;
+}

@@ -107,36 +107,42 @@ function getTongKet($id, $child) {
 	}, 'slow');
 
 	$tag = "#" + $id
+	$childNode = "#" + $child
+
 	$condition = $($tag).attr('aria-expanded')
 	$data = "mads=" + $id + "&malop=" + $('#list_malop').val()
 	$lenLop = "<label><input type='radio' name='result' checked value='1'>Lên lớp</label> <label><input type='radio' name='result' value='0'>Ở lại</label>"
 	$oLai = "<label><input type='radio' name='result' value='1'>Lên lớp</label> <label><input type='radio' name='result' checked value='0'>Ở lại</label>"
 	$none = "<label><input type='radio' name='result' value='1'>Lên lớp</label> <label><input type='radio' name='result' value='0'>Ở lại</label>"
-	if ($condition == undefined || $condition == "true") {
 
-		$.ajax({
-			type : 'POST',
-			url : site + '/student/summaryAll/getCurrentSummary',
-			data : $data,
-			success : function(output) {
-				var obj = JSON.parse(output);
-				if (obj.length > 0) {
-					$('#HKCN').val(obj[0].HKCN)
-					$('#NXCN').val(obj[0].NhanXetCN)
-					if (obj[0].XetLop == 1) {
-						$("#radio-" + $child).html($lenLop)
-					} else if (obj[0].XetLop == 0) {
-						$("#radio-" + $child).html($oLai)
-					} else {
-						$("#radio-" + $child).html($none)
+	if ($condition == undefined || $condition == "false") {
+		$($tag).addClass('selected-row')
+		$
+				.ajax({
+					type : 'POST',
+					url : site + '/student/summaryAll/getCurrentSummary',
+					data : $data,
+					success : function(output) {
+						var obj = JSON.parse(output);
+						if (obj.length > 0) {
+							$($childNode + "HKCN").val(obj[0].HKCN)
+							$($childNode + "NXCN").val(obj[0].NhanXetCN)
+							if (obj[0].XetLop == 1) {
+								$("#radio-" + $child).html($lenLop)
+							} else if (obj[0].XetLop == 0) {
+								$("#radio-" + $child).html($oLai)
+							} else {
+								$("#radio-" + $child).html($none)
+							}
+						} else {
+							$("#radio-" + $child).html($none)
+						}
+					},
+					error : function(e) {
+						alert(e.message);
 					}
-				} else {
-					$("#radio-" + $child).html($none)
-				}
-			},
-			error : function(e) {
-				alert(e.message);
-			}
-		});
+				});
+	} else {
+		$($tag).removeClass('selected-row')
 	}
 }
