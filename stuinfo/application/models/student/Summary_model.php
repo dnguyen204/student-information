@@ -272,9 +272,34 @@ class Summary_model extends CI_Model
         
         return json_encode($result);
     }
-    // Đếm số chi đoàn trong Lớp
-    public function countChiDoanInClass()
+    // Lấy lớp của phân đoàn trưởng
+    public function getClassOfPhanDoanTruong($where)
     {
-        
+        return $this->db->where($where)
+            ->from('tbl_lop')
+            ->get()
+            ->result_array();
     }
+    // Đếm số chi đoàn trong Lớp và số đội trong từng chi đoàn
+    public function countChiDoanInClass($where)
+    {
+        return $this->db->where($where)
+            ->from('tbl_danhsachlopdoansinh dsl')
+            ->select('dsl.MaChiDoan, COUNT(distinct MaDoi) result')
+            ->group_by('dsl.MaChiDoan')
+            ->get()
+            ->result_array();
+    }
+    // Lấy danh sách đoàn sinh trong phân đoàn
+    public function getStudent($where)
+    {
+        return $this->db->where($where)
+            ->from('tbl_danhsachlopdoansinh dsl')
+            ->join('tbl_doansinh ds', 'ds.MaDoanSinh = dsl.MaDoanSinh')
+            ->join('tbl_tongketcanam cn', 'cn.MaDoanSinh = dsl.MaDoanSinh')
+            ->get()
+            ->result_array();
+    }
+    
+    
 }

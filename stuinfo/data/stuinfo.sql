@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2016 at 05:23 AM
+-- Generation Time: Nov 10, 2016 at 11:13 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -63,8 +63,8 @@ CREATE TABLE `tbl_danhsachlopdoansinh` (
 --
 
 INSERT INTO `tbl_danhsachlopdoansinh` (`ID`, `MaLop`, `MaChiDoan`, `MaDoi`, `MaDoanSinh`, `MaNamHoc`, `MaLopCu`) VALUES
-(13, 'ChienCon2016', 2, 1, '160001', 2, NULL),
-(15, 'ChienCon2016', 2, 1, '160003', 2, NULL),
+(13, 'ChienCon2016', 3, 1, '160001', 2, NULL),
+(15, 'ChienCon2016', 3, 1, '160003', 2, NULL),
 (18, 'ChienCon2016', 2, 1, '160002', 2, NULL),
 (19, 'ChienCon2016', 2, 2, '160004', 2, NULL);
 
@@ -310,7 +310,8 @@ CREATE TABLE `tbl_nghihoc` (
 --
 
 INSERT INTO `tbl_nghihoc` (`ID`, `MaDoanSinh`, `NgayNH`, `MaLop`, `HocKy`, `MaNamHoc`, `CPKP`, `GhiChu`) VALUES
-(4, '160001', '2016-10-02', 'ChienCon2016', 1, 2, 0, 'ốm');
+(4, '160001', '2016-10-02', 'ChienCon2016', 1, 2, 0, 'ốm'),
+(5, '160002', '2016-11-27', 'ChienCon2016', 1, 2, 1, 'Ăn đám cưới');
 
 -- --------------------------------------------------------
 
@@ -377,7 +378,7 @@ INSERT INTO `tbl_permision` (`ID`, `MaQuyen`, `Permision`, `Message`, `fnThemDoa
 (9, 1, 'admin/newGLV', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10, 1, 'admin/division', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (11, 1, 'admin/addClassStudent', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, 3, 'admin/addClassStudent', 'Phân đoàn trưởng', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 3, 'student/addClassStudent', 'Phân đoàn trưởng', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (13, 3, 'admin/division', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (14, 4, 'student/addTeamStudent', 'Huynh Trưởng', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
@@ -524,7 +525,8 @@ CREATE TABLE `tbl_tongketcanam` (
 --
 
 INSERT INTO `tbl_tongketcanam` (`ID`, `MaDoanSinh`, `MaLop`, `MaNamHoc`, `TBCN`, `TruocTBCN`, `HLCN`, `TruocHLCN`, `HKCN`, `XepHang`, `XepHangCN`, `NhanXetCN`, `XetLop`) VALUES
-(4, '160001', 'ChienCon2016', 2, 5.4, NULL, 'Trung Bình', NULL, 'Khá', NULL, NULL, 'Học ngoan', 0);
+(4, '160001', 'ChienCon2016', 2, 5.4, NULL, 'Trung Bình', NULL, 'Trung Bình', NULL, NULL, 'Học ngoan, tốt', 1),
+(5, '160002', 'ChienCon2016', 2, 3.8, NULL, 'Yếu', NULL, 'Yếu', NULL, NULL, 'tốt ngoan', 1);
 
 -- --------------------------------------------------------
 
@@ -552,7 +554,7 @@ CREATE TABLE `tbl_tongkethk1` (
 INSERT INTO `tbl_tongkethk1` (`ID`, `MaDoanSinh`, `MaLop`, `MaNamHoc`, `TBHK1`, `HLHK1`, `HKHK1`, `NhanXetHK1`, `XepHang`, `XepHangHK1`) VALUES
 (4, '160004', 'ChienCon2016', 2, 5.4, 'Trung Bình', NULL, '', NULL, NULL),
 (5, '160001', 'ChienCon2016', 2, 7.3, 'Khá', 'Tốt', 'Ngoan, hiền học khá, tốt', NULL, NULL),
-(6, '160002', 'ChienCon2016', 2, 3.4, 'Kém', 'Trung bình', 'Yếu quá', NULL, NULL),
+(6, '160002', 'ChienCon2016', 2, 3.4, 'Kém', 'Trung bình', 'Yếu quá, cần chỉnh đốn', NULL, NULL),
 (7, '160003', 'ChienCon2016', 2, 7.4, 'Khá', NULL, '', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -839,7 +841,7 @@ ALTER TABLE `tbl_nghihoc`
 -- AUTO_INCREMENT for table `tbl_nghile`
 --
 ALTER TABLE `tbl_nghile`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tbl_permision`
 --
@@ -874,7 +876,7 @@ ALTER TABLE `tbl_tonghopdiemtb`
 -- AUTO_INCREMENT for table `tbl_tongketcanam`
 --
 ALTER TABLE `tbl_tongketcanam`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_tongkethk1`
 --

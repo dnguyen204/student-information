@@ -115,7 +115,7 @@ if (isset($this->session->userdata['logged_in'])) {
 						<ul id="menu-academico-sub">
 							<li id="menu-academico-avaliacoes"><a
 								href="../student/addClassStudent">Xếp lớp đoàn sinh mới</a></li>
-							<li id="menu-academico-avaliacoes"><a href="">Xét lên lớp</a></li>
+							<li id="menu-academico-avaliacoes"><a href="../student/promoted">Xét lên lớp</a></li>
 						</ul></li>
 
 
