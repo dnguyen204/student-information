@@ -88,10 +88,10 @@ if (isset($this->session->userdata['logged_in'])) {
 					class="name-caret"><?=$tenthanh.'<br/>'.$hovadem.' '.$ten?></span>
 				<p><?=$chucvu?></p>
 				<ul>
-					<li><a class="tooltips" href="viewProfile"><span>Cá nhân</span><i
+					<li><a class="tooltips" href="../admin/viewProfile"><span>Cá nhân</span><i
 							class="glyphicon glyphicon-user"></i></a></li>
-					<li><a class="tooltips" href="changepass"><span>Đổi mật khẩu</span><i
-							class="glyphicon glyphicon-cog"></i></a></li>
+					<li><a class="tooltips" href="../admin/changepass"><span>Đổi mật
+								khẩu</span><i class="glyphicon glyphicon-cog"></i></a></li>
 					<li><a class="tooltips" data-target="#logoutModal"
 						data-toggle="modal" href=""><span>Đăng xuất</span><i
 							class="glyphicon glyphicon-off"></i></a></li>
@@ -115,7 +115,14 @@ if (isset($this->session->userdata['logged_in'])) {
 						<ul id="menu-academico-sub">
 							<li id="menu-academico-avaliacoes"><a
 								href="../student/addClassStudent">Xếp lớp đoàn sinh mới</a></li>
-							<li id="menu-academico-avaliacoes"><a href="../student/promoted">Xét lên lớp</a></li>
+							<li id="menu-academico-avaliacoes"><a href="../student/">Tổng
+									hợp điểm</a></li>
+							<li id="menu-academico-avaliacoes"><a href="../student/">Tổng
+									hợp nghỉ học</a></li>
+							<li id="menu-academico-avaliacoes"><a href="../student/promoted">Tổng
+									kết cuối năm</a></li>
+							<li id="menu-academico-avaliacoes"><a href="../student/">Báo cáo
+									cuối năm</a></li>
 						</ul></li>
 
 

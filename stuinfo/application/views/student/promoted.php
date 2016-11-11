@@ -2,13 +2,14 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 
-<div class="outter-wp">
+<div class="outter-wp" id="summary-all">
 	<div class="top-menu">
-		<h1 class="text-center">Xét lớp cuối năm</h1>
+		<h1 class="text-center">Tổng kết cuối năm</h1>
 	</div>
+	<input type="button" id="printAll" value="Print">
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h3 class="panel-title">Danh sách đoàn sinh trong Phân đoàn</h3>
+			<h3 class="panel-title">Danh sách đoàn sinh</h3>
 		</div>
 		<div class="panel-body">
 			<table class="table table-user-information">
@@ -39,7 +40,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 													class='accordian-body collapse'>
 													<table class='table table-user-information'>
 														<thead>
-															<tr>																
+															<tr>
 																<th>STT</th>
 																<th>Mã Đoàn Sinh</th>
 																<th>Tên Thánh</th>
@@ -55,7 +56,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
             foreach ($doansinh as $ds) {
                 if ($ds['MaDoi'] == $i && $ds['MaChiDoan'] == $c['MaChiDoan']) {
                     ?>
-															<tr>																
+															<tr data-toggle='collapse'
+																data-target='#<?=$ds['MaDoanSinh']?>'>
 																<td><?=$stt?></td>
 																<td><?=$ds['MaDoanSinh']?></td>
 																<td><?=$ds['TenThanh']?></td>
@@ -63,7 +65,41 @@ defined('BASEPATH') or exit('No direct script access allowed');
 																<td><?=$ds['TBCN']?></td>
 																<td><?=$ds['HKCN']?></td>
 																<td><?=$ds['NhanXetCN']?></td>
-																<td></td>																
+																<td><?=$ds['XetLop'] ? 'Lên lớp': 'Ở lại' ?></td>
+															</tr>
+															<tr>
+																<td colspan='8' class='hiddenRow'
+																	style='padding: 0px !important;'><div
+																		id='<?=$ds['MaDoanSinh']?>'
+																		class='accordian-body collapse'>
+																		<table class='table table-user-information'>
+																			<thead>
+																				<tr>
+																					<th></th>
+																					<th>Trung Bình</th>
+																					<th>Học Lực</th>
+																					<th>Hạnh Kiểm</th>
+																					<th>Nhận xét</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<tr>
+																					<td>Học Kỳ I</td>
+																					<td><?=$ds['TBHK1']?></td>
+																					<td><?=$ds['HLHK1']?></td>
+																					<td><?=$ds['HKHK1']?></td>
+																					<td><?=$ds['NhanXetHK1']?></td>
+																				</tr>
+																				<tr>
+																					<td>Học Kỳ II</td>
+																					<td><?=$ds['TBHK2']?></td>
+																					<td><?=$ds['HLHK2']?></td>
+																					<td><?=$ds['HKHK2']?></td>
+																					<td><?=$ds['NhanXetHK2']?></td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div></td>
 															</tr>
 														<?php $stt++;}}?>
 														</tbody>
@@ -79,6 +115,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				</tbody>
 			</table>
 		</div>
-
 	</div>
 </div>
+<script type='text/javascript'
+	src="<?php echo base_url();?>public/backend/template/print/js/printThis.js"></script>
+<script type='text/javascript'
+	src="<?php echo base_url();?>public/backend/template/print/js/print_summary_all.js"></script>

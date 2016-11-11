@@ -28,7 +28,7 @@ class ViewProfile extends CI_Controller
             'HovaDem' => $_POST['glvLastName'],
             'Ten' => $_POST['glvFirstName'],
             'GioiTinh' => $_POST['glvSex'],
-            'NgaySinh' => date('d-m-Y', strtotime($_POST['glvNgaySinh'])),
+            'NgaySinh' => date('Y-m-d', strtotime($_POST['glvNgaySinh'])),
             'NgayBonMang' => $_POST['glvBonMang'],
             'DienThoai' => $_POST['glvSDT'],
             'Email' => $_POST['glvEmail'],

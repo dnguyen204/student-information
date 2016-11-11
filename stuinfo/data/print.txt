@@ -1,0 +1,105 @@
+var printInvoice = function(){
+        if($('tr[id^="tr_"]').length == 0){
+            showNoTy('error', 'Chua thêm m?t hàng nào.');
+        }
+        else{
+            var print = document.createElement('div');
+            var productContent = $('#tbody-product-order').clone();
+            $.each($(productContent).find('tr'), function(i,e){
+                $(e).find('td:last').remove();
+            });
+
+            var birthday = "";
+            if($('#birthday-discount').text().trim()){
+              birthday='</tr><td colspan="4">Sinh nh?t</td><td class="text-right">' + $('#birthday-discount').text() + '</td><td class="text-right">'+ $('#birthday-money-disp').text().replace(' VNÐ', '') +'</td>';
+            }
+
+            var discount = "";
+            if($('#custumer-type-discount').text().trim()){
+              discount='</tr><td colspan="4">Chi?t kh?u</td><td class="text-center">' + $('#custumer-type-discount').text() + '</td><td class="text-right">'+ $('#discount-money-disp').text().replace(' VNÐ', '') +'</td>';
+            }
+
+            var plus_discount = "";
+            if($('#plus-discount').text().trim() && $('#plus-discount').text().trim()!="0 VNÐ"){
+              plus_discount='</tr><td colspan="5">Gi?m thêm</td><td class="text-right">' + $('#plus-discount').text().replace(' VNÐ', '') + '</td>';
+            }
+
+            var ship_fee = "";
+            if($('#fee-price-label').text().trim() && $('#fee-price-label').text().trim()!="0 VNÐ"){
+              ship_fee='</tr><td colspan="5">Phí ship</td><td class="text-right">' + $('#fee-price-label').text().replace(' VNÐ', '') + '</td>';
+            }
+
+            var printContent = '<div class="shop-info table">' +
+                                        '<div class="row">'+
+                                            '<div class="cell logo">'+
+                                                '<img src="' + '<?php echo BIN_BASE_URL; ?>' + 'public/template/backend/img/logo-lr.png" />'+
+                                            '</div>'+
+                                            '<div class="cell shop-address">' +
+                                                '<div class="addressandphone row">'+
+                                                    '<p class="name">M?T M?U\'S HOUSE</p>'+
+                                                '</div>'+
+                                                '<div class="addressandphone row">'+
+                                                    'Ð?a ch?: 11/3B T? L?p, Phu?ng 14, Tân Bình, TP.HCM'+
+                                                '</div>'+
+                                                '<div class="addressandphone row">'+
+                                                    'Instagram: mot_mau_s_house'+
+                                                '</div>'+
+                                                '<div class="addressandphone row">'+
+                                                    'Facebook: https://www.facebook.com/shop1mau'+
+                                                '</div>'+
+                                                '<div class="addressandphone row">'+
+                                                    'Ði?n tho?i (Zalo): 01207.36.36.97'+
+                                                '</div>'+
+                                            '</div>' +
+                                        '</div>'+
+
+                                    '</div>'+
+                                    '<div class="row title">'+
+                                        '<p class="thisistitle">HÓA ÐON BÁN HÀNG</p>'+
+                                    '</div>'+
+                                    '<div class="buy-info row">'+
+                                        '<div class="row">'+
+                                            '<div class="date cell">'+
+                                                '<p class="margin-left">Ngày: '+moment(new Date()).format('DD/MM/YYYY hh:mm')+'</p>'+
+                                            '</div>'+
+                                            '<div class="number cell">'+
+                                                '<p>S? hóa don: '+$('.order_guid').val().toUpperCase()+'</p>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="row">'+
+                                            '<div class="seller cell">'+
+                                                '<p class="margin-left">Thu ngân: '+$('.profile-data-name').text()+'</p>'+
+                                            '</div>'+
+                                            '<div class="customer cell">'+
+                                                '<p>Khách hàng: '+$('#user-name').text()+'</p>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="buy-product">'+
+                                    '<table><thead>' +
+                                      '<tr><th>M?t hàng</th>'+
+                                      '<th>Màu</th>'+
+                                      '<th>Size</th>'+
+                                      '<th>S? lu?ng</th>'+
+                                      '<th>Ðon giá</th>'+
+                                      '<th>Thành ti?n</th></tr></thead>'+
+                                        $(productContent).html() + birthday + discount + plus_discount + ship_fee +
+                                        '<tr><td colspan="5" class="bold">T?ng</td>' +
+                                        '<td class="text-right bold">' + $('#final-total-money').text().replace(' VNÐ', '') + '</td>' +
+                                    '</table>'+
+                                    '</div>'+
+                                    '<div class="goodbye">'+
+                                        '<p>Hàng d?i tr? trong vòng ba ngày. Vui lòng mang theo hóa don.'+
+                                        '<br />'+
+                                        'Xin chân thành cám on quý khách, h?n g?p l?i &#9787;</p>'+
+                                    '</div>'+
+                                '</div>';
+
+            $(print).append(printContent);
+            $(print).printThis({
+                loadCSS: '<?php echo BIN_BASE_URL; ?>' + 'public/template/backend/css/print.css',
+                callback: function(){
+                  $('#btn-add-order').click();
+                }
+            });
+        }

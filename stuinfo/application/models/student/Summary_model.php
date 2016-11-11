@@ -297,6 +297,8 @@ class Summary_model extends CI_Model
             ->from('tbl_danhsachlopdoansinh dsl')
             ->join('tbl_doansinh ds', 'ds.MaDoanSinh = dsl.MaDoanSinh')
             ->join('tbl_tongketcanam cn', 'cn.MaDoanSinh = dsl.MaDoanSinh')
+            ->join('tbl_tongkethk1 hk1', 'hk1.MaDoanSinh = dsl.MaDoanSinh')
+            ->join('tbl_tongkethk2 hk2', 'hk2.MaDoanSinh = dsl.MaDoanSinh')
             ->get()
             ->result_array();
     }

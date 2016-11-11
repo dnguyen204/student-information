@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2016 at 11:13 AM
+-- Generation Time: Nov 11, 2016 at 10:59 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -219,7 +219,7 @@ CREATE TABLE `tbl_huynhtruong` (
 
 INSERT INTO `tbl_huynhtruong` (`ID`, `HinhHuynhTruong`, `TenThanh`, `MaHuynhTruong`, `HovaDem`, `Ten`, `NgaySinh`, `NgayBonMang`, `GioiTinh`, `DienThoai`, `Email`, `DiaChi`, `GhiChu`, `TrangThai`, `MaQuyen`, `Username`) VALUES
 (1, '', NULL, NULL, NULL, 'Administrator', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'admin'),
-(12, '', 'Gioan', '160002', 'Nguyễn Hùng', 'Dũng', '0000-00-00', '01-05', 1, '01229004101', 'dung.nh1705@gmail.com', '310/60 Phạm Văn Chiêu, phường 9, Gò Vấp', '', 7, 3, 'dung.nh1705'),
+(12, '', 'Gioan', '160002', 'Nguyễn Hùng', 'Dũng', '1992-05-17', '01-05', 1, '01229004101', 'dung.nh1705@gmail.com', '310/60 Phạm Văn Chiêu, phường 9, Gò Vấp', '', 7, 3, 'dung.nh1705'),
 (14, '', 'Maria', '160003', 'Nguyễn Thị Hồng', 'Thảo', '1993-01-19', '', 0, '01227237184', '', '', '', 7, 4, 'thao.nth1901'),
 (15, '', 'Gioan Baotixita', '160004', 'Nguyễn Viết', 'Chiến', '0000-00-00', '01-06', 1, '01229004101', '', 'update', '', 5, 4, 'chien.nv0107');
 
@@ -525,7 +525,7 @@ CREATE TABLE `tbl_tongketcanam` (
 --
 
 INSERT INTO `tbl_tongketcanam` (`ID`, `MaDoanSinh`, `MaLop`, `MaNamHoc`, `TBCN`, `TruocTBCN`, `HLCN`, `TruocHLCN`, `HKCN`, `XepHang`, `XepHangCN`, `NhanXetCN`, `XetLop`) VALUES
-(4, '160001', 'ChienCon2016', 2, 5.4, NULL, 'Trung Bình', NULL, 'Trung Bình', NULL, NULL, 'Học ngoan, tốt', 1),
+(4, '160001', 'ChienCon2016', 2, 5.4, NULL, 'Trung Bình', NULL, 'Trung Bình', NULL, NULL, 'Học ngoan, tốt', 0),
 (5, '160002', 'ChienCon2016', 2, 3.8, NULL, 'Yếu', NULL, 'Yếu', NULL, NULL, 'tốt ngoan', 1);
 
 -- --------------------------------------------------------
