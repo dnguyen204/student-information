@@ -1,4 +1,6 @@
 @CHARSET "ISO-8859-1";
-h4{
-	color: red;
+
+.table-header{
+	border: 2px;
+	font-family: "Times New Roman", Georgia, Serif;
 }
