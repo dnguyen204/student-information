@@ -18,21 +18,29 @@ function getData(controllerurl, data){
 
 function summary(contentId, malop, machidoan, baseurl) {
 	var print = document.createElement('div');
-	var content = $('#' + contentId).clone();
-	var phutrach
+	var content = $('#' + contentId.substr(0,1)).clone();
+	//$(content).find('[data-toggle="collapse"]').attr('aria-expanded', 'true');
+	
+	var phutrach, printContent;
 	getData('/student/typeSroce/getListGLV', 'malop=' + malop + '&machidoan=' + machidoan).done(function(data){
 		
 		data = data.replace(/<h4>/g, " ");
 		data = data.replace("</h4>", ",");
 		
-		var printContent = 
+		printContent = 
+			'<div class="body">'+
+			'<h3>Tổng kết cả năm</h3>'+
 			'<table class="table-header">' + 
 				'<tbody>' + 
-					'<tr>' + '<td>Chi đoàn' + '</td>' + '<td>' + + '</td><td align="right">Tổng kết cuối năm</td></tr>' + 
-					'<tr>' + '<td>Phụ trách' + '</td>' + '<td>' + data + '</td><td></td></tr>' + 
+					'<tr>' + '<td>Chi đoàn' + '</td>' + '<td>: ' + machidoan + '</td></tr>' + 
+					'<tr>' + '<td>Phụ trách' + '</td>' + '<td>: ' + data + '</td></tr>' + 
 				'</tbody>' + 
-			'</table>'
+			'</table>' +
+			$(content).html() +
+			'</div>'
+			
 		
+			
 		$(print).append(printContent);
 		$(print).printThis(
 				{
