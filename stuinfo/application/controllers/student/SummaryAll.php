@@ -60,7 +60,7 @@ class SummaryAll extends CI_Controller
         
         $this->smodel->insertSummaryAllForStudent($data_insert);
     }
-    
+
     function getCurrentSummary()
     {
         $data_where = array(
@@ -69,6 +69,16 @@ class SummaryAll extends CI_Controller
             'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
         );
         
-        echo $this->smodel->getCurrentStudentSummary($data_where);        
+        echo $this->smodel->getCurrentStudentSummary($data_where);
+    }
+
+    function countAcademics()
+    {
+        $data_where = array(
+            'MaLop' => $_POST['malop'],
+            'MaChiDoan' => $_POST['macd']
+        );
+        
+        echo $this->smodel->countAcademic($data_where);
     }
 }

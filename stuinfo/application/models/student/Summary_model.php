@@ -302,6 +302,17 @@ class Summary_model extends CI_Model
             ->get()
             ->result_array();
     }
-    
-    
+    // Lấy danh sách tổng kết số lượng giỏi khá
+    public function countAcademic($where)
+    {
+        $result = $this->db->where($where)
+            ->select('HLCN, count("HLCN") result')
+            ->from('tbl_danhsachlopdoansinh dsl')
+            ->join('tbl_tongketcanam cn', 'cn.MaDoanSinh = dsl.MaDoanSinh')
+            ->group_by('HLCN')
+            ->get()
+            ->result_array();
+        
+        return json_encode($result);
+    }
 }
