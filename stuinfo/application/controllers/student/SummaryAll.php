@@ -75,8 +75,8 @@ class SummaryAll extends CI_Controller
     function countAcademics()
     {
         $data_where = array(
-            'MaLop' => $_POST['malop'],
-            'MaChiDoan' => $_POST['macd']
+            'dsl.MaLop' => $_POST['malop'],
+            'dsl.MaChiDoan' => $_POST['macd']
         );
         
         echo $this->smodel->countAcademic($data_where);
