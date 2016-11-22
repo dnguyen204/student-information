@@ -108,6 +108,7 @@ if (isset($this->session->userdata['logged_in'])) {
 						<ul id="menu-academico-sub">
 							<li id="menu-academico-boletim"><a href="../admin/newDatabase">Chỉnh
 									sửa DB</a></li>
+              <li id="menu-academico-boletim"><a href="">Thêm đoàn sinh mới từ file</a></li>
 						</ul></li>
 					<li id="menu-academico"><a><i class="glyphicon glyphicon-grain"></i>
 							<span>Phân đoàn trưởng</span> <span class="fa fa-angle-right"
@@ -117,7 +118,7 @@ if (isset($this->session->userdata['logged_in'])) {
 								href="../student/addClassStudent">Xếp lớp đoàn sinh mới</a></li>
 							<li id="menu-academico-avaliacoes"><a href="../student/">Tổng
 									hợp điểm</a></li>
-							<li id="menu-academico-avaliacoes"><a href="../student/">Tổng
+							<li id="menu-academico-avaliacoes"><a href="../student/absentAll">Tổng
 									hợp nghỉ học</a></li>
 							<li id="menu-academico-avaliacoes"><a href="../student/promoted">Tổng
 									kết cuối năm</a></li>
@@ -183,7 +184,7 @@ if (isset($this->session->userdata['logged_in'])) {
 						</ul></li>
 
 					<li id="menu-academico"><a><i class="glyphicon glyphicon-book"></i>
-							<span>Báo cáo</span> <span class="fa fa-angle-right"
+							<span>Thống kê cả năm</span> <span class="fa fa-angle-right"
 							style="float: right"></span></a>
 						<ul id="menu-academico-sub">
 							<li id="menu-academico-avaliacoes"><a href="">Đoàn sinh xuất sắc</a></li>

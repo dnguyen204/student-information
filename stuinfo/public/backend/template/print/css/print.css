@@ -3,11 +3,22 @@ body{
 	font-family: "Times New Roman", Georgia, Serif;
 }
 
-body h3{
-	text-align: center;
+table.table-header-left{
+		float: left;
+	 	width: 70%;
 }
 
-.table-header{
+table.table-header-right{
+		float: right;
+	 	width: 20%;
+}
+
+table.table-footer-right{
+		float: right;
+		width: 20%;
+}
+
+.table-header-left{
 	border: 2px;
 	font-family: "Times New Roman", Georgia, Serif;
 }

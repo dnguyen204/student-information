@@ -19,7 +19,7 @@ class SummaryAll extends CI_Controller
             'pc.MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
         );
         $data['list_class'] = $this->gmodel->getClassOfGLV($data_where);
-        
+
         $data['subview'] = 'student/summary_all';
         $this->load->view('admin/main', $data);
     }
@@ -31,7 +31,7 @@ class SummaryAll extends CI_Controller
             'dslds.MaLop' => $_POST['malop'],
             'dslds.MaChiDoan' => $_POST['machidoan']
         );
-        
+
         echo $this->smodel->getSummaryAll($data_where, $mode);
     }
 
@@ -41,7 +41,7 @@ class SummaryAll extends CI_Controller
             'MaLop' => $_POST['malop'],
             'MaChiDoan' => $_POST['machidoan']
         );
-        
+
         echo $this->gmodel->getListGLVInClass($data_where);
     }
 
@@ -57,7 +57,7 @@ class SummaryAll extends CI_Controller
             'NhanXetCN' => $_POST['NXCN'],
             'XetLop' => $_POST['result']
         );
-        
+
         $this->smodel->insertSummaryAllForStudent($data_insert);
     }
 
@@ -68,7 +68,7 @@ class SummaryAll extends CI_Controller
             'MaLop' => $_POST['malop'],
             'MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
         );
-        
+
         echo $this->smodel->getCurrentStudentSummary($data_where);
     }
 
@@ -78,7 +78,17 @@ class SummaryAll extends CI_Controller
             'dsl.MaLop' => $_POST['malop'],
             'dsl.MaChiDoan' => $_POST['macd']
         );
-        
+
         echo $this->smodel->countAcademic($data_where);
+    }
+
+    function getNamePhanDoan()
+    {
+        $this->load->model('admin/class_model', 'cmodel');
+        $data_where = array(
+            'l.MaLop' => $_POST['malop']
+        );
+
+        echo $this->cmodel->getMaPhanDoan($data_where);
     }
 }

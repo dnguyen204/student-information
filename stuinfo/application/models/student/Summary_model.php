@@ -7,17 +7,17 @@ class Summary_model extends CI_Model
     public function getListStudentForSummary($where)
     {
         $url = base_url();
-        
+
         $this->db->where($where);
         $this->db->from('tbl_danhsachlopdoansinh dslds');
         $this->db->select('count(MaDoi)');
         $this->db->group_by('dslds.MaDoi');
         $result = $this->db->get()->num_rows();
-        
+
         $this->db->where($where);
         $this->db->from('tbl_danhsachlopdoansinh dslds')->join('tbl_doansinh ds', 'ds.MaDoanSinh = dslds.MaDoanSinh');
         $this->db->select('*');
-        
+
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $output_string = '';
@@ -31,7 +31,7 @@ class Summary_model extends CI_Model
             $output_string .= '</tr>';
             $output_string .= '</thead>';
             $output_string .= '<tbody>';
-            
+
             for ($i = 1; $i <= $result; $i ++) {
                 $output_string .= "<tr data-toggle='collapse' data-target='#{$i}'><td>Đội: {$i}</td><td></td><td></td><td></td></tr>";
                 $index = 1;
@@ -39,21 +39,21 @@ class Summary_model extends CI_Model
                 foreach ($query->result_array() as $r) {
                     if ($r['MaDoi'] == $i) {
                         $name = $r['HovaDem'] . ' ' . $r['Ten'];
-                        
+
                         $output_string .= '<tr class="show-summary" id="' . "{$r['MaDoanSinh']}" . '">';
                         $output_string .= "<td></td>";
                         $output_string .= "<td>{$index}</td>";
                         $output_string .= "<td>{$r['MaDoanSinh']}</td>";
                         $output_string .= "<td>{$r['TenThanh']}</td>";
                         $output_string .= "<td>{$name}</td>";
-                        
+
                         $output_string .= '</tr>';
                         $index += 1; // tăng số
                     }
                 }
                 $output_string .= "</tbody></table></td></tr>";
             }
-            
+
             $output_string .= '</tbody>';
             $output_string .= '</table>';
             $output_string .= '<script type="text/javascript"
@@ -74,9 +74,9 @@ class Summary_model extends CI_Model
             $this->db->from('tbl_nghile');
         if ($option == 2)
             $this->db->from('tbl_nghihoc');
-        
+
         $result = $this->db->get()->result_array();
-        
+
         return json_encode($result);
     }
     // lấy tổng kết hk cho đoàn sinh
@@ -88,9 +88,9 @@ class Summary_model extends CI_Model
             $this->db->from('tbl_tongkethk1');
         if ($hk == 2)
             $this->db->from('tbl_tongkethk2');
-        
+
         $result = $this->db->get()->result_array();
-        
+
         return json_encode($result);
     }
     // Cập nhật thông tin tổng kết cho đoàn sinh
@@ -118,7 +118,7 @@ class Summary_model extends CI_Model
         } else {
             $result = 'Xuất Sắc';
         }
-        
+
         return $result;
     }
     // Lấy danh sách đoàn sinh tổng kết năm học
@@ -132,7 +132,7 @@ class Summary_model extends CI_Model
             $this->db->group_by('dslds.MaDoi');
             $result = $this->db->get()->num_rows();
         }
-        
+
         $this->db->where($where);
         $this->db->from('tbl_danhsachlopdoansinh dslds')
             ->join('tbl_doansinh ds', 'ds.MaDoanSinh = dslds.MaDoanSinh')
@@ -141,7 +141,7 @@ class Summary_model extends CI_Model
             ->join('tbl_tongkethk1 tkhk1', 'tkhk1.MaDoanSinh = dslds.MaDoanSinh AND tkhk1.MaLop = dslds.MaLop')
             ->join('tbl_tongkethk2 tkhk2', 'tkhk2.MaDoanSinh = dslds.MaDoanSinh AND tkhk2.MaLop = dslds.MaLop');
         $this->db->select('*');
-        
+
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $output_string = '';
@@ -155,11 +155,11 @@ class Summary_model extends CI_Model
             $output_string .= '</tr>';
             $output_string .= '</thead>';
             $output_string .= '<tbody>';
-            
+
             for ($i = 1; $i <= $result; $i ++) {
                 $output_string .= "<tr data-toggle='collapse' data-target='#{$i}'><td>Đội: {$i}</td><td></td><td></td><td></td></tr>";
                 $index = 1;
-                
+
                 $output_string .= "<tr><td colspan='4' class='hiddenRow' style='padding: 0px !important;'><div id='{$i}' class='accordian-body collapse'><table class='table table-user-information'><tbody>";
                 foreach ($query->result_array() as $r) {
                     if ($r['MaDoi'] == $i) {
@@ -167,16 +167,16 @@ class Summary_model extends CI_Model
                         $name = $r['HovaDem'] . ' ' . $r['Ten'];
                         $TBCN = round(($r['TBHK1'] + $r['TBHK2']) / 3, 1);
                         $HLCN = $this->reviewAcademic($TBCN);
-                        
+
                         $output_string .= '<tr onclick="getTongKet(' . "{$r['MaDoanSinh']}" . ',' . "'" . "{$childIndex}" . "'" . ');" id="' . "{$r['MaDoanSinh']}" . '" data-toggle="collapse" data-target="#' . "{$childIndex}" . '">';
                         $output_string .= "<td></td>";
                         $output_string .= "<td>{$index}</td>";
                         $output_string .= "<td>{$r['MaDoanSinh']}</td>";
                         $output_string .= "<td>{$r['TenThanh']}</td>";
                         $output_string .= "<td>{$name}</td>";
-                        
+
                         $output_string .= '</tr>';
-                        
+
                         $output_string .= "<tr><td colspan='5' class='hiddenRow' style='padding: 0px !important;'><div id='{$childIndex}' class='accordian-body collapse'><form class='form' id='form-{$childIndex}'><table class='table table-user-information'>";
                         $output_string .= '<thead>';
                         $output_string .= '<tr>';
@@ -231,13 +231,13 @@ class Summary_model extends CI_Model
                         $output_string .= '</tr>';
                         $output_string .= '</form>';
                         $output_string .= "</tbody></table></form></div></td></tr>";
-                        
+
                         $index += 1; // tăng STT trong từng đội
                     }
                 }
                 $output_string .= "</tbody></table></div></td></tr>";
             }
-            
+
             $output_string .= '</tbody>';
             $output_string .= '</table>';
         } else {
@@ -269,7 +269,7 @@ class Summary_model extends CI_Model
             ->from('tbl_tongketcanam')
             ->get()
             ->result_array();
-        
+
         return json_encode($result);
     }
     // Lấy lớp của phân đoàn trưởng
@@ -312,7 +312,17 @@ class Summary_model extends CI_Model
             ->group_by('HLCN')
             ->get()
             ->result_array();
-        
+
         return json_encode($result);
+    }
+    // Lấy danh sách tổng kết đoàn sinh nghỉ theo phân đoàn
+    public function getStudentAbsentAll($where)
+    {
+        return $this->db->where($where)
+            ->from('tbl_danhsachlopdoansinh dsl')
+            ->join('tbl_doansinh ds', 'ds.MaDoanSinh = dsl.MaDoanSinh')
+            
+            ->get()
+            ->result_array();
     }
 }
