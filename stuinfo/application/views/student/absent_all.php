@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <div class="outter-wp" id="summary-all">
 	<div class="top-menu">
-		<h1 class="text-center">Tổng kết cuối năm</h1>
+		<h1 class="text-center">Tổng kết ngày nghỉ</h1>
 	</div>
 	<div class="panel panel-info">
 		<div class="panel-heading">
@@ -63,10 +63,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 																<td><?=$ds['MaDoanSinh']?></td>
 																<td><?=$ds['TenThanh']?></td>
 																<td><?=$ds['HovaDem'].' '.$ds['Ten']?></td>
-																<td><?=$ds['TBHK1']?></td>
-																<td><?=$ds['TBHK2']?></td>
-																<td><?=$ds['TBCN']?></td>
-																<td><?=$ds['HKCN']?></td>
+																<td><?=$ds['LeCP']?></td>
+																<td><?=$ds['LeKP']?></td>
+																<td><?=$ds['HocCP']?></td>
+																<td><?=$ds['HocKP']?></td>
+																<td><?=$ds['LeCP'] + $ds['LeKP'] + $ds['HocCP'] + $ds['HocKP']?></td>
 															</tr>
 															<!--<tr>
 																<td colspan='8' class='hiddenRow'
@@ -116,7 +117,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<td colspan="8"></td>
 						<td align="right"><a
 							title="In danh sách chi đoàn <?=$c['MaChiDoan']?>" type="button"
-							class="btn btn-sm btn-info" onclick="printSummary('<?=$c['MaChiDoan'].$key?>','<?=$malop?>',<?=$c['MaChiDoan']?>,'<?=base_url()?>')"><i class="glyphicon glyphicon-print"></i></a></td>
+							class="btn btn-sm btn-info" onclick="printSummary('<?=$c['MaChiDoan'].$key?>','<?=$malop?>',<?=$c['MaChiDoan']?>,'<?=base_url()?>', 2)"><i class="glyphicon glyphicon-print"></i></a></td>
 					</tr>
 				</tbody>
 			</table>

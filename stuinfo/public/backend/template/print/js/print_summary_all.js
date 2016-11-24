@@ -11,12 +11,12 @@ function getData(controllerurl, data){
 	});
 }
 
-function summary(contentId, malop, machidoan, baseurl) {
+function summary(contentId, malop, machidoan, baseurl, viewMode) {
 	var print = document.createElement('div');
 	var content = $('#' + contentId.substr(0,1)).clone();
 	//$(content).find('[data-toggle="collapse"]').attr('aria-expanded', 'true');
 
-	var phutrach, printContent, summary = '';
+	var phutrach, printContent, summary = '', title;
 	$.when(getData('/student/typeSroce/getListGLV', 'malop=' + malop + '&machidoan=' + machidoan),
 			getData('/student/summaryAll/countAcademics', 'malop=' + malop + '&macd=' + machidoan),
 			getData('/student/summaryAll/getNamePhanDoan', 'malop=' + malop)).done(function(data1, data2, data3){
@@ -28,6 +28,16 @@ function summary(contentId, malop, machidoan, baseurl) {
 
 		for( var i = 0 ; i < data2[0].length; i++ ){
 			summary += '<tr>' + '<td>Đoàn sinh ' + data2[0][i].HLCN + '</td>' + '<td>: ' + data2[0][i].result + '</td></tr>'
+		}
+
+		if(viewMode == 1){
+			title = 'Tổng kết điểm cả năm'
+		}
+		else if(viewMode == 2){
+			title = 'Tổng kết nghỉ học cả năm'
+		}
+		else if(viewMode == 3){
+			title = 'Tổng kết cả năm'
 		}
 
 		printContent =
@@ -42,7 +52,7 @@ function summary(contentId, malop, machidoan, baseurl) {
 			'<table class="table-header-right">' +
 				'<tbody>' +
 					'<tr>' +
-							'<td><h4>Tổng kết cả năm</h4></td>' +
+							'<td><h4>'+ title +'</h4></td>' +
 					'</tr>' +
 				'</tbody>' +
 			'</table>' +
@@ -67,6 +77,6 @@ function summary(contentId, malop, machidoan, baseurl) {
 	})
 }
 
-function printSummary(contentId, malop, machidoan, baseurl) {
-	summary(contentId, malop, machidoan, baseurl)
+function printSummary(contentId, malop, machidoan, baseurl, viewMode) {
+	summary(contentId, malop, machidoan, baseurl, viewMode)
 }

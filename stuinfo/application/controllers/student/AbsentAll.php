@@ -24,8 +24,8 @@ class AbsentAll extends CI_Controller
             'dsl.MaNamHoc' => $this->session->userdata['logged_in']['manamhoc']
         );
         $data['count'] = $this->smodel->countChiDoanInClass($data_where_count);
-        $data['doansinh'] = $this->smodel->getStudent($data_where_count);
-
+        $data['doansinh'] = $this->smodel->getStudentAbsentAll($data_where_count);
+        
         $data['subview'] = 'student/absent_all';
         $this->load->view('admin/main', $data);
     }

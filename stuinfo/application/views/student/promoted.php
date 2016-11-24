@@ -13,7 +13,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<div class="panel-body">
 		<?php foreach ($count as $key=>$c){
 		    $malop = '';
-		?>	
+		?>
 			<table class="table table-user-information"
 				id="<?=$c['MaChiDoan'].$key?>">
 				<tbody>
@@ -49,7 +49,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 																<th>TB HKII</th>
 																<th>TB Cả Năm</th>
 																<th>Hạnh kiểm</th>
-																<th>Nhận xét</th>
+																<th>Nhận xét</th>																
 																<th>Kết quả</th>
 															</tr>
 														</thead>
@@ -109,7 +109,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 														</tbody>
 													</table>
 												</div></td>
-										</tr>										
+										</tr>
 									<?php }?>
 									</tbody>
 								</table>
@@ -122,7 +122,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							class="btn btn-sm btn-info" onclick="printSummary('<?=$c['MaChiDoan'].$key?>','<?=$malop?>',<?=$c['MaChiDoan']?>,'<?=base_url()?>')"><i class="glyphicon glyphicon-print"></i></a></td>
 					</tr>
 				</tbody>
-			</table>			
+			</table>
 			<?php }?>
 		</div>
 	</div>

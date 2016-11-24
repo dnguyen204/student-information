@@ -299,6 +299,8 @@ class Summary_model extends CI_Model
             ->join('tbl_tongketcanam cn', 'cn.MaDoanSinh = dsl.MaDoanSinh')
             ->join('tbl_tongkethk1 hk1', 'hk1.MaDoanSinh = dsl.MaDoanSinh')
             ->join('tbl_tongkethk2 hk2', 'hk2.MaDoanSinh = dsl.MaDoanSinh')
+            ->group_by('dsl.MaDoanSinh')
+            ->order_by('dsl.MaChiDoan')
             ->get()
             ->result_array();
     }
@@ -321,7 +323,13 @@ class Summary_model extends CI_Model
         return $this->db->where($where)
             ->from('tbl_danhsachlopdoansinh dsl')
             ->join('tbl_doansinh ds', 'ds.MaDoanSinh = dsl.MaDoanSinh')
-            
+            ->select('*,
+            (select count(CPKP) from tbl_nghile where CPKP = 1 AND tbl_nghile.MaDoanSinh = dsl.MaDoanSinh) LeCP,
+            (select count(CPKP) from tbl_nghile where CPKP = 0 AND tbl_nghile.MaDoanSinh = dsl.MaDoanSinh) LeKP,
+            (select count(CPKP) from tbl_nghihoc where CPKP = 1 AND tbl_nghihoc.MaDoanSinh = dsl.MaDoanSinh) HocCP,
+            (select count(CPKP) from tbl_nghihoc where CPKP = 0 AND tbl_nghihoc.MaDoanSinh = dsl.MaDoanSinh) HocKP')
+            ->group_by('dsl.MaDoanSinh')
+            ->order_by('dsl.MaChiDoan')
             ->get()
             ->result_array();
     }
